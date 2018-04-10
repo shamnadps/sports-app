@@ -5,13 +5,16 @@ services:
   vantaa-pwa:
     image: vantaa-pwa
     ports:
-      - 3000:3000
+      - 8000:8000
     command: bash -c 'while !</dev/tcp/postgres-dev-db/5432; do sleep 1; done; npm start'
     depends_on:
       - postgres-dev-db
     environment:
-      - DATABASE_URL=postgres://postgres:password@postgres-dev-db:5432/vantaa_pwa
-      - PORT=3000
+      PORT: 8000
+      USERNAME: postgres
+      PASSWORD: password
+      DATABASE: vantaa_pwa
+      HOST: postgres-dev-db
 
   postgres-dev-db:
     image: postgres:10.3
