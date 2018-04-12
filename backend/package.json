@@ -7,7 +7,8 @@
         "node": "8.10.0"
     },
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js",
+        "feeddb": "node src/database/feeddb.js"
     },
     "keywords": [],
     "author": "",
