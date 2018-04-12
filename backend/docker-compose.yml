@@ -6,7 +6,7 @@ services:
     image: vantaa-pwa
     ports:
       - 8000:8000
-    command: bash -c 'while !</dev/tcp/postgres-dev-db/5432; do sleep 1; done; npm start'
+    command: bash -c 'while !</dev/tcp/postgres-dev-db/5432; do sleep 1; done; npm install; npm start; npm run feeddb;'
     depends_on:
       - postgres-dev-db
     environment:
