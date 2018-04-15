@@ -8,13 +8,16 @@
     },
     "scripts": {
         "start": "node server.js",
-        "feeddb": "node src/database/feeddb.js"
+        "feeddb": "node src/seed/feeddb.js",
+        "fetch-courses": "node src/seed/courses.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "body-parser": "^1.18.2",
         "express": "^4.16.3",
+        "node-fetch": "^2.1.2",
         "pg": "^7.4.1",
         "sequelize": "^4.37.6",
         "sequelize-cli": "^4.0.0"

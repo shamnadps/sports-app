@@ -6,7 +6,7 @@ services:
     image: vantaa-pwa
     ports:
       - 8000:8000
-    command: bash -c 'while !</dev/tcp/postgres-dev-db/5432; do sleep 1; done; npm install; npm start; npm run feeddb;'
+    command: bash -c 'npm install && npm start && npm run fetch-courses'
     depends_on:
       - postgres-dev-db
     environment:
@@ -15,6 +15,8 @@ services:
       PASSWORD: password
       DATABASE: vantaa_pwa
       HOST: postgres-dev-db
+      COURSE_UPDATE_INTERVAL: 3600000
+      COURSE_API_URL: https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176
 
   postgres-dev-db:
     image: postgres:10.3

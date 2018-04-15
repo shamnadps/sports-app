@@ -1,7 +1,11 @@
-const eventModel = require('./events');
-const userModel = require('./users');
+const events = require('./events');
+const users = require('./users');
+const courses = require('./courses');
+const locations = require('./locations');
 
 module.exports = {
-    eventModel: eventModel,
-    userModel: userModel,
+    events,
+    users,
+    courses,
+    locations,
 };

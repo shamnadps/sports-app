@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const models = require('../models');
 
-router.get('/getUser', (req, res) => {
-    res.send('returning singe user');
+router.get('/:id', (req, res) => {
+    res.send('returning specific user ' + req.params.id);
 });
 
-router.post('/addUser', (req, res) => {
-    res.send('Created User');
-});
-
-router.get('/getAllUsers', (req, res) => {
-    res.send('returning user list');
+router.get('/', (req, res) => {
+    models.users.findAll({}).then(function(users) {
+        res.status(200).send(users);
+    });
 });
 
 module.exports = router;
