@@ -23,8 +23,14 @@ You should be able to see the following message on the browser.
 
 ## API Calls
 
-To get the list of events: (localhost:8000/events/getAllEvents)
+list of all available courses: (http://localhost:8000/courses).
+list of all available events: (http://localhost:8000/events)
+list of all available users: (http://localhost:8000/users)
 
 ## Implementation Details
 
-Right now the backend application starts up on localhost:3000, then connects to the postgres db on docker using sequalize and then insert a single row of data to the events table. This data can be fetched using the events api call.
+Right now the backend application starts up on (localhost:8000), then connects to the postgres db on docker using sequalize.
+
+We are using the test API call to get the list of all courses from the Grynos Server.(https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176).
+
+This will be later replaced with the actual API once available.

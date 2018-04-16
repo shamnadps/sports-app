@@ -1,7 +1,7 @@
 const db = require('../../sequalize_pg');
 const Sequelize = require('sequelize');
 
-const model = db.define('Events', {
+const model = db.define('events', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
