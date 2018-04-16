@@ -1,5 +1,5 @@
 {
-    "extends": "react-app",
+    "extends": ["react-app", "eslint:recommended", "airbnb"],
     "env": {
         "browser": true,
         "commonjs": true,
@@ -19,6 +19,9 @@
         "no-unreachable": "error",
         "no-unused-vars": "warn",
         "constructor-super": "warn",
-        "valid-typeof": "warn"
+        "valid-typeof": "warn",
+        "global-require": "warn",
+        "no-duplicate-imports": "error",
+        "no-var": "error"
     }
 }
