@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'react-emotion';
 import { connect } from 'utils';
 import SignInState from './SignInState';
-import { extendObservable, observable } from 'mobx';
-import { observer } from 'mobx-react';
 
 const Form = styled('form')`
     margin: 0 3rem;
@@ -20,6 +18,7 @@ const InputField = styled('div')`
         font-size: 2.3rem;
         letter-spacing: 2px;
         color: rgba(255, 255, 255, 0.76);
+        font-weight: 700;
     }
     div {
         display: flex;
@@ -34,7 +33,6 @@ const TelephoneInput = styled('input')`
     color: white;
     padding: 2rem;
     font-size: 2rem;
-    font-weight: 900;
     border: 2px transparent solid;
     transition: border-color 0.5s ease;
 
@@ -82,7 +80,7 @@ class LoginForm extends React.Component {
     };
     onPinCodeInputsChange = (key) => (e) => {
         const setResult = this.signInState.setInputCode(key, e.target.value);
-        if (setResult && key != 3) {
+        if (setResult && key !== 3) {
             if (key === 3) this[`input0`].focus();
             else this[`input${key + 1}`].focus();
         }

@@ -53,7 +53,6 @@ const FixedDecorator = styled(Decorator)`
 
 class SignIn extends React.Component {
     render() {
-        console.log(this.props.content);
         return (
             <StyledWrapper>
                 <LogoSection>
