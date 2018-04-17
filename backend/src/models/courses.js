@@ -12,12 +12,12 @@ const courses = db.define('courses', {
     descriptionInternet: Sequelize.TEXT,
     price: Sequelize.FLOAT,
     priceMaterial: Sequelize.FLOAT,
-    firstSession: {
+    firstSessionDate: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
     },
-    firstSessionWeekdate: Sequelize.STRING,
-    lastSession: {
+    firstSessionWeekDay: Sequelize.STRING,
+    lastSessionDate: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
     },
