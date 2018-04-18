@@ -15,8 +15,8 @@ services:
       PASSWORD: password
       DATABASE: vantaa_pwa
       HOST: postgres-dev-db
-      COURSE_UPDATE_INTERVAL: 3600000
-      COURSE_API_URL: https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176
+      GRYNOS_COURSES_UPDATE_INTERVAL: 3600000
+      GRYNOS_COURSE_API_URL: https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176
 
   postgres-dev-db:
     image: postgres:10.3

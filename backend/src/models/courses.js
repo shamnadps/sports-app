@@ -1,4 +1,4 @@
-const db = require('../../sequalize_pg');
+const db = require('../sequalize_pg');
 const Sequelize = require('sequelize');
 const locationModel = require('./locations');
 
