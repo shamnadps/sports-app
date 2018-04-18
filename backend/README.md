@@ -1,25 +1,16 @@
 # Vantaa - backend
 
-## Prerequisities
-
-*   Node 8.10
-*   Docker
+## Prerequisites
+- Node 8.10 or later
 
 ## Development
-
-Move to the backend folder and build and run docker:
-
+In this folder:
 ```
-cd backend/
-docker build -t vantaa-pwa  .
-docker-compose up
+npm install
+npm start
 ```
 
-Navigate to : (localhost:8000)
-
-You should be able to see the following message on the browser.
-
-> 'Welcome to PWA Vanta Project!.'
+API is available now in `localhost:3000`
 
 ## API Calls
 
