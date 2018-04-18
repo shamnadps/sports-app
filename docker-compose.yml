@@ -3,14 +3,14 @@ version: '3.3'
 services:
 
   vantaa-pwa:
-    image: vantaa-pwa
+    image: vantaa-exercise-reservations:latest
     ports:
-      - 8000:8000
+      - 3000:3000
     command: bash -c 'npm install && npm start && npm run fetch-courses'
     depends_on:
       - postgres-dev-db
     environment:
-      PORT: 8000
+      PORT: 3000
       USERNAME: postgres
       PASSWORD: password
       DATABASE: vantaa_pwa
