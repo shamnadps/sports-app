@@ -18,7 +18,7 @@ server.use(bodyParser.urlencoded({ extended: false }));
 
 server.use('/api/', require('./routes/index'));
 
-server.use(express.static(path.join(__dirname, '..', 'public')));
+server.use(express.static(path.join(__dirname, '..', 'public'), { maxAge: 600000 }));
 
 server.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
