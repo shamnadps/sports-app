@@ -1,5 +1,14 @@
 # Vantaa Exercise Reservations
 
+## Architecture
+This project is simple client-server application built with 
+- Frontend: React.js & MobX
+- Backend: Node.js & Express.js
+- Database: PostgreSQL
+
+It integrates to Grynos to get the information about current courses available in Vantaa.
+
+
 ## Running locally
 ### With Docker
 Run
