@@ -104,7 +104,7 @@ const Card = ({ course, buttonLabel, ...rest }) => (
 class CardGroup extends React.Component {
     render() {
         const { useMockCourse, isFetchingCourses } = this.props.CourseStore;
-        const courses = this.props.CourseStore.getCourse(Date.now());
+        const courses = this.props.CourseStore.getCourses(Date.now());
         const buttonLabel = this.props.ContentStore.content.courseCard.select;
 
         return (

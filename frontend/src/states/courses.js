@@ -9,10 +9,10 @@ class CourseStore {
     useMockCourse = false;
 
     constructor() {
-        this.fetchCourse();
+        this.fetchCourses();
     }
 
-    async fetchCourse(startDate = Date.now()) {
+    async fetchCourses(startDate = Date.now()) {
         this.isFetchingCourses = true;
 
         try {
@@ -30,12 +30,16 @@ class CourseStore {
         this.isFetchingCourses = false;
     }
 
-    getCourse(date) {
-        if (this.isFetchingCourses) return [];
+    getCourses(date) {
+        if (this.isFetchingCourses) {
+            return [];
+        }
         if (date) {
             const key = dateFns.format(date, 'MM-DD-YYYY');
-            const filtered = this.courseList[key];
-            return filtered;
+            if (!this.courseList.hasOwnProperty(key)) {
+                return [];
+            }
+            return this.courseList[key];
         }
         return this.courseList;
     }
