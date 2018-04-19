@@ -1,14 +1,14 @@
 {
     "name": "backend",
     "version": "1.0.0",
-    "description": "## Prerequisities - Node 8.10 - Docker",
+    "description": "",
     "main": "index.js",
     "engines": {
         "node": "8.10.0"
     },
     "scripts": {
-        "start": "node server.js",
-        "feeddb": "node src/seed/feeddb.js",
+        "start": "node src/server.js",
+        "feeddb": "node src/seed/db-seed.js",
         "fetch-courses": "node src/seed/courses.js"
     },
     "keywords": [],

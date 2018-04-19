@@ -1,6 +1,8 @@
 {
-    "short_name": "Exercise Reservation",
-    "name": "Liikuva Vantaa",
+    "short_name": "Liikkuva Vantaa",
+    "name": "Vantaan ohjatun liikunnan kertaliput",
+    "description": "Osta kertalippuja Vantaan kaupungin liikuntatunneille",
+    "orientation": "portrait",
     "icons": [
         {
             "src": "favicon.ico",

@@ -3,20 +3,20 @@ version: '3.3'
 services:
 
   vantaa-pwa:
-    image: vantaa-pwa
+    image: vantaa-exercise-reservations:latest
     ports:
-      - 8000:8000
+      - 3000:3000
     command: bash -c 'npm install && npm start && npm run fetch-courses'
     depends_on:
       - postgres-dev-db
     environment:
-      PORT: 8000
+      PORT: 3000
       USERNAME: postgres
       PASSWORD: password
       DATABASE: vantaa_pwa
       HOST: postgres-dev-db
-      COURSE_UPDATE_INTERVAL: 3600000
-      COURSE_API_URL: https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176
+      GRYNOS_COURSES_UPDATE_INTERVAL: 3600000
+      GRYNOS_COURSE_API_URL: https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176
 
   postgres-dev-db:
     image: postgres:10.3
