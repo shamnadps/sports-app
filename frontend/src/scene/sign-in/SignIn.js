@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'react-emotion';
 import Logo from '../../common/Logo';
 import Decorator from '../../common/Decorator';
@@ -7,6 +6,7 @@ import LoginForm from './LoginForm';
 import { connect } from 'utils';
 
 const StyledWrapper = styled('section')`
+    position: relative;
     background: ${(props) => {
         const { color1, color2 } = props.theme.signInBackGround;
         return `linear-gradient(to bottom, ${color1}, ${color2})`;
@@ -46,7 +46,7 @@ const FixedDecorator = styled(Decorator)`
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     transform: scaleY(0.7);
     transform-origin: center bottom;
 `;
@@ -62,11 +62,7 @@ class SignIn extends React.Component {
                     </AppName>
                 </LogoSection>
                 <LoginForm />
-                {// this is due to an ugly glitch in IPHONE
-                ReactDOM.createPortal(
-                    <FixedDecorator />,
-                    document.querySelector('body')
-                )}
+                <FixedDecorator />,
             </StyledWrapper>
         );
     }
