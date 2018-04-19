@@ -1,7 +1,8 @@
 {
     "finnish": {
         "global": {
-            "appName": "Liikkuva Vantaa"
+            "appName": "Liikkuva Vantaa",
+            "appHeadLine": "Ohjatun liikunnan kertaliput"
         },
         "signIn": {
             "form": {
