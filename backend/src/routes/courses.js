@@ -11,10 +11,10 @@ router.get('/', (req, res) => {
 
     // Default start and end date for the last week
     const startDate = toFormattedDate(
-        req.query.startDate ? timestampToDate(req.query.startDate) : datefns.subWeeks(new Date(), 7)
+        req.query.startDate ? timestampToDate(req.query.startDate) : new Date()
     );
     const endDate = toFormattedDate(
-        req.query.endDate ? timestampToDate(req.query.endDate) : new Date()
+        req.query.endDate ? timestampToDate(req.query.endDate) : datefns.addWeeks(new Date(), 1)
     );
 
     models.courses
