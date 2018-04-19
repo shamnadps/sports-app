@@ -1,0 +1,25 @@
+{
+    "finnish": {
+        "global": {
+            "appName": "Liikkuva Vantaa",
+            "appHeadLine": "Ohjatun liikunnan kertaliput"
+        },
+        "signIn": {
+            "form": {
+                "tel": "Puhelinnumero",
+                "telIsWrong": "Puhelinnumero on väärä",
+                "pinCode": "PIN-koodi",
+                "pinCodeIsWrong": "PIN-koodi on väärä",
+                "register": "Luo uusi tili",
+                "forgotPassword": "Unohtuiko salasana?"
+            }
+        },
+        "appHeader": {
+            "myAccount": "Oma tilini",
+            "balance": "Saldo",
+            "checkBalance": "Hallinnoi saldoasi",
+            "reservationTimes": "Tuntia varattu",
+            "viewReservation": "Katso varaus"
+        }
+    }
+}
