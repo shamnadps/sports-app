@@ -6,13 +6,18 @@ const model = db.define('events', {
         type: Sequelize.INTEGER,
         primaryKey: true,
     },
-    name: Sequelize.STRING,
-    description: Sequelize.TEXT,
-    time: Sequelize.DATEONLY,
-    location: Sequelize.STRING,
-    ticket_left: {
-        type: Sequelize.INTEGER,
+    start: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
     },
+    end: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
+    },
+    teachingplace: Sequelize.TEXT,
+    address: Sequelize.STRING,
+    description: Sequelize.STRING,
+    status: Sequelize.INTEGER,
 });
 
 module.exports = model;

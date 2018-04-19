@@ -1,6 +1,7 @@
 const db = require('../sequalize_pg');
 const Sequelize = require('sequelize');
-const locationModel = require('./locations');
+const locations = require('./locations');
+const events = require('./events');
 
 const courses = db.define('courses', {
     id: {
@@ -8,6 +9,7 @@ const courses = db.define('courses', {
         primaryKey: true,
     },
     code: Sequelize.STRING,
+    name: Sequelize.TEXT,
     description: Sequelize.TEXT,
     descriptionInternet: Sequelize.TEXT,
     price: Sequelize.FLOAT,
@@ -34,7 +36,7 @@ const courses = db.define('courses', {
     },
     acceptedCount: Sequelize.INTEGER,
     ilmokink: Sequelize.STRING,
-    teachingSession: Sequelize.ARRAY(Sequelize.TEXT),
 });
-courses.hasMany(locationModel, { as: 'location' });
+courses.hasMany(locations, { as: 'location' });
+courses.hasMany(events, { as: 'teachingSession' });
 module.exports = courses;
