@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'react-emotion';
 
+const Wrapper = styled('div')`
+    width: 100%;
+`;
+
 const CutAndShadow = styled('div')`
-    filter: drop-shadow(0px 10px 12px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0px 10px 12px rgba(0, 0, 0, 0.3));
     width: 100%;
     height: 100%;
     position: absolute;
@@ -12,33 +16,43 @@ const CutAndShadow = styled('div')`
 
     & > div {
         width: 100%;
-        height: 100%;
-        clip-path: polygon(0% 0%, 0% 90%, 100% 80%, 100% 0%);
+        min-height: 100%;
+        clip-path: polygon(
+            0% 0%,
+            0% calc(100% - 10px),
+            100% calc(100% - 20px),
+            100% 0%
+        );
     }
 `;
 const HeaderBody = styled('div')`
     background-image: linear-gradient(-60deg, #0542a3, #86cbf6);
-    transform: translateY(-4rem);
-    z-index: 0;
+`;
+
+const ContentField = styled('div')`
+    z-index: 100;
+    position: relative;
     padding: 3rem;
+    min-height: 250px;
 `;
 
 const main = ({ children, style, ...rest }) => (
-    <div
+    <Wrapper
         style={{
             position: 'relative',
-            zIndex: 0,
             ...style,
         }}
         {...rest}
     >
-        <CutAndShadow>
-            <HeaderBody>{children}</HeaderBody>
+        <ContentField>{children}</ContentField>
+
+        <CutAndShadow style={{ zIndex: 5 }}>
+            <HeaderBody />
         </CutAndShadow>
         <CutAndShadow
             style={{
-                transform: 'translateY(-2rem)',
-                zIndex: -2,
+                transform: 'translateY(2rem)',
+                zIndex: 4,
             }}
         >
             <div
@@ -49,8 +63,8 @@ const main = ({ children, style, ...rest }) => (
         </CutAndShadow>
         <CutAndShadow
             style={{
-                transform: 'translateY(0rem)',
-                zIndex: -4,
+                zIndex: 3,
+                transform: 'translateY(4rem)',
             }}
         >
             <div
@@ -59,7 +73,7 @@ const main = ({ children, style, ...rest }) => (
                 }}
             />
         </CutAndShadow>
-    </div>
+    </Wrapper>
 );
 
 export default main;

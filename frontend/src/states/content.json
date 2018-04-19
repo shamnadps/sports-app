@@ -10,6 +10,13 @@
                 "register": "Luo uusi tili",
                 "forgotPassword": "Unohtuiko salasana?"
             }
+        },
+        "appHeader": {
+            "myAccount": "Oma tilini",
+            "balance": "Saldo",
+            "checkBalance": "Hallinnoi saldoasi",
+            "reservationTimes": "Tuntia varattu",
+            "viewReservation": "Katso varaus"
         }
     }
 }

@@ -14,6 +14,7 @@ const StyledWrapper = styled('section')`
     padding: 4rem;
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     form {
         margin-top: 5rem;
