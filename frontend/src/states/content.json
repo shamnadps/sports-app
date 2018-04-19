@@ -20,6 +20,9 @@
             "checkBalance": "Hallinnoi saldoasi",
             "reservationTimes": "Tuntia varattu",
             "viewReservation": "Katso varaus"
+        },
+        "courseCard": {
+            "select": "Valitse"
         }
     }
 }

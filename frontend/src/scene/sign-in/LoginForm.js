@@ -128,8 +128,9 @@ class LoginForm extends React.Component {
         const content = this.props.ContentStore.content;
         const authenticationFailed = this.props.UserStore.authenticationFailed;
 
-        if (this.props.UserStore.isAuthenticated)
+        if (this.props.UserStore.isAuthenticated) {
             return <Redirect to="/main" />;
+        }
         return (
             <Form>
                 <InputField error={authenticationFailed}>

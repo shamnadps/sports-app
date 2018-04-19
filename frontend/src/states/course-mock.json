@@ -1,0 +1,131 @@
+{
+    "04-24-2018": [
+        {
+            "name": "Brush Up Your English (Intermediate) at Lumo  B1 ",
+            "price": 91,
+            "location": "Korso, Monitoimikeskus Lumo",
+            "startDate": "2018-04-24T14:00:00.000Z",
+            "endDate": "2018-04-24T15:30:00.000Z"
+        },
+        {
+            "name": "The Cambridge Certificate of Advanced English",
+            "price": 86,
+            "location": "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
+            "startDate": "2018-04-24T15:05:00.000Z",
+            "endDate": "2018-04-24T17:30:00.000Z"
+        }
+    ],
+    "04-19-2018": [
+        {
+            "name": "Catching up - Englannin kertaus ja keskustelu B1",
+            "price": 89,
+            "location": "Tikkurila, Vantaan opistotalo, 211 Luokka",
+            "startDate": "2018-04-19T14:30:00.000Z",
+            "endDate": "2018-04-19T16:00:00.000Z"
+        },
+        {
+            "name": "Englannin alkeet vasta-alkajille Tikkurilassa  A0",
+            "price": 87,
+            "location": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+            "startDate": "2018-04-19T15:40:00.000Z",
+            "endDate": "2018-04-19T17:10:00.000Z"
+        },
+        {
+            "name": "Englannin perusteita A2",
+            "price": 86,
+            "location": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+            "startDate": "2018-04-19T14:00:00.000Z",
+            "endDate": "2018-04-19T15:30:00.000Z"
+        },
+        {
+            "name": "English for Work in Kivistö  A2+/B1",
+            "price": 88,
+            "location": "Kivistö, Aurinkokivi",
+            "startDate": "2018-04-19T15:40:00.000Z",
+            "endDate": "2018-04-19T17:10:00.000Z"
+        },
+        {
+            "name": "English Conversation through Key Words  B1-B2",
+            "price": 88,
+            "location": "Myyrmäki, Martinlaakson koulu",
+            "startDate": "2018-04-19T16:05:00.000Z",
+            "endDate": "2018-04-19T17:35:00.000Z"
+        },
+        {
+            "name": "Stepping Stones of English 2 jatko  B1",
+            "price": 89,
+            "location": "Tikkurila, Vantaan opistotalo, 211 Luokka",
+            "startDate": "2018-04-19T16:05:00.000Z",
+            "endDate": "2018-04-19T17:35:00.000Z"
+        },
+        {
+            "name": "Pat and Polly 1 B1",
+            "price": 87,
+            "location": "Myyrmäki, Kilterin koulu",
+            "startDate": "2018-04-19T13:15:00.000Z",
+            "endDate": "2018-04-19T14:45:00.000Z"
+        },
+        {
+            "name": "Activating and Polishing Your English in Tikkurila B2/C1",
+            "price": 51,
+            "location": "Tikkurila, Tikkurilan lukio",
+            "startDate": "2018-04-19T14:00:00.000Z",
+            "endDate": "2018-04-19T15:30:00.000Z"
+        }
+    ],
+    "04-23-2018": [
+        {
+            "name": "Hello America!  B1 ",
+            "price": 87,
+            "location": "Myyrmäki, Myyrinki, Kieliluokka",
+            "startDate": "2018-04-23T12:30:00.000Z",
+            "endDate": "2018-04-23T14:00:00.000Z"
+        },
+        {
+            "name": "Helppo päiväkeskustelu Myyrmäessä  B1",
+            "price": 87,
+            "location": "Myyrmäki, Myyrinki, Kieliluokka",
+            "startDate": "2018-04-23T10:15:00.000Z",
+            "endDate": "2018-04-23T11:45:00.000Z"
+        }
+    ],
+    "04-20-2018": [
+        {
+            "name": "Stepping Stones 1  B1",
+            "price": 87,
+            "location": "Myyrmäki, Myyrinki, Kieliluokka",
+            "startDate": "2018-04-20T10:30:00.000Z",
+            "endDate": "2018-04-20T12:00:00.000Z"
+        }
+    ],
+    "04-25-2018": [
+        {
+            "name": "English Conversation",
+            "price": 43,
+            "location": "Tapiola, Vindängens skola",
+            "startDate": "2018-04-25T07:00:00.000Z",
+            "endDate": "2018-04-25T08:30:00.000Z"
+        },
+        {
+            "name": "English discussion group - SENIORKURS",
+            "price": 15,
+            "location": "Tapiola, Vindängens skola",
+            "startDate": "2018-04-25T08:30:00.000Z",
+            "endDate": "2018-04-25T10:00:00.000Z"
+        },
+        {
+            "name": "Lätt konversation på engelska - SENIORKURS",
+            "price": 15,
+            "location": "Tapiola, Folkhälsan huset",
+            "startDate": "2018-04-25T10:30:00.000Z",
+            "endDate": "2018-04-25T12:00:00.000Z"
+        },
+        {
+            "name": "Englanti B1 English at Work Intensive",
+            "price": 79,
+            "location": "Leppävaara, Omnia Upseerinkatu 11",
+            "startDate": "2018-04-25T14:30:00.000Z",
+            "endDate": "2018-04-25T17:45:00.000Z"
+        }
+    ]
+}

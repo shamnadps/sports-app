@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'emotion-theming';
-import { ContentStore, UserStore } from './states';
+import { ContentStore, UserStore, CourseStore } from './states';
 import { Provider } from 'mobx-react';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -15,16 +15,20 @@ const theme = {
         color2: '#183552',
     },
     main: '#3F8EDB',
+    mainDark: '#183552',
 };
-
 const Root = () => (
-    <Provider ContentStore={new ContentStore()} UserStore={new UserStore()}>
-        <BrowserRouter>
+    <BrowserRouter>
+        <Provider
+            ContentStore={new ContentStore()}
+            UserStore={new UserStore()}
+            CourseStore={new CourseStore()}
+        >
             <ThemeProvider theme={theme}>
                 <App />
             </ThemeProvider>
-        </BrowserRouter>
-    </Provider>
+        </Provider>
+    </BrowserRouter>
 );
 ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();
