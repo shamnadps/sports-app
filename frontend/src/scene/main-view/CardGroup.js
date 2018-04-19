@@ -85,25 +85,19 @@ const CourseArea = styled('div')`
 
 const Card = ({ course, buttonLabel, ...rest }) => (
     <CardWrapper {...rest}>
-        {course ? (
-            <React.Fragment>
-                <TimeArea>
-                    <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
-                    <div />
-                    <span>{dateFns.format(course.endDate, 'hh:mm')}</span>
-                </TimeArea>
-                <CourseArea>
-                    <span>{course.name}</span>
-                    <span>{course.location}</span>
-                    <div>
-                        <span>€ {course.price}</span>
-                        <Button>{buttonLabel}</Button>
-                    </div>
-                </CourseArea>
-            </React.Fragment>
-        ) : (
+        <TimeArea>
+            <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
             <div />
-        )}
+            <span>{dateFns.format(course.endDate, 'hh:mm')}</span>
+        </TimeArea>
+        <CourseArea>
+            <span>{course.name}</span>
+            <span>{course.location}</span>
+            <div>
+                <span>€ {course.price}</span>
+                <Button>{buttonLabel}</Button>
+            </div>
+        </CourseArea>
     </CardWrapper>
 );
 
@@ -119,9 +113,6 @@ class CardGroup extends React.Component {
         return (
             <Coordinator pose="enter">
                 <PoseGroup animateOnMount>
-                    {/* {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el, i) => (
-                        <Card key={el * 2} />
-                    ))} */}
                     {courses.map((el, i) => (
                         <Card key={i} course={el} buttonLabel={buttonLabel} />
                     ))}
