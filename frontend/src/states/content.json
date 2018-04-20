@@ -21,6 +21,9 @@
             "reservationTimes": "Tuntia varattu",
             "viewReservation": "Katso varaus"
         },
+        "calendar": {
+            "date": "Päivä"
+        },
         "courseCard": {
             "select": "Valitse"
         }

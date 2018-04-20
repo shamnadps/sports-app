@@ -3,12 +3,12 @@ import { observable, computed, decorate } from 'mobx';
 
 // this is a store of worded content, for internationalization
 class ContentStore {
-    language = 'finnish';
+    language = 'fi';
     get content() {
         switch (this.language.toLowerCase()) {
-            case 'swedish':
+            case 'sv':
                 return content.swedish;
-            case 'english':
+            case 'en':
                 return content.english;
             default:
                 return content.finnish;

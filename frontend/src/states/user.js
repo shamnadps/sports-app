@@ -11,7 +11,8 @@ const toStringFromObject = (obj) =>
         .join('');
 
 class UserStore {
-    isAuthenticated = false;
+    // @TODO: reset this flag back to false before commit
+    isAuthenticated = true;
     isAuthenticating = false;
     authenticationFailed = false;
     phoneNumber = '+358 123 456 789';

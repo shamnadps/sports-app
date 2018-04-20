@@ -1,4 +1,4 @@
-import { decorate, observable, action, autorun } from 'mobx';
+import { decorate, observable, action } from 'mobx';
 import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
 
@@ -7,14 +7,15 @@ class CourseStore {
     courseList = [];
     isFetchingCouses = true;
     useMockCourse = false;
+    filters = {
+        date: new Date(), // today
+    };
 
     constructor() {
         this.fetchCourse();
     }
 
     async fetchCourse(startDate = Date.now()) {
-        const host = window.location.host;
-        const protocol = window.location.protocol;
         this.isFetchingCouses = true;
 
         try {
@@ -31,14 +32,19 @@ class CourseStore {
         }
         this.isFetchingCouses = false;
     }
-    getCourse(date) {
+
+    getCourse() {
         if (this.isFetchingCouses) return [];
-        if (date) {
-            const key = dateFns.format(date, 'MM-DD-YYYY');
+        if (this.filters.date) {
+            const key = dateFns.format(this.filters.date, 'MM-DD-YYYY');
             const filtered = this.courseList[key];
-            return filtered;
+            return filtered || [];
         }
         return this.courseList;
+    }
+
+    setFilter(filters) {
+        this.filters = filters;
     }
 }
 
@@ -46,4 +52,5 @@ export default decorate(CourseStore, {
     courseList: observable.deep,
     isFetchingCouses: observable,
     fetchCourse: action.bound,
+    filters: observable,
 });

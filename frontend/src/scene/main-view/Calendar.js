@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'react-emotion';
-import moment from 'moment';
+import dateFns from 'date-fns';
+import fiLocale from 'date-fns/locale/fi';
+import { connect } from 'utils';
+import posed from 'react-pose';
+
+const getLocale = (lang) => {
+    if (lang === 'fi') return fiLocale;
+    // add cases for swedish later
+};
 
 const Wrapper = styled('div')`
     padding: 1rem 0;
@@ -33,19 +41,28 @@ const Label = styled('div')`
 `;
 
 const WeekTable = styled('div')`
-    width: 100%;
-    justify-content: space-between;
     display: flex;
     align-items: center;
+    overflow: scroll;
 `;
 const DateColumn = styled('div')`
     font-size: 2rem;
     font-weight: 900;
     display: inline-block;
+    margin-right: 3rem;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
 
     * {
         text-align: center;
         display: block;
+        text-transform: capitalize;
     }
 
     & > :last-child {
@@ -53,13 +70,17 @@ const DateColumn = styled('div')`
         font-weight: 400;
         opacity: 0.8;
     }
+    ${(props) =>
+        props.past &&
+        !props.selected &&
+        `
+        opacity: 0.7
+    `};
 
     ${(props) =>
         props.selected &&
         `
-        padding: 6px;
-        background-color: white;
-        border-radius: 8px;
+        background-color: white !important;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 
         span {
@@ -73,37 +94,43 @@ const DateColumn = styled('div')`
     `};
 `;
 
-const dates = [0, 1, 2, 3, 4, 5, 6];
+const dates = [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-//@TODO: Convert all text in this file to use strings from contents.json
 class WeeklyCalendar extends React.Component {
     state = {
-        next7days: dates.map((i) => {
-            const momentObj = moment().add(i, 'day');
-            return {
-                weekDay: momentObj.format('dd'),
-                date: momentObj.format('DD'),
-            };
-        }),
-        selected: moment(), // default to select today
+        viewableDateRange: dates.map((i) => dateFns.addDays(new Date(), i)),
+    };
+    setDate = (date) => (e) => {
+        this.props.CourseStore.setFilter({
+            date,
+        });
     };
     render() {
-        const today = moment();
+        const today = new Date();
+        const seletectedDate = this.props.CourseStore.filters.date;
         return (
             <Wrapper>
                 <Label>
-                    <span>Päivä</span>
-                    <h4>{today.format('DD')}.</h4>
-                    <h5>{today.format('MM.YYYY')}</h5>
+                    <span>{this.props.ContentStore.content.calendar.date}</span>
+                    <h4>{dateFns.format(today, 'DD')}.</h4>
+                    <h5>{dateFns.format(today, 'MM.YYYY')}</h5>
                 </Label>
                 <WeekTable>
-                    {this.state.next7days.map(({ weekDay, date }, index) => (
+                    {this.state.viewableDateRange.map((date, index) => (
                         <DateColumn
-                            key={date}
-                            selected={date === this.state.selected.format('DD')}
+                            key={dateFns.format(date, 'x')}
+                            selected={dateFns.isSameDay(date, seletectedDate)}
+                            past={dateFns.isBefore(date, today)}
+                            onClick={this.setDate(date)}
                         >
-                            <span>{weekDay}</span>
-                            <span>{date}</span>
+                            <span>
+                                {dateFns.format(date, 'dd', {
+                                    locale: getLocale(
+                                        this.props.ContentStore.language
+                                    ),
+                                })}
+                            </span>
+                            <span>{dateFns.format(date, 'DD')}</span>
                         </DateColumn>
                     ))}
                 </WeekTable>
@@ -112,4 +139,4 @@ class WeeklyCalendar extends React.Component {
     }
 }
 
-export default WeeklyCalendar;
+export default connect('ContentStore', 'CourseStore')(WeeklyCalendar);
