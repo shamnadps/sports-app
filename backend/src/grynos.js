@@ -2,9 +2,7 @@ const db = require('./sequalize_pg');
 const axios = require('axios');
 const models = require('./grynos');
 
-const url =
-    process.env.GRYNOS_COURSE_API_URL ||
-    'https://colosseum.grynos.com/ilmoapix/v1/course/search?com=3,6&cgt=176';
+const url = process.env.GRYNOS_COURSE_API_URL;
 
 const mapCourseFromGrynos = (course) => ({
     id: course.id,

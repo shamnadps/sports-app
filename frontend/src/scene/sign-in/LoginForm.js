@@ -163,6 +163,7 @@ class LoginForm extends React.Component {
                                 onChange={this.onPinCodeInputsChange(key)}
                                 value={this.props.UserStore.pinCode[key]}
                                 name="pinCode"
+                                inputmode="numeric"
                             />
                         ))}
                     </div>

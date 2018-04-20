@@ -5,18 +5,18 @@ import dateFns from 'date-fns';
 //@TODO: Persist this date to local storage, and hydrate it upon startup
 class CourseStore {
     courseList = [];
-    isFetchingCouses = true;
+    isFetchingCourses = true;
     useMockCourse = false;
     filters = {
         date: new Date(), // today
     };
 
     constructor() {
-        this.fetchCourse();
+        this.fetchCourses();
     }
 
-    async fetchCourse(startDate = Date.now()) {
-        this.isFetchingCouses = true;
+    async fetchCourses(startDate = Date.now()) {
+        this.isFetchingCourses = true;
 
         try {
             const response = await window.fetch(
@@ -30,7 +30,7 @@ class CourseStore {
             this.courseList = mockCourse;
             this.useMockCourse = true;
         }
-        this.isFetchingCouses = false;
+        this.isFetchingCourses = false;
     }
 
     getCourse() {
@@ -50,7 +50,7 @@ class CourseStore {
 
 export default decorate(CourseStore, {
     courseList: observable.deep,
-    isFetchingCouses: observable,
+    isFetchingCourses: observable,
     fetchCourse: action.bound,
     filters: observable,
 });
