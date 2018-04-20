@@ -11,7 +11,8 @@
                 "pinCode": "PIN-koodi",
                 "pinCodeIsWrong": "PIN-koodi on väärä",
                 "register": "Luo uusi tili",
-                "forgotPassword": "Unohtuiko salasana?"
+                "forgotPassword": "Unohtuiko salasana?",
+                "viewWithoutLogin": "Jatka kirjautumatta"
             }
         },
         "appHeader": {

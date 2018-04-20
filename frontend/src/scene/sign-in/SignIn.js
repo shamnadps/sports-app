@@ -14,20 +14,14 @@ const StyledWrapper = styled('section')`
     padding: 4rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 100%;
-
-    form {
-        margin-top: 5rem;
-    }
 `;
-const LogoSection = styled('div')`
-    margin-left: auto;
-    margin-right: auto;
+const AppBrand = styled('div')`
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 3rem;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.23));
 
     div {
         flex: inherit;
@@ -36,41 +30,28 @@ const LogoSection = styled('div')`
     }
 `;
 const AppName = styled('h1')`
-    text-transform: uppercase;
-    font-size: 4rem;
+    font-size: 6rem;
     font-weight: bold;
-    color: white;
+    color: ${(props) => props.theme.complementary};
     margin: 0;
-    letter-spacing: 4px;
 `;
 
 const AppHeadLine = styled('span')`
-    font-size: 2.3rem;
+    font-size: 3rem;
     color: white;
-    opacity: 0.8;
-    letter-spacing: 2px;
+    font-weight: bold;
 `;
 
 const SizedLogo = styled(Logo)`
-    width: 15rem;
-    height: 15rem;
-    margin-bottom: 3rem;
-`;
-const FixedDecorator = styled(Decorator)`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    transform: scaleY(0.7);
-    transform-origin: center bottom;
+    width: 13rem;
+    height: 13rem;
 `;
 
 class SignIn extends React.Component {
     render() {
         return (
             <StyledWrapper>
-                <LogoSection>
-                    <SizedLogo />
+                <AppBrand>
                     <div>
                         <AppName>
                             {this.props.ContentStore.content.global.appName}
@@ -79,9 +60,9 @@ class SignIn extends React.Component {
                             {this.props.ContentStore.content.global.appHeadLine}
                         </AppHeadLine>
                     </div>
-                </LogoSection>
+                </AppBrand>
                 <LoginForm />
-                <FixedDecorator />,
+                <SizedLogo />
             </StyledWrapper>
         );
     }

@@ -23,7 +23,8 @@ const shake = keyframes`
 `;
 
 const Form = styled('form')`
-    margin: 0 3rem;
+    width: 100%;
+    padding: 0 2rem;
 `;
 const InputField = styled('div')`
     margin: 2rem 0;
@@ -35,7 +36,6 @@ const InputField = styled('div')`
         display: block;
         margin-bottom: 1rem;
         font-size: 2.3rem;
-        letter-spacing: 2px;
         color: white;
         font-weight: 700;
         transition: all 0.5s ease;
@@ -48,27 +48,27 @@ const InputField = styled('div')`
         props.error &&
         `
         input {
-            background-color: rgba(255, 82, 82, .7) !important;
             animation: ${shake} 1s ease 1;
+            background-color: rgba(255, 82, 82, .9) !important;
         }
         label {
-            color: rgba(255, 82, 82, .9)
+            color: rgba(255, 82, 82, .9);
         }
     `};
 `;
 const TelephoneInput = styled('input')`
     width: 100%;
     height: 6rem;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: white;
     border-radius: 0.5rem;
-    color: white;
+    color: rgba(0, 0, 0, 0.8);
     padding: 2rem;
     font-size: 2rem;
     border: 2px transparent solid;
     transition: all 0.5s ease;
 
     &:focus {
-        border-color: white;
+        background-color: ${(props) => props.theme.complementary};
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         transform: scale(1.05) translateY(-4px);
     }
@@ -78,24 +78,25 @@ const PinCodeInput = styled(TelephoneInput)`
     height: 6rem;
     display: inline-block;
     text-align: center;
-    color: transparent;
     text-shadow: 0 0 0 white;
+    color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
 `;
 
 const FormLink = styled('div')`
+    margin-top: 4rem;
     display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+    flex-direction: column;
 
     a {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 2rem;
+        color: rgba(255, 255, 255, 1);
+        font-weight: bold;
+        font-size: 2.3rem;
         text-decoration: none;
-        border-bottom: 1px white solid;
-        transition: letter-spacing 0.5s ease;
+        transition: all 0.5s ease;
 
         &:hover {
-            letter-spacing: 4px;
+            color: ${(props) => props.theme.complementary};
         }
     }
 `;
@@ -169,6 +170,7 @@ class LoginForm extends React.Component {
                     </div>
                 </InputField>
                 <FormLink>
+                    <a href="#">{content.signIn.form.viewWithoutLogin}</a>
                     <a href="#">{content.signIn.form.register}</a>
                     <a href="#">{content.signIn.form.forgotPassword}</a>
                 </FormLink>
