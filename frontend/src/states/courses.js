@@ -1,12 +1,15 @@
+import { decorate, observable, action } from 'mobx';
+import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
-import { action, decorate, observable } from 'mobx';
-import mockCourses from './course-mock.json';
 
 //@TODO: Persist this date to local storage, and hydrate it upon startup
 class CourseStore {
     courseList = [];
     isFetchingCourses = true;
     useMockCourse = false;
+    filters = {
+        date: new Date(), // today
+    };
 
     constructor() {
         this.fetchCourses();
@@ -24,24 +27,24 @@ class CourseStore {
             this.courseList = data;
         } catch (error) {
             console.log(error);
-            this.courseList = mockCourses;
+            this.courseList = mockCourse;
             this.useMockCourse = true;
         }
         this.isFetchingCourses = false;
     }
 
-    getCourses(date) {
-        if (this.isFetchingCourses) {
-            return [];
-        }
-        if (date) {
-            const key = dateFns.format(date, 'MM-DD-YYYY');
-            if (!this.courseList.hasOwnProperty(key)) {
-                return [];
-            }
-            return this.courseList[key];
+    getCourses() {
+        if (this.isFetchingCouses) return [];
+        if (this.filters.date) {
+            const key = dateFns.format(this.filters.date, 'MM-DD-YYYY');
+            const filtered = this.courseList[key];
+            return filtered || [];
         }
         return this.courseList;
+    }
+
+    setFilter(filters) {
+        this.filters = filters;
     }
 }
 
@@ -49,4 +52,5 @@ export default decorate(CourseStore, {
     courseList: observable.deep,
     isFetchingCourses: observable,
     fetchCourse: action.bound,
+    filters: observable,
 });

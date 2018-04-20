@@ -7,7 +7,6 @@ const Wrapper = styled('section')`
     width: 100%;
     padding: 3rem;
     margin-top: -2rem;
-    height: 30rem;
 `;
 
 export default class FilterGroup extends React.Component {
