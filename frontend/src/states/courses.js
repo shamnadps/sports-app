@@ -33,7 +33,7 @@ class CourseStore {
         this.isFetchingCourses = false;
     }
 
-    getCourse() {
+    getCourses() {
         if (this.isFetchingCouses) return [];
         if (this.filters.date) {
             const key = dateFns.format(this.filters.date, 'MM-DD-YYYY');
