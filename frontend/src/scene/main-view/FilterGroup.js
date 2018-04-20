@@ -3,10 +3,8 @@ import styled from 'react-emotion';
 import Calendar from './Calendar';
 
 const Wrapper = styled('section')`
-    background-color: #183552;
+    background-color: #f5f5f5;
     width: 100%;
-    padding: 3rem;
-    margin-top: -2rem;
 `;
 
 export default class FilterGroup extends React.Component {
