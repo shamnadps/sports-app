@@ -15,40 +15,37 @@ const CardWrapperAnimatable = posed.div({
         opacity: 0,
     },
 });
-const Coordinator = posed.div({
+const ScrollContainerBase = posed.div({
     enter: {
         delay: 1500,
         staggerChildren: 500,
     },
 });
 
+const ScrollContainer = styled(ScrollContainerBase)`
+    overflow: scroll;
+`;
 const CardWrapper = styled(CardWrapperAnimatable)`
     width: 100%;
     background-color: white;
     margin: 1px 0;
-    height: 20rem;
     padding: 2rem 0;
     display: flex;
 `;
 const TimeArea = styled('div')`
     width: 20%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-size: 2rem;
 
-    & > span:first-child {
-        font-weight: bold;
+    * {
+        margin-bottom: 1rem;
     }
 
-    div {
-        height: 100%;
-        width: 3px;
-        border-radius: 5rem;
-        background: ${(props) =>
-            `linear-gradient(to bottom, transparent, rgba(63, 142, 219))`};
+    & > span:first-child {
+        font-weight: bold;
     }
 `;
 const CourseArea = styled('div')`
@@ -56,17 +53,17 @@ const CourseArea = styled('div')`
     padding-left: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     font-size: 2rem;
 
     span:first-child {
-        font-size: 2.5rem;
-        color: ${(props) => props.theme.main};
+        font-size: 3rem;
     }
 
     span {
         font-size: 2rem;
         display: block;
+        margin-bottom: 1.5rem;
     }
     div {
         span {
@@ -74,11 +71,14 @@ const CourseArea = styled('div')`
             margin-right: 3rem;
             color: ${(props) => props.theme.main};
             text-transform: uppercase;
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
         button {
-            background-color: ${(props) => props.theme.main};
+            background-color: ${(props) => props.theme.complementary};
+            color: rgba(0, 0, 0, 0.7);
             border: none;
+            padding: 2rem;
+            font-size: 2rem;
         }
     }
 `;
@@ -87,7 +87,6 @@ const Card = ({ course, buttonLabel, ...rest }) => (
     <CardWrapper {...rest}>
         <TimeArea>
             <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
-            <div />
             <span>{dateFns.format(course.endDate, 'hh:mm')}</span>
         </TimeArea>
         <CourseArea>
@@ -108,13 +107,13 @@ class CardGroup extends React.Component {
         const buttonLabel = this.props.ContentStore.content.courseCard.select;
 
         return (
-            <Coordinator pose="enter">
+            <ScrollContainer pose="enter">
                 <PoseGroup animateOnMount>
                     {courses.map((el, i) => (
                         <Card key={i} course={el} buttonLabel={buttonLabel} />
                     ))}
                 </PoseGroup>
-            </Coordinator>
+            </ScrollContainer>
         );
     }
 }

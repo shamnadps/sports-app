@@ -11,15 +11,14 @@
                 "pinCode": "PIN-koodi",
                 "pinCodeIsWrong": "PIN-koodi on väärä",
                 "register": "Luo uusi tili",
-                "forgotPassword": "Unohtuiko salasana?"
+                "forgotPassword": "Unohtuiko salasana?",
+                "viewWithoutLogin": "Jatka kirjautumatta"
             }
         },
         "appHeader": {
             "myAccount": "Oma tilini",
             "balance": "Saldo",
-            "checkBalance": "Hallinnoi saldoasi",
-            "reservationTimes": "Tuntia varattu",
-            "viewReservation": "Katso varaus"
+            "checkBalance": "Hallinnoi saldoasi"
         },
         "calendar": {
             "date": "Päivä"

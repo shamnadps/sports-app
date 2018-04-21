@@ -12,10 +12,11 @@ import registerServiceWorker from './registerServiceWorker';
 const theme = {
     signInBackGround: {
         color1: '#3F8EDB',
-        color2: '#183552',
+        color2: '#3F8EDB',
     },
     main: '#3F8EDB',
     mainDark: '#183552',
+    complementary: '#F9E51E',
 };
 const Root = () => (
     <BrowserRouter>

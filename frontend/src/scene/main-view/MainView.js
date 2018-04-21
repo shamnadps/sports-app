@@ -8,8 +8,10 @@ import { Redirect } from 'react-router-dom';
 
 const Wrapper = styled('div')`
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 `;
-
 class MainView extends React.Component {
     render() {
         if (!this.props.UserStore.isAuthenticated) {
