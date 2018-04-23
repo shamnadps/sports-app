@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import posed from 'react-pose';
+import posed, { PoseGroup } from 'react-pose';
 import { connect } from 'utils';
 import { createPortal } from 'react-dom';
 import CloseIcon from '../../common/CloseIcon';
@@ -21,15 +21,16 @@ const ModalAnimatable = posed.div({
     enter: {
         scale: 1,
         opacity: 1,
-        delayChildren: 200,
-        staggerChildren: 200,
+        delayChildren: 100,
+        staggerChildren: 100,
         y: '0%',
     },
     exit: {
-        y: '100%',
+        y: '30%',
         scale: 0,
         opacity: 0,
-        delay: 100,
+        delay: 300,
+        staggerChildren: 100,
     },
 });
 const CloseButton = posed.span({
@@ -50,10 +51,11 @@ const Wrapper = styled('div')`
     top: 0;
     left: 0;
     display: flex;
+    ${(props) => !props.block && 'pointer-events: none'};
 `;
 
 const ModalWrapper = styled(ModalAnimatable)`
-    height: 80%;
+    height: 70%;
     width: 80%;
     margin: auto;
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
@@ -63,11 +65,13 @@ const ModalWrapper = styled(ModalAnimatable)`
     padding: 2rem;
     font-size: 2rem;
     color: rgba(0, 0, 0, 0.86);
-    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     & > span {
         transform: scale(0);
-        position: absolute;
+        position: fixed;
         right: 1rem;
         top: 1rem;
         padding: 1rem;
@@ -100,8 +104,9 @@ const ModalContentAnimatable = posed.div({
     },
 });
 const ModalContent = styled(ModalContentAnimatable)`
-    margin: 1rem 0;
+    margin: 2rem 0;
     width: 100%;
+    overflow: scroll;
 
     h4 {
         margin: 0 0 2rem 0;
@@ -125,6 +130,7 @@ const ModalContent = styled(ModalContentAnimatable)`
             width: 2.5rem;
             height: 2.5rem;
             margin-right: 1rem;
+            flex-shrink: 0;
         }
     }
 `;
@@ -132,6 +138,7 @@ const PaymentSection = styled(ModalContentAnimatable)`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(to top, transparent, white 40%);
 
     & > div {
         width: 100%;
@@ -173,38 +180,39 @@ const PaymentSection = styled(ModalContentAnimatable)`
         }
     }
 `;
-class CourseModal extends React.Component {
-    state = {
-        pose: 'exit',
-    };
-    // this arrangement delays the animations
-    // to avoid lags
+
+class Blur extends React.Component {
     componentDidMount() {
         // apply blur effect to root
         window.setTimeout(() => {
             const root = document.querySelector('#root');
             root.className = rootBlurred;
         }, 100);
-        window.setTimeout(() => this.setState({ pose: 'enter' }), 300);
     }
-    // this arrangement allows "exit" animation to play
-    componentWillReceiveProps(np) {
-        if (!np.course) this.setState({ pose: 'exit' });
-    }
-    // TODO: hard coded text be moved to ContentStore
     render() {
-        const { course } = this.props;
-        return (
-            <Wrapper>
-                <ModalWrapper pose={this.state.pose}>
-                    <CloseButton
-                        onClick={this.props.onClear}
-                        pose={this.state.pose}
-                    >
-                        <CloseIcon />
-                    </CloseButton>
+        return null;
+    }
+    // remove the blur effect to root
+    componentWillUnmount() {
+        document.querySelector('#root').className = '';
+    }
+}
+
+class CourseModal extends React.Component {
+    clear = (e) => {
+        this.props.CourseStore.selectCourse(null);
+    };
+    render() {
+        const course = this.props.CourseStore.courseInFocus;
+        return createPortal(
+            <Wrapper block={course || false}>
+                <PoseGroup animateOnMount>
                     {course && (
-                        <React.Fragment>
+                        <ModalWrapper key="modal">
+                            <CloseButton onClick={this.clear}>
+                                <CloseIcon />
+                            </CloseButton>
+
                             <ModalContent>
                                 <h4>{course.name}</h4>
                                 <ul>
@@ -239,40 +247,14 @@ class CourseModal extends React.Component {
                                 </div>
                                 <Button>Varaa ja Maksa</Button>
                             </PaymentSection>
-                        </React.Fragment>
+                            <Blur />
+                        </ModalWrapper>
                     )}
-                </ModalWrapper>
-            </Wrapper>
+                </PoseGroup>
+            </Wrapper>,
+            document.querySelector('body')
         );
     }
-    // remove the blur effect to root
-    componentWillUnmount() {
-        document.querySelector('#root').className = '';
-    }
 }
 
-class CourseModalRender extends React.Component {
-    state = {
-        show: false,
-    };
-    clear = (e) => {
-        this.props.CourseStore.selectCourse(null);
-    };
-    // this arrangement allows the component to "delay" unmounting the modal
-    // thus allow the exit animation to play
-    componentWillReact() {
-        if (this.props.CourseStore.courseInFocus) this.setState({ show: true });
-        else window.setTimeout(() => this.setState({ show: false }), 300);
-    }
-    render() {
-        const course = this.props.CourseStore.courseInFocus;
-        if (this.state.show) {
-            return createPortal(
-                <CourseModal course={course} onClear={this.clear} />,
-                document.querySelector('body')
-            );
-        } else return null;
-    }
-}
-
-export default connect('CourseStore')(CourseModalRender);
+export default connect('CourseStore')(CourseModal);

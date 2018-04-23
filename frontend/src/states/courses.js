@@ -50,7 +50,6 @@ class CourseStore {
 
     selectCourse(course) {
         this.courseInFocus = course;
-        console.log(this.courseInFocus);
     }
 }
 
