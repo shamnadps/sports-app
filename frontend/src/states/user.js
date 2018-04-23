@@ -11,11 +11,10 @@ const toStringFromObject = (obj) =>
         .join('');
 
 class UserStore {
-    // @TODO: reset this flag back to false before commit
-    isAuthenticated = true;
+    isAuthenticated = false;
     isAuthenticating = false;
     authenticationFailed = false;
-    phoneNumber = '+358 123 456 789';
+    phoneNumber = '';
     phoneNumberIncorrect = false;
     pinCode = {
         '0': '',
@@ -27,7 +26,7 @@ class UserStore {
 
     // sets and validate phoneNumber
     setPhoneNumber(input) {
-        this.phoneNumber = input.replace(/^\s*0/, '+358');
+        this.phoneNumber = input;
         this.phoneNumberIncorrect = input.match(
             /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
         );

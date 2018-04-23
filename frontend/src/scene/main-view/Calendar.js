@@ -84,7 +84,7 @@ class WeeklyCalendar extends React.Component {
         viewableDateRange: dates.map((i) => dateFns.addDays(new Date(), i)),
     };
     setDate = (date) => (e) => {
-        this.props.CourseStore.setFilter({
+        this.props.CourseStore.setFilters({
             date,
         });
     };
