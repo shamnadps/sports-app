@@ -43,7 +43,7 @@ class CourseStore {
         return this.courseList;
     }
 
-    setFilter(filters) {
+    setFilters(filters) {
         this.filters = filters;
     }
 }
