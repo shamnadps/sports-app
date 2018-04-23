@@ -56,6 +56,26 @@ describe('Users API testing.', () => {
         expect(dbuser).toBeNull();
     });
 
+    test('check for valid username', () => {
+        const invalidUsername = 'Username is not valid';
+        expect(utils.users.validateUsername('ABCDEF')).not.toEqual(
+            invalidUsername
+        );
+        expect(utils.users.validateUsername('1234')).not.toEqual(
+            invalidUsername
+        );
+        expect(utils.users.validateUsername('')).toEqual(invalidUsername);
+        expect(utils.users.validateUsername(1234)).toEqual(invalidUsername);
+    });
+
+    test('check for valid Pin', () => {
+        const invalidPin = 'Pin is not valid';
+        expect(utils.users.validateUserPin(1234)).not.toEqual(invalidPin);
+        expect(utils.users.validateUserPin(123)).toEqual(invalidPin);
+        expect(utils.users.validateUserPin(12345)).toEqual(invalidPin);
+        expect(utils.users.validateUserPin('1234')).not.toEqual(invalidPin);
+    });
+
     test('check for valid phone numbers', () => {
         const phoneNumberInvalid = 'Phone number is not valid';
         expect(utils.users.validateUserPhone(30856)).toEqual(
