@@ -10,7 +10,7 @@
         "start": "node src/server.js",
         "feeddb": "node src/seed/db-seed.js",
         "fetch-courses": "node src/seed/courses.js",
-        "test": "jest"
+        "test": "jest --forceExit"
     },
     "keywords": [],
     "author": "",
@@ -18,17 +18,19 @@
     "dependencies": {
         "axios": "^0.18.0",
         "body-parser": "^1.18.2",
+        "cookie-parser": "^1.4.3",
         "date-fns": "^1.29.0",
         "express": "^4.16.3",
         "pg": "^7.4.1",
+        "rand-token": "^0.4.0",
         "sequelize": "^4.37.6",
         "sequelize-cli": "^4.0.0"
     },
     "devDependencies": {
-        "jest": "^22.4.3",
-        "jest-cli": "^22.4.3"
+        "jest": "^22.4.3"
     },
     "jest": {
-        "testEnvironment": "node"
+        "testEnvironment": "node",
+        "verbose": true
     }
 }
