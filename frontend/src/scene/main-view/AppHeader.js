@@ -13,7 +13,6 @@ const AppHeaderWrapper = styled('div')`
 const LogoBar = styled('div')`
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
     align-items: center;
     color: ${(props) => props.theme.main};
 

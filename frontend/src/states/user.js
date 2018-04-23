@@ -11,7 +11,7 @@ const toStringFromObject = (obj) =>
         .join('');
 
 class UserStore {
-    isAuthenticated = false;
+    isAuthenticated = true;
     isAuthenticating = false;
     authenticationFailed = false;
     phoneNumber = '';

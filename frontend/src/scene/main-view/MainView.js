@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 import FilterGroup from './FilterGroup';
 import CardGroup from './CardGroup';
 import AppHeader from './AppHeader';
+import CourseModal from './CourseModal';
 import { connect } from 'utils';
 import { Redirect } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ class MainView extends React.Component {
                 <AppHeader />
                 <FilterGroup />
                 <CardGroup />
+                <CourseModal />
             </Wrapper>
         );
     }

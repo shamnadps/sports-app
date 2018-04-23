@@ -31,9 +31,10 @@ const CardWrapper = styled(CardWrapperAnimatable)`
     margin: 1px 0;
     padding: 2rem 0;
     display: flex;
+    color: rgba(0, 0, 0, 0.86);
 `;
 const TimeArea = styled('div')`
-    width: 20%;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +50,6 @@ const TimeArea = styled('div')`
     }
 `;
 const CourseArea = styled('div')`
-    width: 70%;
     padding-left: 2rem;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,9 @@ const CourseArea = styled('div')`
     font-size: 2rem;
 
     span:first-child {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.86);
     }
 
     span {
@@ -83,7 +85,7 @@ const CourseArea = styled('div')`
     }
 `;
 
-const Card = ({ course, buttonLabel, ...rest }) => (
+const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
     <CardWrapper {...rest}>
         <TimeArea>
             <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
@@ -94,13 +96,16 @@ const Card = ({ course, buttonLabel, ...rest }) => (
             <span>{course.location}</span>
             <div>
                 <span>€ {course.price}</span>
-                <Button>{buttonLabel}</Button>
+                <Button onClick={onButtonClick}>{buttonLabel}</Button>
             </div>
         </CourseArea>
     </CardWrapper>
 );
 
 class CardGroup extends React.Component {
+    selectCourse = (course) => (e) => {
+        this.props.CourseStore.selectCourse(course);
+    };
     render() {
         const { useMockCourse, isFetchingCourses } = this.props.CourseStore;
         const courses = this.props.CourseStore.getCourses(Date.now());
@@ -110,7 +115,12 @@ class CardGroup extends React.Component {
             <ScrollContainer pose="enter">
                 <PoseGroup animateOnMount>
                     {courses.map((el, i) => (
-                        <Card key={i} course={el} buttonLabel={buttonLabel} />
+                        <Card
+                            key={i}
+                            course={el}
+                            buttonLabel={buttonLabel}
+                            onButtonClick={this.selectCourse(el)}
+                        />
                     ))}
                 </PoseGroup>
             </ScrollContainer>
