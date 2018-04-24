@@ -65,7 +65,10 @@ const createUser = async (req, res) => {
         } else {
             const token = randtoken.generate(16);
             user.token = token;
+            const pin = randtoken.generate(4, '0123456789');
+            user.pin = pin;
             const createdUser = await db.users.createUser(user);
+            console.log(`User Pin Generated: ${pin}`);
             res.status(201).send(createdUser);
         }
     } catch (err) {
@@ -98,10 +101,36 @@ const login = async (req, res) => {
     }
 };
 
+const generateNewPin = async (req, res) => {
+    try {
+        const phoneNumber = req.body.phoneNumber;
+        const validationErrors = utils.users.validateUserPhone(phoneNumber);
+        if (validationErrors) {
+            res.status(422).send(validationErrors);
+        } else {
+            const user = await db.users.getUser(phoneNumber);
+            if (user) {
+                const pin = randtoken.generate(4, '0123456789');
+                user.pin = pin;
+                await db.users.updateUser(user);
+                console.log(`New Pin Generated: ${pin}`);
+                res.status(200).send('New Pin generated!');
+            } else {
+                res.status(401).send('Phone number is not valid!.');
+            }
+        }
+    } catch (err) {
+        res
+            .status(500)
+            .send(`Failed to generate new Pin. Error: ${err.message}`);
+    }
+};
+
 router.post('/', createUser);
 router.put('/me', auth.requireAuth, updateUser);
 router.get('/:phoneNumber', auth.requireAuth, getUser);
 router.delete('/me', auth.requireAuth, deleteUser);
 router.post('/login', login);
+router.post('/generateNewPin', generateNewPin);
 
 module.exports = router;

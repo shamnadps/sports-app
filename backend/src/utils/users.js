@@ -23,7 +23,7 @@ const validateUserPhone = (phoneNumber) => {
 
 const validateUserPin = (pin) => {
     pin = Number(pin);
-    if (typeof pin !== 'number' || pin.toString().length !== 4) {
+    if (typeof pin !== 'string' || pin.length !== 4) {
         return 'Pin is not valid';
     }
 };
@@ -33,12 +33,9 @@ const validateUserObj = (user) => {
     if (nameError) {
         return nameError;
     }
-    const phoneAndPinError = validateUserPhoneAndPin(
-        user.phoneNumber,
-        user.pin
-    );
-    if (phoneAndPinError) {
-        return phoneAndPinError;
+    const phoneError = validateUserPhone(user.phoneNumber);
+    if (phoneError) {
+        return phoneError;
     }
 };
 
