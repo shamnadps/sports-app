@@ -16,6 +16,7 @@ const validateUserPhone = (phoneNumber) => {
 };
 
 const validateUserPin = (pin) => {
+    pin = Number(pin);
     if (typeof pin !== 'number' || pin.toString().length !== 4) {
         return 'Pin is not valid';
     }
@@ -50,5 +51,6 @@ module.exports = {
     validateUsername,
     validateUserObj,
     validateUserPhone,
+    validateUserPin,
     validateUserPhoneAndPin,
 };
