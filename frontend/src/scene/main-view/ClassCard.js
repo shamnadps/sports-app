@@ -18,7 +18,7 @@ const CardWrapperAnimatable = posed.div({
 const ScrollContainerBase = posed.div({
     enter: {
         delay: 1500,
-        staggerChildren: 500,
+        staggerChildren: 300,
     },
 });
 
@@ -102,7 +102,7 @@ const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
     </CardWrapper>
 );
 
-class CardGroup extends React.Component {
+class ClassCard extends React.Component {
     selectCourse = (course) => (e) => {
         this.props.CourseStore.selectCourse(course);
     };
@@ -116,7 +116,7 @@ class CardGroup extends React.Component {
                 <PoseGroup animateOnMount>
                     {courses.map((el, i) => (
                         <Card
-                            key={i}
+                            key={el.id}
                             course={el}
                             buttonLabel={buttonLabel}
                             onButtonClick={this.selectCourse(el)}
@@ -128,4 +128,4 @@ class CardGroup extends React.Component {
     }
 }
 
-export default connect('CourseStore', 'ContentStore')(CardGroup);
+export default connect('CourseStore', 'ContentStore')(ClassCard);

@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../../common/Logo';
 import Button from '../../common/Button';
 import styled from 'react-emotion';
 import { connect } from 'utils';

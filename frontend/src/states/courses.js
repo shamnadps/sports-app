@@ -59,4 +59,5 @@ export default decorate(CourseStore, {
     fetchCourse: action.bound,
     courseInFocus: observable,
     filters: observable,
+    useMockCourse: observable,
 });

@@ -23,6 +23,7 @@ class UserStore {
         '3': '',
     };
     pinCodeIsSet = false;
+    balance = 0;
 
     // sets and validate phoneNumber
     setPhoneNumber(input) {
@@ -113,6 +114,7 @@ export default decorate(UserStore, {
     phoneNumber: observable,
     phoneNumberIncorrect: observable,
     pinCode: observable,
+    balance: observable,
     setPhoneNumber: action,
     setInputCode: action,
 });

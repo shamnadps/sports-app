@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
 import Logo from '../../common/Logo';
-import Decorator from '../../common/Decorator';
 import LoginForm from './LoginForm';
 import { connect } from 'utils';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import FilterGroup from './FilterGroup';
-import CardGroup from './CardGroup';
+import ClassCard from './ClassCard';
 import AppHeader from './AppHeader';
 import CourseModal from './CourseModal';
 import { connect } from 'utils';
@@ -22,7 +22,7 @@ class MainView extends React.Component {
             <Wrapper>
                 <AppHeader />
                 <FilterGroup />
-                <CardGroup />
+                <ClassCard />
                 <CourseModal />
             </Wrapper>
         );

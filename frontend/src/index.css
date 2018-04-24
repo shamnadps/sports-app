@@ -44,7 +44,7 @@ body {
 #root {
     overflow: scroll;
     transition: all 0.5s ease;
-    background-color: #d8d8d8;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
