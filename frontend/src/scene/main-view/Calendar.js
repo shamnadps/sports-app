@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from 'react-emotion';
 import dateFns from 'date-fns';
-import fiLocale from 'date-fns/locale/fi';
-import { connect } from 'utils';
+import { connect, getLocale } from 'utils';
 import posed from 'react-pose';
-
-const getLocale = (lang) => {
-    if (lang === 'fi') return fiLocale;
-    // add cases for swedish later
-};
 
 const WeekTable = styled('div')`
     display: flex;

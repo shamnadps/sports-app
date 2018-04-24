@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'emotion-theming';
-import { ContentStore, UserStore, CourseStore } from './states';
+import stores from './stores';
 import { Provider } from 'mobx-react';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -19,12 +19,13 @@ const theme = {
     complementary: '#F9E51E',
     green: '#66BB6A',
 };
+
 const Root = () => (
     <BrowserRouter>
         <Provider
-            ContentStore={new ContentStore()}
-            UserStore={new UserStore()}
-            CourseStore={new CourseStore()}
+            ContentStore={stores.contentStore}
+            UserStore={stores.userStore}
+            CourseStore={stores.courseStore}
         >
             <ThemeProvider theme={theme}>
                 <App />

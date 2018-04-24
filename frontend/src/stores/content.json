@@ -24,7 +24,8 @@
             "date": "Päivä"
         },
         "courseCard": {
-            "select": "Valitse"
+            "select": "Valitse",
+            "noCourse": "Ei löytynyt tunteja tälle päivälle"
         }
     }
 }
