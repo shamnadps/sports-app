@@ -2,7 +2,6 @@ import { decorate, observable, action } from 'mobx';
 import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
 
-//@TODO: Persist this date to local storage, and hydrate it upon startup
 class CourseStore {
     courseList = [];
     isFetchingCourses = true;
@@ -17,11 +16,12 @@ class CourseStore {
     }
 
     async fetchCourses(startDate = Date.now()) {
+        const endDate = dateFns.addDays(startDate, 14).getTime();
         this.isFetchingCourses = true;
 
         try {
             const response = await window.fetch(
-                `/api/courses?startDate=${startDate}`
+                `/api/courses?startDate=${startDate}&endDate=${endDate}`
             );
             const data = await response.json();
             this.useMockCourse = false;

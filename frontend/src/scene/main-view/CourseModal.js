@@ -106,7 +106,9 @@ const ModalContentAnimatable = posed.div({
 const ModalContent = styled(ModalContentAnimatable)`
     margin: 2rem 0;
     width: 100%;
-    overflow: scroll;
+    max-height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     h4 {
         margin: 0 0 2rem 0;
