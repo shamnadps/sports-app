@@ -17,6 +17,7 @@ const theme = {
     main: '#3F8EDB',
     mainDark: '#183552',
     complementary: '#F9E51E',
+    green: '#66BB6A',
 };
 const Root = () => (
     <BrowserRouter>

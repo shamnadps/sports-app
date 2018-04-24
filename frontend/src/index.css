@@ -8,7 +8,6 @@ html {
     font-size: 8px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #d8d8d8;
 }
 
 @font-face {
@@ -30,15 +29,22 @@ html {
     font-style: normal;
 }
 
+html {
+    display: flex;
+    background-color: #d8d8d8;
+}
+
 body {
     display: flex;
-}
-#root {
     width: 375px;
     height: 667px;
     margin: auto;
+    position: relative;
+}
+#root {
     overflow: scroll;
     transition: all 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

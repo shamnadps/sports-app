@@ -10,6 +10,7 @@ class CourseStore {
     filters = {
         date: new Date(), // today
     };
+    courseInFocus;
 
     constructor() {
         this.fetchCourses();
@@ -46,11 +47,17 @@ class CourseStore {
     setFilters(filters) {
         this.filters = filters;
     }
+
+    selectCourse(course) {
+        this.courseInFocus = course;
+    }
 }
 
 export default decorate(CourseStore, {
     courseList: observable.deep,
     isFetchingCourses: observable,
     fetchCourse: action.bound,
+    courseInFocus: observable,
     filters: observable,
+    useMockCourse: observable,
 });

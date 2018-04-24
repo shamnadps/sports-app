@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../../common/Logo';
 import Button from '../../common/Button';
 import styled from 'react-emotion';
 import { connect } from 'utils';
@@ -13,7 +12,6 @@ const AppHeaderWrapper = styled('div')`
 const LogoBar = styled('div')`
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
     align-items: center;
     color: ${(props) => props.theme.main};
 

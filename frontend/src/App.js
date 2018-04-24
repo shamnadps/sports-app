@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import SignIn from './scene/sign-in';
 import MainView from './scene/main-view';
+import DevTool from './scene/dev-tool';
 import styled from 'react-emotion';
 
 const AppContainer = styled('section')`
@@ -26,6 +27,7 @@ class App extends React.Component {
                     <Route path="/main" component={MainView} />
                     <Route exact path="/login" component={SignIn} />
                 </Switch>
+                <DevTool />
             </AppContainer>
         );
     }
