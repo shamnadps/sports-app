@@ -48,9 +48,13 @@ describe('getCourses API call', () => {
         const events = await db.events.getEventById('2554743');
         const event = events[0];
         expect(event).not.toBeNull();
-        expect(event.start).toEqual(new Date('2017-09-04T08:05:00.000Z'));
-        expect(event.end).toEqual(new Date('2017-09-04T09:35:00.000Z'));
-        expect(event.teachingplace).toEqual(
+        expect(event.dataValues.startDate).toEqual(
+            new Date('2017-09-04T08:05:00.000Z')
+        );
+        expect(event.dataValues.endDate).toEqual(
+            new Date('2017-09-04T09:35:00.000Z')
+        );
+        expect(event.dataValues.teachingplace).toEqual(
             'Tikkurila, Vantaan opistotalo, 170 Luokka'
         );
     });

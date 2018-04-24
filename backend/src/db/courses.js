@@ -3,8 +3,8 @@ const datefns = require('date-fns');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-const getCourses = async (startDate, endDate) => {
-    return await models.courses.findAll({
+const getCourses = (startDate, endDate) => {
+    return models.courses.findAll({
         attributes: [
             'id',
             'name',
@@ -31,7 +31,11 @@ const getCourses = async (startDate, endDate) => {
             {
                 model: models.events,
                 as: 'teachingSession',
-                attributes: [['start', 'startDate'], ['end', 'endDate']],
+                attributes: [
+                    ['id', 'eventId'],
+                    ['start', 'startDate'],
+                    ['end', 'endDate'],
+                ],
                 where: {
                     start: { [Op.between]: [startDate, endDate] },
                 },
@@ -42,8 +46,8 @@ const getCourses = async (startDate, endDate) => {
     });
 };
 
-const getCourseById = async (id) => {
-    return await models.courses.findAll({
+const getCourseById = (id) => {
+    return models.courses.findAll({
         attributes: [
             'id',
             'name',
@@ -70,7 +74,11 @@ const getCourseById = async (id) => {
             {
                 model: models.events,
                 as: 'teachingSession',
-                attributes: [['start', 'startDate'], ['end', 'endDate']],
+                attributes: [
+                    ['id', 'eventId'],
+                    ['start', 'startDate'],
+                    ['end', 'endDate'],
+                ],
             },
         ],
         where: {
@@ -86,6 +94,7 @@ const reduceCoursesByDate = (courses) => {
             id: course.id,
             name: course.name,
             price: course.price,
+            code: course.code,
             priceMaterial: course.priceMaterial,
             description: course.description,
             minStudentCount: course.minStudentCount,
@@ -98,6 +107,7 @@ const reduceCoursesByDate = (courses) => {
             firstSessionDate: course.firstSessionDate,
             lastSessionDate: course.lastSessionDate,
             location: course.location[0].dataValues.location,
+            eventId: course.teachingSession[0].dataValues.eventId,
             startDate: course.teachingSession[0].dataValues.startDate,
             endDate: course.teachingSession[0].dataValues.endDate,
         }))
