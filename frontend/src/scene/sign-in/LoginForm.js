@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'react-emotion';
 import { connect } from 'utils';
 import { autorun } from 'mobx';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const shake = keyframes`
     10%, 90% {
@@ -170,9 +170,14 @@ class LoginForm extends React.Component {
                     </div>
                 </InputField>
                 <FormLink>
-                    <a href="#">{content.signIn.form.viewWithoutLogin}</a>
-                    <a href="#">{content.signIn.form.register}</a>
-                    <a href="#">{content.signIn.form.forgotPassword}</a>
+                    <Link
+                        to="/main"
+                        onClick={this.props.UserStore.setStatusAsGuest}
+                    >
+                        {content.signIn.form.viewWithoutLogin}
+                    </Link>
+                    <Link to="#">{content.signIn.form.register}</Link>
+                    <Link to="#">{content.signIn.form.forgotPassword}</Link>
                 </FormLink>
             </Form>
         );

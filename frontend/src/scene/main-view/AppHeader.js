@@ -44,11 +44,11 @@ class AppHeader extends React.Component {
                 <LogoBar>
                     <Button>{content.myAccount}</Button>
                     <span>{appName}</span>
-                    <Button>€ 12</Button>
+                    <Button>€ {this.props.UserStore.balance}</Button>
                 </LogoBar>
             </AppHeaderWrapper>
         );
     }
 }
 
-export default connect('ContentStore')(AppHeader);
+export default connect('ContentStore', 'UserStore')(AppHeader);

@@ -9,10 +9,13 @@ const toStringFromObject = (obj) =>
     Object.keys(obj)
         .map((key) => obj[key])
         .join('');
+const processPhoneNumber = (phoneNumber) =>
+    phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
 
 class UserStore {
-    isAuthenticated = true;
+    isAuthenticated = false;
     isAuthenticating = false;
+    isGuest = false;
     authenticationFailed = false;
     phoneNumber = '';
     phoneNumberIncorrect = false;
@@ -23,8 +26,19 @@ class UserStore {
         '3': '',
     };
     pinCodeIsSet = false;
-    balance = 0;
+    balance = 100;
 
+    constructor() {
+        try {
+            this.token = window.localStorage.getItem('token');
+            this.isAuthenticated = true;
+        } catch (err) {
+            console.log('Session expired');
+        }
+    }
+    setStatusAsGuest() {
+        this.isGuest = true;
+    }
     // sets and validate phoneNumber
     setPhoneNumber(input) {
         this.phoneNumber = input;
@@ -56,37 +70,36 @@ class UserStore {
         return true;
     };
 
+    // @TODO: refactor this behemoth into a better defined action-reaction flow
     async authenticate() {
-        // code try to authenticate...
-
-        console.log('Beep beep.... I am authenticating');
+        this.isAuthenticating = true;
+        const pin = toStringFromObject(this.pinCode);
+        const phoneNumber = processPhoneNumber(this.phoneNumber);
         try {
-            await new Promise((resolve, reject) => {
-                // this is because "this" loses scope in setTimeOut
-                const execute = () => {
-                    const processedPhoneNumber = this.phoneNumber
-                        .replace(/\s/g, '')
-                        .replace('0', '+358');
-                    const proccessedPinCode = toStringFromObject(this.pinCode);
-
-                    if (
-                        fakeCredentials.phoneNumber === processedPhoneNumber &&
-                        fakeCredentials.pinCode === proccessedPinCode
-                    ) {
-                        resolve('done');
-                    } else {
-                        reject('Incorrect credentials');
-                    }
-                };
-                setTimeout(execute.bind(this), 1000);
+            const response = await fetch(`/api/users/login`, {
+                headers: {
+                    'content-type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    pin,
+                    phoneNumber,
+                }),
             });
-            console.log('Just kidding there is no such system atm. You are in');
+            const userData = await response.json();
             this.isAuthenticated = true;
+            this.isAuthenticating = false;
+            this.isGuest = false;
+            this.token = userData.token;
+            this.username = userData.username;
+
+            // persist token to localStorage for now
+            window.localStorage.setItem('token', userData.token);
+            debugger;
         } catch (err) {
-            console.error(err);
-            console.log('Resetting inputs');
-            // this boolean is flipped to true and set a chain of action to happen
+            this.isAuthenticating = false;
             this.authenticationFailed = true;
+            console.log(err);
         }
     }
 
@@ -109,6 +122,7 @@ class UserStore {
 export default decorate(UserStore, {
     isAuthenticated: observable,
     isAuthenticating: observable,
+    isGuest: observable,
     authenticationFailed: observable,
     authenticate: action.bound,
     phoneNumber: observable,
@@ -117,4 +131,5 @@ export default decorate(UserStore, {
     balance: observable,
     setPhoneNumber: action,
     setInputCode: action,
+    setStatusAsGuest: action.bound,
 });

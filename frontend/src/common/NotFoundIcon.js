@@ -8,15 +8,16 @@ const AnimatablePath = posed.path({
     },
     exit: {
         scale: 0,
-        rotate: 0,
+        rotate: -90,
     },
     preEnter: {
         scale: 0,
-        rotate: 60,
+        rotate: 90,
     },
 });
 const AnimatableSVG = posed.svg({
     enter: {
+        delayChildren: 300,
         staggerChildren: 300,
     },
     exit: {

@@ -112,7 +112,7 @@ const EmptyStateContainer = styled(AnimationCoordinator)`
 `;
 
 const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
-    <CardWrapper {...rest}>
+    <CardWrapper {...rest} disabled={!course.isAvailable}>
         <TimeArea>
             <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
             <span>{dateFns.format(course.endDate, 'hh:mm')}</span>
@@ -122,7 +122,9 @@ const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
             <span>{course.location}</span>
             <div>
                 <span>€ {course.price}</span>
-                <Button onClick={onButtonClick}>{buttonLabel}</Button>
+                <Button onClick={onButtonClick} disabled={!course.isAvailable}>
+                    {buttonLabel}
+                </Button>
             </div>
         </CourseArea>
     </CardWrapper>
@@ -133,7 +135,6 @@ class ClassCard extends React.Component {
         this.props.CourseStore.selectCourse(course);
     };
     render() {
-        const { useMockCourse, isFetchingCourses } = this.props.CourseStore;
         const courses = this.props.CourseStore.getCourses(Date.now());
         const buttonLabel = this.props.ContentStore.content.courseCard.select;
         const noCourseContent = this.props.ContentStore.content.courseCard
@@ -145,7 +146,7 @@ class ClassCard extends React.Component {
                     {courses.length > 0 ? (
                         courses.map((el, i) => (
                             <Card
-                                key={el.id}
+                                key={el.id || i}
                                 course={el}
                                 buttonLabel={buttonLabel}
                                 onButtonClick={this.selectCourse(el)}
