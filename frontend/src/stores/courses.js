@@ -70,7 +70,7 @@ class CourseStore {
             this.courseList = data;
             // as soon as the courses are available in store, we will apply check on them
             this.checkAvailability();
-            this.courseIdList = pluckId(this.course);
+            this.courseIdList = pluckId(this.courseList);
         } catch (error) {
             console.log(error);
             this.courseList = mockCourse;
