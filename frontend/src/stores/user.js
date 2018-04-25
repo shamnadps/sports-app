@@ -31,7 +31,8 @@ class UserStore {
     constructor() {
         try {
             this.token = window.localStorage.getItem('token');
-            this.isAuthenticated = true;
+            if (this.token) this.isAuthenticated = true;
+            else throw new Error('Token is null');
         } catch (err) {
             console.log('Session expired');
         }

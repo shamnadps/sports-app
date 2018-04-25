@@ -111,7 +111,7 @@ const EmptyStateContainer = styled(AnimationCoordinator)`
     }
 `;
 
-const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
+const Card = ({ course, buttonLabel, onButtonClick, disabled, ...rest }) => (
     <CardWrapper {...rest} disabled={!course.isAvailable}>
         <TimeArea>
             <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
@@ -122,7 +122,7 @@ const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
             <span>{course.location}</span>
             <div>
                 <span>€ {course.price}</span>
-                <Button onClick={onButtonClick} disabled={!course.isAvailable}>
+                <Button onClick={onButtonClick} disabled={disabled}>
                     {buttonLabel}
                 </Button>
             </div>
@@ -150,6 +150,10 @@ class ClassCard extends React.Component {
                                 course={el}
                                 buttonLabel={buttonLabel}
                                 onButtonClick={this.selectCourse(el)}
+                                disabled={
+                                    !el.isAvailable ||
+                                    this.props.UserStore.isGuest
+                                }
                             />
                         ))
                     ) : (
@@ -164,4 +168,4 @@ class ClassCard extends React.Component {
     }
 }
 
-export default connect('CourseStore', 'ContentStore')(ClassCard);
+export default connect('CourseStore', 'ContentStore', 'UserStore')(ClassCard);
