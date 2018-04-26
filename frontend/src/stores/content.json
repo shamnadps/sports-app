@@ -18,7 +18,8 @@
         "appHeader": {
             "myAccount": "Oma tilini",
             "balance": "Saldo",
-            "checkBalance": "Hallinnoi saldoasi"
+            "checkBalance": "Hallinnoi saldoasi",
+            "login": "Kirjaudu sisään"
         },
         "calendar": {
             "date": "Päivä"

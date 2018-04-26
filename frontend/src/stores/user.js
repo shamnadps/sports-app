@@ -1,4 +1,4 @@
-import { decorate, observable, action, autorun } from 'mobx';
+import { decorate, observable, action, autorun, computed } from 'mobx';
 
 const fakeCredentials = {
     phoneNumber: '+358444444444',
@@ -13,9 +13,8 @@ const processPhoneNumber = (phoneNumber) =>
     phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
 
 class UserStore {
-    isAuthenticated = false;
     isAuthenticating = false;
-    isGuest = false;
+    token = null;
     authenticationFailed = false;
     phoneNumber = '';
     phoneNumberIncorrect = false;
@@ -28,17 +27,19 @@ class UserStore {
     pinCodeIsSet = false;
     balance = 100;
 
+    get isAuthenticated() {
+        // user is authenticated if there exists a token, otherwise they are guests
+        return !!this.token;
+    }
     constructor() {
         try {
-            this.token = window.localStorage.getItem('token');
-            if (this.token) this.isAuthenticated = true;
-            else throw new Error('Token is null');
+            const value = window.localStorage.getItem('token');
+            if (value) {
+                this.token = value;
+            } else throw new Error('Token is null');
         } catch (err) {
             console.log('Session expired');
         }
-    }
-    setStatusAsGuest() {
-        this.isGuest = true;
     }
     // sets and validate phoneNumber
     setPhoneNumber(input) {
@@ -71,7 +72,6 @@ class UserStore {
         return true;
     };
 
-    // @TODO: refactor this behemoth into a better defined action-reaction flow
     async authenticate() {
         this.isAuthenticating = true;
         const pin = toStringFromObject(this.pinCode);
@@ -88,17 +88,9 @@ class UserStore {
                 }),
             });
             const userData = await response.json();
-            this.isAuthenticated = true;
-            this.isAuthenticating = false;
-            this.isGuest = false;
             this.token = userData.token;
             this.username = userData.username;
-
-            // persist token to localStorage for now
-            window.localStorage.setItem('token', userData.token);
-            debugger;
         } catch (err) {
-            this.isAuthenticating = false;
             this.authenticationFailed = true;
             console.log(err);
         }
@@ -118,18 +110,25 @@ class UserStore {
             }, 1500);
         }
     });
+
+    authenticationSuccessfulReaction = autorun(() => {
+        if (!this.token) return;
+        this.isAuthenticating = false;
+        this.authenticationFailed = false;
+        window.localStorage.setItem('token', this.token);
+    });
 }
 
 export default decorate(UserStore, {
-    isAuthenticated: observable,
+    isAuthenticated: computed,
     isAuthenticating: observable,
-    isGuest: observable,
     authenticationFailed: observable,
-    authenticate: action.bound,
-    phoneNumber: observable,
+    token: observable,
     phoneNumberIncorrect: observable,
+    phoneNumber: observable,
     pinCode: observable,
     balance: observable,
+    authenticate: action.bound,
     setPhoneNumber: action,
     setInputCode: action,
     setStatusAsGuest: action.bound,

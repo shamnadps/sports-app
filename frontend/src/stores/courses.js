@@ -16,6 +16,15 @@ const pluckId = (obj) => {
     return clone;
 };
 
+const checkEvery5Sec = () => {
+    window.setTimeout(() => {
+        window.requestIdleCallback(() => {
+            this.checkAvailability();
+            checkEvery5Sec();
+        });
+    }, 5000);
+};
+
 class CourseStore {
     courseList = [];
     courseIdList = [];
@@ -27,16 +36,24 @@ class CourseStore {
     courseInFocus;
 
     constructor() {
+        const checkEvery5Sec = () => {
+            window.setTimeout(() => {
+                window.requestIdleCallback(
+                    () => {
+                        this.checkAvailability();
+                        checkEvery5Sec();
+                    },
+                    {
+                        timeout: Infinity,
+                    }
+                );
+            }, 5000);
+        };
+
         this.fetchCourses();
         // schedule this checking every 5 seconds
         // when browser is idle, to avoid hagging resources for UI
-        window.setInterval(
-            () =>
-                window.requestIdleCallback(this.checkAvailability.bind(this), {
-                    timeout: 3000,
-                }),
-            5000
-        );
+        checkEvery5Sec();
     }
 
     // at the moment, this will check the availability regarding time constrains

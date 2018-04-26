@@ -129,6 +129,7 @@ class LoginForm extends React.Component {
         const content = this.props.ContentStore.content;
         const authenticationFailed = this.props.UserStore.authenticationFailed;
 
+        // this view is forbidden for authenticated user
         if (this.props.UserStore.isAuthenticated) {
             return <Redirect to="/main" />;
         }
@@ -170,10 +171,7 @@ class LoginForm extends React.Component {
                     </div>
                 </InputField>
                 <FormLink>
-                    <Link
-                        to="/main"
-                        onClick={this.props.UserStore.setStatusAsGuest}
-                    >
+                    <Link to="/main">
                         {content.signIn.form.viewWithoutLogin}
                     </Link>
                     <Link to="#">{content.signIn.form.register}</Link>

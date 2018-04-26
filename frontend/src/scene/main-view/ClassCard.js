@@ -152,7 +152,7 @@ class ClassCard extends React.Component {
                                 onButtonClick={this.selectCourse(el)}
                                 disabled={
                                     !el.isAvailable ||
-                                    this.props.UserStore.isGuest
+                                    !this.props.UserStore.isAuthenticated
                                 }
                             />
                         ))
