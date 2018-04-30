@@ -11,7 +11,7 @@ const getUser = async (req, res) => {
         const phoneNumber = req.query.phoneNumber;
         const validationErrors = utils.users.validateUserPhone(phoneNumber);
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             const user = await db.users.getUser(phoneNumber);
             res.status(200).send(user);
@@ -26,7 +26,7 @@ const updateUser = async (req, res) => {
         const user = req.body;
         const validationErrors = utils.users.validateUserObj(user);
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             const authUser = req.user;
             await db.users.updateUser(user, authUser.phoneNumber);
@@ -46,7 +46,7 @@ const deleteUser = async (req, res) => {
             user.phoneNumber
         );
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             await db.users.deleteUser(user.phoneNumber);
             res.status(200).send('Deleted user');
@@ -61,12 +61,12 @@ const createUser = async (req, res) => {
         const user = req.body;
         const validationErrors = utils.users.validateUserObj(user);
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             const token = randtoken.generate(16);
             user.token = token;
-            await db.users.createUser(user);
-            res.status(201).send(user);
+            const createdUser = await db.users.createUser(user);
+            res.status(201).send(createdUser);
         }
     } catch (err) {
         res
@@ -84,7 +84,7 @@ const login = async (req, res) => {
             pin
         );
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             const user = await db.users.getUserByPhoneAndPin(phoneNumber, pin);
             if (user) {
