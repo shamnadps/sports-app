@@ -1,4 +1,4 @@
-import { decorate, observable, action, autorun } from 'mobx';
+import { decorate, observable, computed, action, autorun } from 'mobx';
 import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
 
@@ -8,26 +8,8 @@ const isAvailableByTime = (courseItem) =>
     // and must not be 1 hours before starting time
     dateFns.differenceInHours(courseItem.startDate, new Date()) > 1;
 
-const pluckId = (obj) => {
-    const clone = [];
-    Object.keys(obj).forEach((key) =>
-        obj[key].forEach((item) => clone.push(item.id))
-    );
-    return clone;
-};
-
-const checkEvery5Sec = () => {
-    window.setTimeout(() => {
-        window.requestIdleCallback(() => {
-            this.checkAvailability();
-            checkEvery5Sec();
-        });
-    }, 5000);
-};
-
 class CourseStore {
     courseList = [];
-    courseIdList = [];
     isFetchingCourses = true;
     useMockCourse = false;
     filters = {
@@ -37,6 +19,8 @@ class CourseStore {
 
     constructor() {
         const checkEvery5Sec = () => {
+            // schedule this checking every 5 seconds
+            // when browser is idle, to avoid hagging resources for UI
             window.setTimeout(() => {
                 window.requestIdleCallback(
                     () => {
@@ -51,12 +35,10 @@ class CourseStore {
         };
 
         this.fetchCourses();
-        // schedule this checking every 5 seconds
-        // when browser is idle, to avoid hagging resources for UI
         checkEvery5Sec();
     }
 
-    // at the moment, this will check the availability regarding time constrains
+    // this check the availability regarding time constrains
     checkAvailability() {
         if (!this.courseList || this.courseList.length == 0) return;
         // loop throught courseList recursively
@@ -64,11 +46,10 @@ class CourseStore {
         Object.keys(this.courseList).forEach(
             (key) =>
                 (this.courseList[key] = this.courseList[key].map(
-                    (courseItem) =>
-                        (courseItem = {
-                            ...courseItem,
-                            isAvailable: isAvailableByTime(courseItem),
-                        })
+                    (courseItem) => ({
+                        ...courseItem,
+                        isAvailable: isAvailableByTime(courseItem),
+                    })
                 ))
         );
     }
@@ -87,7 +68,6 @@ class CourseStore {
             this.courseList = data;
             // as soon as the courses are available in store, we will apply check on them
             this.checkAvailability();
-            this.courseIdList = pluckId(this.courseList);
         } catch (error) {
             console.log(error);
             this.courseList = mockCourse;
@@ -106,6 +86,12 @@ class CourseStore {
         return this.courseList;
     }
 
+    get courseIdList() {
+        const takeId = (item) => item.id;
+
+        return Object.values(this.courseList).map((arr) => arr.map(takeId));
+    }
+
     setFilters(filters) {
         this.filters = filters;
     }
@@ -117,6 +103,7 @@ class CourseStore {
 
 export default decorate(CourseStore, {
     courseList: observable.deep,
+    courseIdList: computed,
     isFetchingCourses: observable,
     fetchCourse: action.bound,
     courseInFocus: observable,

@@ -1,14 +1,7 @@
 import { decorate, observable, action, autorun, computed } from 'mobx';
 
-const fakeCredentials = {
-    phoneNumber: '+358444444444',
-    pinCode: '1234',
-};
+const toStringFromObject = (obj) => Object.values(obj).join('');
 
-const toStringFromObject = (obj) =>
-    Object.keys(obj)
-        .map((key) => obj[key])
-        .join('');
 const processPhoneNumber = (phoneNumber) =>
     phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
 
@@ -88,6 +81,8 @@ class UserStore {
                 }),
             });
             const userData = await response.json();
+            // @TODO: Token is a "for now" placeholder implementation. To be removed when official
+            // strategy for token is decided.
             this.token = userData.token;
             this.username = userData.username;
         } catch (err) {

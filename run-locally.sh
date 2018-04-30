@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-./build-docker.sh
+. ./build-docker.sh
 docker-compose up
