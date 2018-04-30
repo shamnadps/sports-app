@@ -9,7 +9,7 @@
     "limit": "0",
     "course": [
         {
-            "id": 186399,
+            "id": 1,
             "code": "V172061",
             "name": "Englantia perustasolla A1+/A2",
             "description": null,
@@ -35,238 +35,674 @@
             "teachingSession": [
                 {
                     "id": 2554743,
-                    "start": 1504512300000,
-                    "end": 1504517700000,
+                    "start": 1525089971905,
+                    "end": 1525176371907,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "76.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554746,
-                    "start": 1505117100000,
-                    "end": 1505122500000,
+                    "start": 1525176371907,
+                    "end": 1525262771908,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "6.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554749,
-                    "start": 1505721900000,
-                    "end": 1505727300000,
+                    "start": 1525262771908,
+                    "end": 1525349171909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "16.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554752,
-                    "start": 1506326700000,
-                    "end": 1506332100000,
+                    "start": 1525349171909,
+                    "end": 1525435571909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "26.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554755,
-                    "start": 1506931500000,
-                    "end": 1506936900000,
+                    "start": 1525435571909,
+                    "end": 1525521971909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "56.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554758,
-                    "start": 1507536300000,
-                    "end": 1507541700000,
+                    "start": 1525521971909,
+                    "end": 1525608371909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "61.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554764,
-                    "start": 1508141100000,
-                    "end": 1508146500000,
+                    "start": 1525608371909,
+                    "end": 1525694771909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": "",
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "72.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554767,
-                    "start": 1509354300000,
-                    "end": 1509359700000,
+                    "start": 1525694771909,
+                    "end": 1525781171909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "34.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554770,
-                    "start": 1509959100000,
-                    "end": 1509964500000,
+                    "start": 1525781171909,
+                    "end": 1525867571909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "26.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554773,
-                    "start": 1510563900000,
-                    "end": 1510569300000,
+                    "start": 1525867571909,
+                    "end": 1525953971909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "88.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554776,
-                    "start": 1511168700000,
-                    "end": 1511174100000,
+                    "start": 1525953971909,
+                    "end": 1526040371909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "10.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554761,
-                    "start": 1511773500000,
-                    "end": 1511778900000,
+                    "start": 1526040371909,
+                    "end": 1526126771909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": "",
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "5.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554779,
-                    "start": 1516007100000,
-                    "end": 1516012500000,
+                    "start": 1526126771909,
+                    "end": 1526213171909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "56.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554782,
-                    "start": 1516611900000,
-                    "end": 1516617300000,
+                    "start": 1526213171909,
+                    "end": 1526299571909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "96.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554785,
-                    "start": 1517216700000,
-                    "end": 1517222100000,
+                    "start": 1525089971905,
+                    "end": 1525176371907,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "186.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554788,
-                    "start": 1517821500000,
-                    "end": 1517826900000,
+                    "start": 1525176371907,
+                    "end": 1525262771908,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "286.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554791,
-                    "start": 1518426300000,
-                    "end": 1518431700000,
+                    "start": 1525262771908,
+                    "end": 1525349171909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "36.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554794,
-                    "start": 1519635900000,
-                    "end": 1519641300000,
+                    "start": 1525349171909,
+                    "end": 1525435571909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
+                {
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "55.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
                 {
                     "id": 2554797,
-                    "start": 1520240700000,
-                    "end": 1520246100000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2554800,
-                    "start": 1520845500000,
-                    "end": 1520850900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2554803,
-                    "start": 1521450300000,
-                    "end": 1521455700000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2554806,
-                    "start": 1522051500000,
-                    "end": 1522056900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2554809,
-                    "start": 1523261100000,
-                    "end": 1523266500000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2554812,
-                    "start": 1523865900000,
-                    "end": 1523871300000,
+                    "start": 1525435571909,
+                    "end": 1525521971909,
                     "teachingplace":
                         "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
@@ -276,3888 +712,36 @@
             ]
         },
         {
-            "id": 175743,
-            "code": "V171468",
-            "name": "Brush Up Your English (Intermediate) at Lumo  B1 ",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Korso, Monitoimikeskus Lumo",
-                    "address": ""
-                }
-            ],
-            "price": "91.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505224800000,
-            "firstSessionWeekdate": "Tue",
-            "lastSession": 1524578400000,
-            "internetEnrollment": true,
-            "minStudentCount": 10,
-            "maxStudentCount": 25,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524583800000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2409483,
-                    "start": 1505224800000,
-                    "end": 1505230200000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409486,
-                    "start": 1505829600000,
-                    "end": 1505835000000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409489,
-                    "start": 1506434400000,
-                    "end": 1506439800000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409492,
-                    "start": 1507039200000,
-                    "end": 1507044600000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409495,
-                    "start": 1507644000000,
-                    "end": 1507649400000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2580843,
-                    "start": 1508248800000,
-                    "end": 1508254200000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409501,
-                    "start": 1508853600000,
-                    "end": 1508859000000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409504,
-                    "start": 1509462000000,
-                    "end": 1509467400000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409507,
-                    "start": 1510066800000,
-                    "end": 1510072200000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409510,
-                    "start": 1510671600000,
-                    "end": 1510677000000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409513,
-                    "start": 1511276400000,
-                    "end": 1511281800000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409516,
-                    "start": 1511881200000,
-                    "end": 1511886600000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409519,
-                    "start": 1516114800000,
-                    "end": 1516120200000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409522,
-                    "start": 1516719600000,
-                    "end": 1516725000000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409525,
-                    "start": 1517324400000,
-                    "end": 1517329800000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409528,
-                    "start": 1517929200000,
-                    "end": 1517934600000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409531,
-                    "start": 1518534000000,
-                    "end": 1518539400000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409534,
-                    "start": 1519743600000,
-                    "end": 1519749000000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409537,
-                    "start": 1520348400000,
-                    "end": 1520353800000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409540,
-                    "start": 1520953200000,
-                    "end": 1520958600000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409543,
-                    "start": 1521558000000,
-                    "end": 1521563400000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409546,
-                    "start": 1522159200000,
-                    "end": 1522164600000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409549,
-                    "start": 1522764000000,
-                    "end": 1522769400000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409552,
-                    "start": 1523368800000,
-                    "end": 1523374200000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409555,
-                    "start": 1523973600000,
-                    "end": 1523979000000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2409558,
-                    "start": 1524578400000,
-                    "end": 1524583800000,
-                    "teachingplace": "Korso, Monitoimikeskus Lumo",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 181776,
-            "code": "V171804",
-            "name": "English for you, too! Book 3  A2",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": ""
-                }
-            ],
-            "price": "89.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505393400000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524142200000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 25,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524147600000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2491005,
-                    "start": 1505393400000,
-                    "end": 1505398800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491008,
-                    "start": 1505998200000,
-                    "end": 1506003600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491011,
-                    "start": 1506603000000,
-                    "end": 1506608400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491014,
-                    "start": 1507207800000,
-                    "end": 1507213200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491017,
-                    "start": 1507812600000,
-                    "end": 1507818000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491020,
-                    "start": 1508417400000,
-                    "end": 1508422800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491023,
-                    "start": 1509022200000,
-                    "end": 1509027600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491026,
-                    "start": 1509630600000,
-                    "end": 1509636000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491029,
-                    "start": 1510235400000,
-                    "end": 1510240800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491032,
-                    "start": 1510840200000,
-                    "end": 1510845600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491035,
-                    "start": 1511445000000,
-                    "end": 1511450400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491038,
-                    "start": 1512049800000,
-                    "end": 1512055200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2576295,
-                    "start": 1516283400000,
-                    "end": 1516288800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491047,
-                    "start": 1516888200000,
-                    "end": 1516893600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491050,
-                    "start": 1517493000000,
-                    "end": 1517498400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491053,
-                    "start": 1518097800000,
-                    "end": 1518103200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491056,
-                    "start": 1518702600000,
-                    "end": 1518708000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491059,
-                    "start": 1519912200000,
-                    "end": 1519917600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491062,
-                    "start": 1520517000000,
-                    "end": 1520522400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491065,
-                    "start": 1521121800000,
-                    "end": 1521127200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491068,
-                    "start": 1521726600000,
-                    "end": 1521732000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491041,
-                    "start": 1522327800000,
-                    "end": 1522333200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2491071,
-                    "start": 1522932600000,
-                    "end": 1522938000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491074,
-                    "start": 1523537400000,
-                    "end": 1523542800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2491077,
-                    "start": 1524142200000,
-                    "end": 1524147600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 180081,
-            "code": "V171688",
-            "name": "Englannin perusteita A2",
+            "id": 20,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
             "description": null,
             "descriptionInternet": null,
             "location": [
                 {
                     "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": ""
-                }
-            ],
-            "price": "86.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505397600000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524146400000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 28,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524151800000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2465940,
-                    "start": 1505397600000,
-                    "end": 1505403000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465943,
-                    "start": 1506002400000,
-                    "end": 1506007800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465946,
-                    "start": 1506607200000,
-                    "end": 1506612600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465949,
-                    "start": 1507212000000,
-                    "end": 1507217400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465952,
-                    "start": 1507816800000,
-                    "end": 1507822200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465955,
-                    "start": 1508421600000,
-                    "end": 1508427000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465958,
-                    "start": 1509026400000,
-                    "end": 1509031800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465961,
-                    "start": 1509634800000,
-                    "end": 1509640200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465964,
-                    "start": 1510239600000,
-                    "end": 1510245000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465967,
-                    "start": 1510844400000,
-                    "end": 1510849800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465970,
-                    "start": 1511449200000,
-                    "end": 1511454600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465973,
-                    "start": 1512054000000,
-                    "end": 1512059400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465976,
-                    "start": 1516287600000,
-                    "end": 1516293000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465979,
-                    "start": 1516892400000,
-                    "end": 1516897800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465982,
-                    "start": 1517497200000,
-                    "end": 1517502600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465985,
-                    "start": 1518102000000,
-                    "end": 1518107400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465988,
-                    "start": 1518706800000,
-                    "end": 1518712200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465991,
-                    "start": 1519916400000,
-                    "end": 1519921800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465994,
-                    "start": 1520521200000,
-                    "end": 1520526600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2465997,
-                    "start": 1521126000000,
-                    "end": 1521131400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2466000,
-                    "start": 1521730800000,
-                    "end": 1521736200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2466003,
-                    "start": 1522936800000,
-                    "end": 1522942200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2466006,
-                    "start": 1523541600000,
-                    "end": 1523547000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2466009,
-                    "start": 1524146400000,
-                    "end": 1524151800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 181827,
-            "code": "V171812",
-            "name": "Catching up - Englannin kertaus ja keskustelu B1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": ""
-                }
-            ],
-            "price": "89.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505399400000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524148200000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 24,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524153600000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2492415,
-                    "start": 1505399400000,
-                    "end": 1505404800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492418,
-                    "start": 1506004200000,
-                    "end": 1506009600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492421,
-                    "start": 1506609000000,
-                    "end": 1506614400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492424,
-                    "start": 1507213800000,
-                    "end": 1507219200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492427,
-                    "start": 1507818600000,
-                    "end": 1507824000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492430,
-                    "start": 1508423400000,
-                    "end": 1508428800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492433,
-                    "start": 1509028200000,
-                    "end": 1509033600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492436,
-                    "start": 1509636600000,
-                    "end": 1509642000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492439,
-                    "start": 1510241400000,
-                    "end": 1510246800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492442,
-                    "start": 1510846200000,
-                    "end": 1510851600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492445,
-                    "start": 1511451000000,
-                    "end": 1511456400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492448,
-                    "start": 1512055800000,
-                    "end": 1512061200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492454,
-                    "start": 1516289400000,
-                    "end": 1516294800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492457,
-                    "start": 1516894200000,
-                    "end": 1516899600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492460,
-                    "start": 1517499000000,
-                    "end": 1517504400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492463,
-                    "start": 1518103800000,
-                    "end": 1518109200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492466,
-                    "start": 1518708600000,
-                    "end": 1518714000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492469,
-                    "start": 1519918200000,
-                    "end": 1519923600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492472,
-                    "start": 1520523000000,
-                    "end": 1520528400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492475,
-                    "start": 1521127800000,
-                    "end": 1521133200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492478,
-                    "start": 1521732600000,
-                    "end": 1521738000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492451,
-                    "start": 1522333800000,
-                    "end": 1522339200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2492481,
-                    "start": 1522938600000,
-                    "end": 1522944000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492484,
-                    "start": 1523543400000,
-                    "end": 1523548800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2492487,
-                    "start": 1524148200000,
-                    "end": 1524153600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 180069,
-            "code": "V171686",
-            "name": "Englannin alkeet vasta-alkajille Tikkurilassa  A0",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": ""
-                }
-            ],
-            "price": "87.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505403600000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524152400000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 24,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524157800000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2472549,
-                    "start": 1505403600000,
-                    "end": 1505409000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2472552,
-                    "start": 1506008400000,
-                    "end": 1506013800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472555,
-                    "start": 1506613200000,
-                    "end": 1506618600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472558,
-                    "start": 1507218000000,
-                    "end": 1507223400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472561,
-                    "start": 1507822800000,
-                    "end": 1507828200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472564,
-                    "start": 1508427600000,
-                    "end": 1508433000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472567,
-                    "start": 1509032400000,
-                    "end": 1509037800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472570,
-                    "start": 1509640800000,
-                    "end": 1509646200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472573,
-                    "start": 1510245600000,
-                    "end": 1510251000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472576,
-                    "start": 1510850400000,
-                    "end": 1510855800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472579,
-                    "start": 1511455200000,
-                    "end": 1511460600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472582,
-                    "start": 1512060000000,
-                    "end": 1512065400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472585,
-                    "start": 1516293600000,
-                    "end": 1516299000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472588,
-                    "start": 1516898400000,
-                    "end": 1516903800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472591,
-                    "start": 1517503200000,
-                    "end": 1517508600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472594,
-                    "start": 1518108000000,
-                    "end": 1518113400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472597,
-                    "start": 1518712800000,
-                    "end": 1518718200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472600,
-                    "start": 1519922400000,
-                    "end": 1519927800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472603,
-                    "start": 1520527200000,
-                    "end": 1520532600000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472606,
-                    "start": 1521132000000,
-                    "end": 1521137400000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472609,
-                    "start": 1521736800000,
-                    "end": 1521742200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472612,
-                    "start": 1522942800000,
-                    "end": 1522948200000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472615,
-                    "start": 1523547600000,
-                    "end": 1523553000000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2472618,
-                    "start": 1524152400000,
-                    "end": 1524157800000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 185763,
-            "code": "V172034",
-            "name": "English for Work in Kivistö  A2+/B1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Kivistö, Aurinkokivi",
-                    "address": ""
-                }
-            ],
-            "price": "88.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505403600000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524152400000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 26,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524157800000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2546820,
-                    "start": 1505403600000,
-                    "end": 1505409000000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546823,
-                    "start": 1506008400000,
-                    "end": 1506013800000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546826,
-                    "start": 1506613200000,
-                    "end": 1506618600000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546829,
-                    "start": 1507218000000,
-                    "end": 1507223400000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546832,
-                    "start": 1507822800000,
-                    "end": 1507828200000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546835,
-                    "start": 1508427600000,
-                    "end": 1508433000000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546838,
-                    "start": 1509032400000,
-                    "end": 1509037800000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546841,
-                    "start": 1509640800000,
-                    "end": 1509646200000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546844,
-                    "start": 1510245600000,
-                    "end": 1510251000000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546847,
-                    "start": 1510850400000,
-                    "end": 1510855800000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546850,
-                    "start": 1511455200000,
-                    "end": 1511460600000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546853,
-                    "start": 1512060000000,
-                    "end": 1512065400000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546856,
-                    "start": 1516293600000,
-                    "end": 1516299000000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546859,
-                    "start": 1516898400000,
-                    "end": 1516903800000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546862,
-                    "start": 1517503200000,
-                    "end": 1517508600000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546865,
-                    "start": 1518108000000,
-                    "end": 1518113400000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546868,
-                    "start": 1518712800000,
-                    "end": 1518718200000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546871,
-                    "start": 1519922400000,
-                    "end": 1519927800000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546874,
-                    "start": 1520527200000,
-                    "end": 1520532600000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546877,
-                    "start": 1521132000000,
-                    "end": 1521137400000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546880,
-                    "start": 1521736800000,
-                    "end": 1521742200000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546883,
-                    "start": 1522942800000,
-                    "end": 1522948200000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546886,
-                    "start": 1523547600000,
-                    "end": 1523553000000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2546889,
-                    "start": 1524152400000,
-                    "end": 1524157800000,
-                    "teachingplace": "Kivistö, Aurinkokivi",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 181536,
-            "code": "V171785",
-            "name": "English Conversation through Key Words  B1-B2",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Myyrmäki, Martinlaakson koulu",
-                    "address": ""
-                }
-            ],
-            "price": "88.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505405100000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524153900000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 20,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524159300000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2487948,
-                    "start": 1505405100000,
-                    "end": 1505410500000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487951,
-                    "start": 1506009900000,
-                    "end": 1506015300000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487954,
-                    "start": 1506614700000,
-                    "end": 1506620100000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487957,
-                    "start": 1507219500000,
-                    "end": 1507224900000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487960,
-                    "start": 1507824300000,
-                    "end": 1507829700000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487963,
-                    "start": 1508429100000,
-                    "end": 1508434500000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487966,
-                    "start": 1509033900000,
-                    "end": 1509039300000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487969,
-                    "start": 1509642300000,
-                    "end": 1509647700000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487972,
-                    "start": 1510247100000,
-                    "end": 1510252500000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487975,
-                    "start": 1510851900000,
-                    "end": 1510857300000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487978,
-                    "start": 1511456700000,
-                    "end": 1511462100000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487981,
-                    "start": 1512061500000,
-                    "end": 1512066900000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487984,
-                    "start": 1516295100000,
-                    "end": 1516300500000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487987,
-                    "start": 1516899900000,
-                    "end": 1516905300000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487990,
-                    "start": 1517504700000,
-                    "end": 1517510100000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487993,
-                    "start": 1518109500000,
-                    "end": 1518114900000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487996,
-                    "start": 1518714300000,
-                    "end": 1518719700000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2487999,
-                    "start": 1519923900000,
-                    "end": 1519929300000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2488002,
-                    "start": 1520528700000,
-                    "end": 1520534100000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2488005,
-                    "start": 1521133500000,
-                    "end": 1521138900000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2488008,
-                    "start": 1521738300000,
-                    "end": 1521743700000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2488011,
-                    "start": 1522944300000,
-                    "end": 1522949700000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2488014,
-                    "start": 1523549100000,
-                    "end": 1523554500000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2488017,
-                    "start": 1524153900000,
-                    "end": 1524159300000,
-                    "teachingplace": "Myyrmäki, Martinlaakson koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 181956,
-            "code": "V171825",
-            "name": "Stepping Stones of English 2 jatko  B1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": ""
-                }
-            ],
-            "price": "89.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505405100000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524153900000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 25,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524159300000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2494455,
-                    "start": 1505405100000,
-                    "end": 1505410500000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494458,
-                    "start": 1506009900000,
-                    "end": 1506015300000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494461,
-                    "start": 1506614700000,
-                    "end": 1506620100000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494464,
-                    "start": 1507219500000,
-                    "end": 1507224900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494467,
-                    "start": 1507824300000,
-                    "end": 1507829700000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494470,
-                    "start": 1508429100000,
-                    "end": 1508434500000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494473,
-                    "start": 1509033900000,
-                    "end": 1509039300000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494476,
-                    "start": 1509642300000,
-                    "end": 1509647700000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494479,
-                    "start": 1510247100000,
-                    "end": 1510252500000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494482,
-                    "start": 1510851900000,
-                    "end": 1510857300000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494485,
-                    "start": 1511456700000,
-                    "end": 1511462100000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494488,
-                    "start": 1512061500000,
-                    "end": 1512066900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494419,
-                    "start": 1516295100000,
-                    "end": 1516300500000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494422,
-                    "start": 1516899900000,
-                    "end": 1516905300000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494425,
-                    "start": 1517504700000,
-                    "end": 1517510100000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494428,
-                    "start": 1518109500000,
-                    "end": 1518114900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494431,
-                    "start": 1518714300000,
-                    "end": 1518719700000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494434,
-                    "start": 1519923900000,
-                    "end": 1519929300000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494437,
-                    "start": 1520528700000,
-                    "end": 1520534100000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494440,
-                    "start": 1521133500000,
-                    "end": 1521138900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494443,
-                    "start": 1521738300000,
-                    "end": 1521743700000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494416,
-                    "start": 1522339500000,
-                    "end": 1522344900000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2494446,
-                    "start": 1522944300000,
-                    "end": 1522949700000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494449,
-                    "start": 1523549100000,
-                    "end": 1523554500000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2494452,
-                    "start": 1524153900000,
-                    "end": 1524159300000,
-                    "teachingplace":
-                        "Tikkurila, Vantaan opistotalo, 211 Luokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 179646,
-            "code": "V171669",
-            "name": "Helppo päiväkeskustelu Myyrmäessä  B1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": ""
-                }
-            ],
-            "price": "87.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505729700000,
-            "firstSessionWeekdate": "Mon",
-            "lastSession": 1524478500000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 24,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524483900000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2459451,
-                    "start": 1505729700000,
-                    "end": 1505735100000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459454,
-                    "start": 1506334500000,
-                    "end": 1506339900000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459457,
-                    "start": 1506939300000,
-                    "end": 1506944700000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459460,
-                    "start": 1507544100000,
-                    "end": 1507549500000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459466,
-                    "start": 1508753700000,
-                    "end": 1508759100000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459469,
-                    "start": 1509362100000,
-                    "end": 1509367500000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459472,
-                    "start": 1509966900000,
-                    "end": 1509972300000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459475,
-                    "start": 1510571700000,
-                    "end": 1510577100000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459478,
-                    "start": 1511176500000,
-                    "end": 1511181900000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459481,
-                    "start": 1511781300000,
-                    "end": 1511786700000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459463,
-                    "start": 1512386100000,
-                    "end": 1512391500000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2459412,
-                    "start": 1516014900000,
-                    "end": 1516020300000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459415,
-                    "start": 1516619700000,
-                    "end": 1516625100000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459418,
-                    "start": 1517224500000,
-                    "end": 1517229900000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459421,
-                    "start": 1517829300000,
-                    "end": 1517834700000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459424,
-                    "start": 1518434100000,
-                    "end": 1518439500000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459427,
-                    "start": 1519643700000,
-                    "end": 1519649100000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459430,
-                    "start": 1520248500000,
-                    "end": 1520253900000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459433,
-                    "start": 1520853300000,
-                    "end": 1520858700000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459436,
-                    "start": 1521458100000,
-                    "end": 1521463500000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459439,
-                    "start": 1522059300000,
-                    "end": 1522064700000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459442,
-                    "start": 1523268900000,
-                    "end": 1523274300000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459445,
-                    "start": 1523873700000,
-                    "end": 1523879100000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459448,
-                    "start": 1524478500000,
-                    "end": 1524483900000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 179679,
-            "code": "V171670",
-            "name": "Hello America!  B1 ",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": ""
-                },
-                {
-                    "path": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": ""
-                }
-            ],
-            "price": "87.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505737800000,
-            "firstSessionWeekdate": "Mon",
-            "lastSession": 1524486600000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 24,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524492000000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2459796,
-                    "start": 1505737800000,
-                    "end": 1505743200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459799,
-                    "start": 1506342600000,
-                    "end": 1506348000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459802,
-                    "start": 1506947400000,
-                    "end": 1506952800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459805,
-                    "start": 1507552200000,
-                    "end": 1507557600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459811,
-                    "start": 1508761800000,
-                    "end": 1508767200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459814,
-                    "start": 1509370200000,
-                    "end": 1509375600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459817,
-                    "start": 1509975000000,
-                    "end": 1509980400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459820,
-                    "start": 1510579800000,
-                    "end": 1510585200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459823,
-                    "start": 1511184600000,
-                    "end": 1511190000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459826,
-                    "start": 1511789400000,
-                    "end": 1511794800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459808,
-                    "start": 1512394200000,
-                    "end": 1512399600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2459829,
-                    "start": 1516023000000,
-                    "end": 1516028400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459832,
-                    "start": 1516627800000,
-                    "end": 1516633200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459835,
-                    "start": 1517232600000,
-                    "end": 1517238000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459838,
-                    "start": 1517837400000,
-                    "end": 1517842800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459841,
-                    "start": 1518442200000,
-                    "end": 1518447600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459844,
-                    "start": 1519651800000,
-                    "end": 1519657200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459847,
-                    "start": 1520256600000,
-                    "end": 1520262000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459850,
-                    "start": 1520861400000,
-                    "end": 1520866800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459853,
-                    "start": 1521466200000,
-                    "end": 1521471600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459856,
-                    "start": 1522067400000,
-                    "end": 1522072800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459859,
-                    "start": 1523277000000,
-                    "end": 1523282400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459862,
-                    "start": 1523881800000,
-                    "end": 1523887200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459865,
-                    "start": 1524486600000,
-                    "end": 1524492000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Teorialuokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 179736,
-            "code": "V171675",
-            "name": "Pat and Polly 1 B1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Myyrmäki, Kilterin koulu",
-                    "address": ""
-                }
-            ],
-            "price": "87.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1505999700000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524748500000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 24,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524754800000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2460741,
-                    "start": 1505999700000,
-                    "end": 1506005100000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2460744,
-                    "start": 1506604500000,
-                    "end": 1506609900000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460747,
-                    "start": 1507209300000,
-                    "end": 1507214700000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460750,
-                    "start": 1507814100000,
-                    "end": 1507819500000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460756,
-                    "start": 1509023700000,
-                    "end": 1509029100000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460759,
-                    "start": 1509632100000,
-                    "end": 1509637500000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460762,
-                    "start": 1510236900000,
-                    "end": 1510242300000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460765,
-                    "start": 1510841700000,
-                    "end": 1510847100000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460768,
-                    "start": 1511446500000,
-                    "end": 1511451900000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460771,
-                    "start": 1512051300000,
-                    "end": 1512056700000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460753,
-                    "start": 1512656100000,
-                    "end": 1512661500000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2460774,
-                    "start": 1516284900000,
-                    "end": 1516290300000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460777,
-                    "start": 1516889700000,
-                    "end": 1516895100000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460780,
-                    "start": 1517494500000,
-                    "end": 1517499900000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460783,
-                    "start": 1518099300000,
-                    "end": 1518104700000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460786,
-                    "start": 1518704100000,
-                    "end": 1518709500000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460789,
-                    "start": 1519913700000,
-                    "end": 1519919100000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460792,
-                    "start": 1520518500000,
-                    "end": 1520523900000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460795,
-                    "start": 1521123300000,
-                    "end": 1521128700000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460798,
-                    "start": 1521728100000,
-                    "end": 1521733500000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460801,
-                    "start": 1522934100000,
-                    "end": 1522939500000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460804,
-                    "start": 1523538900000,
-                    "end": 1523544300000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460807,
-                    "start": 1524143700000,
-                    "end": 1524149100000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2460810,
-                    "start": 1524748500000,
-                    "end": 1524753900000,
-                    "teachingplace": "Myyrmäki, Kilterin koulu",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 179742,
-            "code": "V171676",
-            "name": "Stepping Stones 1  B1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": ""
-                }
-            ],
-            "price": "87.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1506076200000,
-            "firstSessionWeekdate": "Fri",
-            "lastSession": 1524825000000,
-            "internetEnrollment": true,
-            "minStudentCount": 11,
-            "maxStudentCount": 25,
-            "firstEnrollmentDate": 1502877639000,
-            "lastEnrollmentDate": 1524830400000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2461107,
-                    "start": 1506076200000,
-                    "end": 1506081600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461110,
-                    "start": 1506681000000,
-                    "end": 1506686400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461113,
-                    "start": 1507285800000,
-                    "end": 1507291200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461116,
-                    "start": 1507890600000,
-                    "end": 1507896000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461122,
-                    "start": 1509100200000,
-                    "end": 1509105600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461125,
-                    "start": 1509708600000,
-                    "end": 1509714000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461128,
-                    "start": 1510313400000,
-                    "end": 1510318800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461131,
-                    "start": 1510918200000,
-                    "end": 1510923600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461134,
-                    "start": 1511523000000,
-                    "end": 1511528400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461119,
-                    "start": 1512127800000,
-                    "end": 1512133200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2461137,
-                    "start": 1512127800000,
-                    "end": 1512133200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461140,
-                    "start": 1516361400000,
-                    "end": 1516366800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461143,
-                    "start": 1516966200000,
-                    "end": 1516971600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461146,
-                    "start": 1517571000000,
-                    "end": 1517576400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461149,
-                    "start": 1518175800000,
-                    "end": 1518181200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461152,
-                    "start": 1518780600000,
-                    "end": 1518786000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461155,
-                    "start": 1519990200000,
-                    "end": 1519995600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461158,
-                    "start": 1520595000000,
-                    "end": 1520600400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461161,
-                    "start": 1521199800000,
-                    "end": 1521205200000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461164,
-                    "start": 1521804600000,
-                    "end": 1521810000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461167,
-                    "start": 1523010600000,
-                    "end": 1523016000000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461170,
-                    "start": 1523615400000,
-                    "end": 1523620800000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461173,
-                    "start": 1524220200000,
-                    "end": 1524225600000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2461176,
-                    "start": 1524825000000,
-                    "end": 1524830400000,
-                    "teachingplace": "Myyrmäki, Myyrinki, Kieliluokka",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 190041,
-            "code": "A180193",
-            "name": "The Cambridge Certificate of Advanced English",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": ""
-                }
-            ],
-            "price": "86.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1515513900000,
-            "firstSessionWeekdate": "Tue",
-            "lastSession": 1526396700000,
-            "internetEnrollment": true,
-            "minStudentCount": 7,
-            "maxStudentCount": 20,
-            "firstEnrollmentDate": 1502866821000,
-            "lastEnrollmentDate": 1526405400000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2597142,
-                    "start": 1515513900000,
-                    "end": 1515522600000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597145,
-                    "start": 1516118700000,
-                    "end": 1516127400000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597148,
-                    "start": 1516723500000,
-                    "end": 1516732200000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597151,
-                    "start": 1517328300000,
-                    "end": 1517337000000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597154,
-                    "start": 1517933100000,
-                    "end": 1517941800000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597157,
-                    "start": 1518537900000,
-                    "end": 1518546600000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597160,
-                    "start": 1519747500000,
-                    "end": 1519756200000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597163,
-                    "start": 1520352300000,
-                    "end": 1520361000000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597166,
-                    "start": 1520957100000,
-                    "end": 1520965800000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597169,
-                    "start": 1521561900000,
-                    "end": 1521570600000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597172,
-                    "start": 1522163100000,
-                    "end": 1522171800000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597175,
-                    "start": 1522767900000,
-                    "end": 1522776600000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597178,
-                    "start": 1523372700000,
-                    "end": 1523381400000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597181,
-                    "start": 1523977500000,
-                    "end": 1523986200000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597184,
-                    "start": 1524582300000,
-                    "end": 1524591000000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597187,
-                    "start": 1525273500000,
-                    "end": 1525282200000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597190,
-                    "start": 1525791900000,
-                    "end": 1525800600000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2597229,
-                    "start": 1526396700000,
-                    "end": 1526405400000,
-                    "teachingplace":
-                        "Centrumområdet, Arbis, Dagmarsg. 3, Tölö, rum 33A",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 164313,
-            "code": "EA180057",
-            "name": "English Conversation",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tapiola, Vindängens skola",
                     "address": ""
                 }
             ],
             "price": "43.00",
             "priceMaterial": "0.00",
-            "firstSession": 1516176000000,
-            "firstSessionWeekdate": "Wed",
-            "lastSession": 1524639600000,
-            "internetEnrollment": true,
-            "minStudentCount": 7,
-            "maxStudentCount": 16,
-            "firstEnrollmentDate": 1502866835000,
-            "lastEnrollmentDate": 1524645000000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2299941,
-                    "start": 1516176000000,
-                    "end": 1516181400000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299944,
-                    "start": 1516780800000,
-                    "end": 1516786200000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299947,
-                    "start": 1517385600000,
-                    "end": 1517391000000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299950,
-                    "start": 1517990400000,
-                    "end": 1517995800000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299953,
-                    "start": 1518595200000,
-                    "end": 1518600600000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299956,
-                    "start": 1519804800000,
-                    "end": 1519810200000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299959,
-                    "start": 1520409600000,
-                    "end": 1520415000000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299962,
-                    "start": 1521014400000,
-                    "end": 1521019800000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299965,
-                    "start": 1521619200000,
-                    "end": 1521624600000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299968,
-                    "start": 1522220400000,
-                    "end": 1522225800000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299971,
-                    "start": 1522825200000,
-                    "end": 1522830600000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299974,
-                    "start": 1523430000000,
-                    "end": 1523435400000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299977,
-                    "start": 1524034800000,
-                    "end": 1524040200000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2299980,
-                    "start": 1524639600000,
-                    "end": 1524645000000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 164094,
-            "code": "EA180056",
-            "name": "English discussion group - SENIORKURS",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tapiola, Vindängens skola",
-                    "address": ""
-                }
-            ],
-            "price": "15.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1516181400000,
-            "firstSessionWeekdate": "Wed",
-            "lastSession": 1524645000000,
-            "internetEnrollment": true,
-            "minStudentCount": 7,
-            "maxStudentCount": 16,
-            "firstEnrollmentDate": 1502866835000,
-            "lastEnrollmentDate": 1524556800000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2459520,
-                    "start": 1516181400000,
-                    "end": 1516186800000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459523,
-                    "start": 1516786200000,
-                    "end": 1516791600000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459526,
-                    "start": 1517391000000,
-                    "end": 1517396400000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459529,
-                    "start": 1517995800000,
-                    "end": 1518001200000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459532,
-                    "start": 1518600600000,
-                    "end": 1518606000000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459535,
-                    "start": 1519810200000,
-                    "end": 1519815600000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459538,
-                    "start": 1520415000000,
-                    "end": 1520420400000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459541,
-                    "start": 1521019800000,
-                    "end": 1521025200000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459544,
-                    "start": 1521624600000,
-                    "end": 1521630000000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459547,
-                    "start": 1522225800000,
-                    "end": 1522231200000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459550,
-                    "start": 1522830600000,
-                    "end": 1522836000000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459553,
-                    "start": 1523435400000,
-                    "end": 1523440800000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459556,
-                    "start": 1524040200000,
-                    "end": 1524045600000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459559,
-                    "start": 1524645000000,
-                    "end": 1524650400000,
-                    "teachingplace": "Tapiola, Vindängens skola",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 164085,
-            "code": "EA180055",
-            "name": "Lätt konversation på engelska - SENIORKURS",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tapiola, Folkhälsan huset",
-                    "address": ""
-                }
-            ],
-            "price": "15.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1516188600000,
-            "firstSessionWeekdate": "Wed",
-            "lastSession": 1524652200000,
-            "internetEnrollment": true,
-            "minStudentCount": 7,
-            "maxStudentCount": 13,
-            "firstEnrollmentDate": 1502866835000,
-            "lastEnrollmentDate": 1524657600000,
-            "acceptedCount": -1,
-            "ilmolink": "",
-            "teachingSession": [
-                {
-                    "id": 2459580,
-                    "start": 1516188600000,
-                    "end": 1516194000000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459583,
-                    "start": 1516793400000,
-                    "end": 1516798800000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459586,
-                    "start": 1517398200000,
-                    "end": 1517403600000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459589,
-                    "start": 1518003000000,
-                    "end": 1518008400000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459592,
-                    "start": 1518607800000,
-                    "end": 1518613200000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459595,
-                    "start": 1519817400000,
-                    "end": 1519822800000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459598,
-                    "start": 1520422200000,
-                    "end": 1520427600000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459601,
-                    "start": 1521027000000,
-                    "end": 1521032400000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459604,
-                    "start": 1521631800000,
-                    "end": 1521637200000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459607,
-                    "start": 1522233000000,
-                    "end": 1522238400000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459610,
-                    "start": 1522837800000,
-                    "end": 1522843200000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459613,
-                    "start": 1523442600000,
-                    "end": 1523448000000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459616,
-                    "start": 1524047400000,
-                    "end": 1524052800000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2459619,
-                    "start": 1524652200000,
-                    "end": 1524657600000,
-                    "teachingplace": "Tapiola, Folkhälsan huset",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                }
-            ]
-        },
-        {
-            "id": 180615,
-            "code": "V180025",
-            "name": "Activating and Polishing Your English in Tikkurila B2/C1",
-            "description": null,
-            "descriptionInternet": null,
-            "location": [
-                {
-                    "path": "Tikkurila, Tikkurilan lukio",
-                    "address": ""
-                }
-            ],
-            "price": "51.00",
-            "priceMaterial": "0.00",
-            "firstSession": 1516287600000,
-            "firstSessionWeekdate": "Thu",
-            "lastSession": 1524146400000,
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
             "internetEnrollment": true,
             "minStudentCount": 11,
-            "maxStudentCount": 16,
-            "firstEnrollmentDate": 1512990043000,
-            "lastEnrollmentDate": 1524151800000,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
             "acceptedCount": -1,
             "ilmolink": "",
             "teachingSession": [
                 {
-                    "id": 2473731,
-                    "start": 1516287600000,
-                    "end": 1516293000000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473734,
-                    "start": 1516892400000,
-                    "end": 1516897800000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473737,
-                    "start": 1517497200000,
-                    "end": 1517502600000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473740,
-                    "start": 1518102000000,
-                    "end": 1518107400000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473743,
-                    "start": 1518706800000,
-                    "end": 1518712200000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473746,
-                    "start": 1519916400000,
-                    "end": 1519921800000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473749,
-                    "start": 1520521200000,
-                    "end": 1520526600000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473752,
-                    "start": 1521126000000,
-                    "end": 1521131400000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473755,
-                    "start": 1521730800000,
-                    "end": 1521736200000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473758,
-                    "start": 1522936800000,
-                    "end": 1522942200000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473761,
-                    "start": 1523541600000,
-                    "end": 1523547000000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
-                    "address": null,
-                    "description": null,
-                    "status": 0
-                },
-                {
-                    "id": 2473764,
-                    "start": 1524146400000,
-                    "end": 1524151800000,
-                    "teachingplace": "Tikkurila, Tikkurilan lukio",
+                    "id": 2554800,
+                    "start": 1525521971909,
+                    "end": 1525608371909,
+                    "teachingplace":
+                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
@@ -4165,80 +749,147 @@
             ]
         },
         {
-            "id": 184854,
-            "code": "E180403",
-            "name": "Englanti B1 English at Work Intensive",
+            "id": 21,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
             "description": null,
             "descriptionInternet": null,
             "location": [
                 {
-                    "path": "Leppävaara, Omnia Upseerinkatu 11",
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": ""
                 }
             ],
-            "price": "79.00",
-            "priceMaterial": "7.00",
-            "firstSession": 1523889000000,
+            "price": "89.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
             "firstSessionWeekdate": "Mon",
-            "lastSession": 1525703400000,
+            "lastSession": 1523865900000,
             "internetEnrollment": true,
-            "minStudentCount": 10,
-            "maxStudentCount": 20,
-            "firstEnrollmentDate": 1512986429000,
-            "lastEnrollmentDate": 1525715100000,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
             "acceptedCount": -1,
             "ilmolink": "",
             "teachingSession": [
                 {
-                    "id": 2533581,
-                    "start": 1523889000000,
-                    "end": 1523900700000,
-                    "teachingplace": "Leppävaara, Omnia Upseerinkatu 11",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2533590,
-                    "start": 1524061800000,
-                    "end": 1524073500000,
-                    "teachingplace": "Leppävaara, Omnia Upseerinkatu 11",
-                    "address": null,
-                    "description": "",
-                    "status": 0
-                },
-                {
-                    "id": 2533584,
-                    "start": 1524493800000,
-                    "end": 1524505500000,
-                    "teachingplace": "Leppävaara, Omnia Upseerinkatu 11",
+                    "id": 2554803,
+                    "start": 1525608371909,
+                    "end": 1525694771909,
+                    "teachingplace":
+                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
                 {
-                    "id": 2533593,
-                    "start": 1524666600000,
-                    "end": 1524678300000,
-                    "teachingplace": "Leppävaara, Omnia Upseerinkatu 11",
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "81.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
+                {
+                    "id": 2554806,
+                    "start": 1525694771909,
+                    "end": 1525781171909,
+                    "teachingplace":
+                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
                 {
-                    "id": 2533596,
-                    "start": 1525271400000,
-                    "end": 1525283100000,
-                    "teachingplace": "Leppävaara, Omnia Upseerinkatu 11",
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "83.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
+                {
+                    "id": 2554809,
+                    "start": 1525781171909,
+                    "end": 1525867571909,
+                    "teachingplace":
+                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0
-                },
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "code": "V172061",
+            "name": "Englantia perustasolla A1+/A2",
+            "description": null,
+            "descriptionInternet": null,
+            "location": [
                 {
-                    "id": 2533587,
-                    "start": 1525703400000,
-                    "end": 1525715100000,
-                    "teachingplace": "Leppävaara, Omnia Upseerinkatu 11",
+                    "path": "Tikkurila, Vantaan opistotalo, 170 Luokka",
+                    "address": ""
+                }
+            ],
+            "price": "88.00",
+            "priceMaterial": "0.00",
+            "firstSession": 1504512300000,
+            "firstSessionWeekdate": "Mon",
+            "lastSession": 1523865900000,
+            "internetEnrollment": true,
+            "minStudentCount": 11,
+            "maxStudentCount": 25,
+            "firstEnrollmentDate": 1502877639000,
+            "lastEnrollmentDate": 1524476100000,
+            "acceptedCount": -1,
+            "ilmolink": "",
+            "teachingSession": [
+                {
+                    "id": 2554812,
+                    "start": 1525867571909,
+                    "end": 1525953971909,
+                    "teachingplace":
+                        "Tikkurila, Vantaan opistotalo, 170 Luokka",
                     "address": null,
                     "description": null,
                     "status": 0

@@ -90,6 +90,8 @@ const getCourseById = (id) => {
 
 const reduceCoursesByDate = (courses) => {
     return courses
+        .filter((course) => course.location[0])
+        .filter((course) => course.teachingSession[0])
         .map((course) => ({
             id: course.id,
             name: course.name,
