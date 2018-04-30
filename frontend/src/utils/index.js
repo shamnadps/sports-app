@@ -10,3 +10,34 @@ export const getLocale = () => {
     if (stores.contentStore.language === 'fi') return fiLocale;
     // add cases for swedish later
 };
+
+export const toStringFromObject = (obj) => Object.values(obj).join('');
+
+export const processPhoneNumber = (phoneNumber) =>
+    phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
+
+export const serialize = (
+    serializableTarget = {},
+    propertySelector = (target) => target
+) => {
+    // a small wrapper for JSON stringify in case
+    try {
+        return JSON.stringify(propertySelector(serializableTarget));
+    } catch (error) {
+        console.log(error, 'Cannot serialize');
+    }
+};
+
+export const hydrateFromStorage = (name) => {
+    const value = window.localStorage.getItem(name);
+    if (value) return JSON.parse(value);
+    else throw new Error('Cannot hydrate from storage');
+};
+
+export const persistToStorage = (name, data) => {
+    try {
+        window.localStorage.setItem(name, serialize(data));
+    } catch (error) {
+        console.err(error, 'Cannot persist to storage');
+    }
+};

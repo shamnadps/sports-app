@@ -1,4 +1,11 @@
 import { decorate, observable, action, autorun, computed } from 'mobx';
+import {
+    serialize,
+    toStringFromObject,
+    processPhoneNumber,
+    hydrateFromStorage,
+    persistToStorage,
+} from 'utils';
 import API from '../apis';
 
 // constants
@@ -10,48 +17,50 @@ const DEFAULT_PIN = {
     '3': '',
 };
 
-// local utility helper
-const toStringFromObject = (obj) => Object.values(obj).join('');
-const processPhoneNumber = (phoneNumber) =>
-    phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
-
 class UserStore {
     isAuthenticating = false;
-    token = null;
     authenticationFailed = false;
-    phoneNumber = '';
-    phoneNumberIncorrect = false;
     pinCode = DEFAULT_PIN;
-    pinCodeIsSet = false;
-    balance = 100;
+    username = undefined;
+    phoneNumber = undefined;
+    token = undefined;
+    balance = 0;
 
-    get isAuthenticated() {
-        // user is authenticated if there exists a token, otherwise they are guests
-        return !!this.token;
-    }
     constructor() {
         try {
-            const value = window.localStorage.getItem('token');
-            if (value) {
-                this.token = value;
-            } else throw new Error('Token is null');
-        } catch (err) {
-            console.log('Session expired');
+            const userData = hydrateFromStorage('user');
+            this.setCredentials(userData);
+        } catch (error) {
+            console.error(error);
         }
     }
-    // sets and validate phoneNumber
-    setPhoneNumber(input) {
-        this.phoneNumber = input;
-        this.phoneNumberIncorrect = input.match(
+    // computed values
+    get isAuthenticated() {
+        // user is authenticated if there exists a token, otherwise they are guests
+        return this.token && this.username && this.phoneNumber;
+    }
+    get phoneNumberIncorrect() {
+        return this.phoneNumber.match(
             /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
         );
     }
+    get freezePinCode() {
+        return (
+            Object.values(this.pinCode).every((code) => code !== '') &&
+            !this.phoneNumberIncorrect
+        );
+    }
 
-    // sets and authenticate
+    // actions, that alters state
+    setPhoneNumber(input) {
+        this.phoneNumber = input;
+    }
+
     setInputCode = (position, value) => {
+        // sets inputCode
         // pin code array only have 4 digits
         if (
-            this.pinCodeIsSet ||
+            this.freezePinCode ||
             position < 0 ||
             position > 3 ||
             value > 10 ||
@@ -59,64 +68,67 @@ class UserStore {
         )
             return false;
         this.pinCode[position] = value;
-        if (
-            Object.values(this.pinCode).every((code) => code !== '') &&
-            !this.phoneNumberIncorrect
-        ) {
-            this.pinCodeIsSet = true;
-            // the PINCODE is now complete, attempts to authenticate
-            this.authenticate();
-        }
         return true;
     };
+    setCredentials = (userData) => {
+        this.token = userData.token;
+        this.username = userData.username;
+        this.balance = userData.balance;
+        this.phoneNumber = userData.phoneNumber;
+    };
 
-    async authenticate() {
-        this.isAuthenticating = true;
-
-        try {
-            const userData = await BACKEND_API.login({
-                pin: toStringFromObject(this.pinCode),
-                phoneNumber: processPhoneNumber(this.phoneNumber),
-            });
-            // @TODO: Token is a "for now" placeholder implementation. To be removed when official
-            // strategy for token is decided.
-            this.token = userData.token;
-            this.username = userData.username;
-        } catch (err) {
-            this.authenticationFailed = true;
-            console.log(err);
+    // reactions that do SIDE EFFECTS
+    authenticateReaction = autorun(async () => {
+        if (this.freezePinCode) {
+            this.isAuthenticating = true;
+            try {
+                const userData = await BACKEND_API.login({
+                    pin: toStringFromObject(this.pinCode),
+                    phoneNumber: processPhoneNumber(this.phoneNumber),
+                });
+                // @TODO: Token is a "for now" placeholder implementation. To be removed when official
+                // strategy for token is decided.
+                this.setCredentials(userData);
+            } catch (err) {
+                this.authenticationFailed = true;
+                console.log(err);
+            }
         }
-    }
-
+    });
     authenticationFailedReaction = autorun(() => {
         if (this.authenticationFailed) {
             this.pinCodeIsSet = false;
+            this.isAuthenticating = false;
             window.setTimeout(() => {
                 this.authenticationFailed = false;
                 this.pinCode = DEFAULT_PIN;
             }, 1500);
         }
     });
-
     authenticationSuccessfulReaction = autorun(() => {
-        if (!this.token) return;
+        if (!this.isAuthenticated) return;
+        console.log('Logged in successful, persisting to local storage');
         this.isAuthenticating = false;
         this.authenticationFailed = false;
-        window.localStorage.setItem('token', this.token);
+        persistToStorage('user', {
+            username: this.username,
+            token: this.token,
+            phoneNumber: this.phoneNumber,
+            balance: this.balance,
+        });
     });
 }
 
 export default decorate(UserStore, {
-    isAuthenticated: computed,
     isAuthenticating: observable,
+    isAuthenticated: computed,
     authenticationFailed: observable,
+    phoneNumberIncorrect: computed,
     token: observable,
-    phoneNumberIncorrect: observable,
     phoneNumber: observable,
-    pinCode: observable,
     balance: observable,
-    authenticate: action.bound,
+    pinCode: observable,
     setPhoneNumber: action,
     setInputCode: action,
-    setStatusAsGuest: action.bound,
+    setCredentials: action,
 });

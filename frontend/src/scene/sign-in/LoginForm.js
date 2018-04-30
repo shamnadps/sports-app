@@ -123,6 +123,12 @@ class LoginForm extends React.Component {
         }
     };
     render() {
+        // console.log(
+        //     this.props.UserStore.balance,
+        //     this.props.UserStore.username,
+        //     this.props.UserStore.phoneNumber
+        // );
+
         const content = this.props.ContentStore.content;
         const authenticationFailed = this.props.UserStore.authenticationFailed;
 
@@ -141,7 +147,7 @@ class LoginForm extends React.Component {
                     <TelephoneInput
                         name="telephone"
                         type="tel"
-                        value={this.props.UserStore.phoneNumber}
+                        value={this.props.UserStore.phoneNumber || ''}
                         onChange={this.onTelephoneInputChange}
                     />
                 </InputField>
