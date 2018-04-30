@@ -1,6 +1,6 @@
 const db = require('./sequalize_pg');
 const axios = require('axios');
-const models = require('./grynos');
+const models = require('./models');
 
 const url = process.env.GRYNOS_COURSE_API_URL;
 
@@ -30,7 +30,9 @@ const fetchCourses = async () => {
     try {
         const response = await axios(url);
         await db.sync({ force: true });
-        return response.data.course.map((course) => mapCourseFromGrynos(course));
+        return response.data.course.map((course) =>
+            mapCourseFromGrynos(course)
+        );
     } catch (error) {
         console.error(
             'Fetching the Grynos courses failed. See the attached error for details. ',
@@ -42,15 +44,12 @@ const fetchCourses = async () => {
 const updateCoursesToDb = async () => {
     const courses = await fetchCourses();
     courses.forEach((course) => {
-        models.courses.create(
-            course,
-            {
-                include: [
-                    { model: models.locations, as: 'location' },
-                    { model: models.events, as: 'teachingSession' },
-                ],
-            }
-        );
+        models.courses.create(course, {
+            include: [
+                { model: models.locations, as: 'location' },
+                { model: models.events, as: 'teachingSession' },
+            ],
+        });
     });
 };
 

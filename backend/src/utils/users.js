@@ -5,6 +5,12 @@ const validateUsername = (username) => {
     }
 };
 
+const validateUserId = (userId) => {
+    if (typeof userId !== 'number' || isNaN(userId)) {
+        return 'User Id is not valid';
+    }
+};
+
 const validateUserPhone = (phoneNumber) => {
     if (
         typeof phoneNumber !== 'string' ||
@@ -53,4 +59,5 @@ module.exports = {
     validateUserPhone,
     validateUserPin,
     validateUserPhoneAndPin,
+    validateUserId,
 };
