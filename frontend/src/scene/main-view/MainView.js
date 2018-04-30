@@ -5,7 +5,6 @@ import ClassCard from './ClassCard';
 import AppHeader from './AppHeader';
 import CourseModal from './CourseModal';
 import { connect } from 'utils';
-import { Redirect } from 'react-router-dom';
 
 const Wrapper = styled('div')`
     position: relative;
