@@ -22,7 +22,6 @@ const validateUserPhone = (phoneNumber) => {
 };
 
 const validateUserPin = (pin) => {
-    pin = Number(pin);
     if (typeof pin !== 'string' || pin.length !== 4) {
         return 'Pin is not valid';
     }
