@@ -8,7 +8,7 @@ describe('Users API testing.', () => {
     let user = {
         username: 'test user',
         phoneNumber: '+358 1234535',
-        pin: 1234,
+        pin: '1234',
         token: token,
     };
     test('should create user and get usr by token', async () => {
@@ -34,8 +34,7 @@ describe('Users API testing.', () => {
 
     test('should update user and get user by phone and pin', async () => {
         user.username = 'test Updated';
-        user.pin = 1232;
-        user.token = token;
+        user.pin = '1232';
 
         await db.users.updateUser(user, user.phoneNumber);
         const dbuser = await db.users.getUserByPhoneAndPin(
@@ -66,7 +65,7 @@ describe('Users API testing.', () => {
 
     test('check for valid Pin', () => {
         const invalidPin = 'Pin is not valid';
-        expect(utils.users.validateUserPin(1234)).toBeUndefined();
+        expect(utils.users.validateUserPin(1234)).toEqual(invalidPin);
         expect(utils.users.validateUserPin(123)).toEqual(invalidPin);
         expect(utils.users.validateUserPin(12345)).toEqual(invalidPin);
         expect(utils.users.validateUserPin('1234')).toBeUndefined();

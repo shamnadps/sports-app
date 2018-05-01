@@ -65,7 +65,10 @@ const createUser = async (req, res) => {
         } else {
             const token = randtoken.generate(16);
             user.token = token;
+            const pin = randtoken.generate(4, '0123456789');
+            user.pin = pin;
             const createdUser = await db.users.createUser(user);
+            console.log(`User PIN Generated: ${pin}`);
             res.status(201).send(createdUser);
         }
     } catch (err) {
@@ -90,11 +93,36 @@ const login = async (req, res) => {
             if (user) {
                 res.status(200).send(user);
             } else {
-                res.status(401).send('Phone number or pin is incorrect!.');
+                res.status(401).send('Phone number or PIN is incorrect!.');
             }
         }
     } catch (err) {
         res.status(500).send(`Failed to login. Error: ${err.message}`);
+    }
+};
+
+const resetPin = async (req, res) => {
+    try {
+        const phoneNumber = req.body.phoneNumber;
+        const validationErrors = utils.users.validateUserPhone(phoneNumber);
+        if (validationErrors) {
+            res.status(422).send(validationErrors);
+        } else {
+            const user = await db.users.getUser(phoneNumber);
+            if (user) {
+                const pin = randtoken.generate(4, '0123456789');
+                user.pin = pin;
+                await db.users.updateUser(user);
+                console.log(`New PIN Generated: ${pin}`);
+                res.status(200).send('New PIN generated!');
+            } else {
+                res.status(401).send('Phone number is not valid!.');
+            }
+        }
+    } catch (err) {
+        res
+            .status(500)
+            .send(`Failed to generate new PIN. Error: ${err.message}`);
     }
 };
 
@@ -103,5 +131,6 @@ router.put('/me', auth.requireAuth, updateUser);
 router.get('/:phoneNumber', auth.requireAuth, getUser);
 router.delete('/me', auth.requireAuth, deleteUser);
 router.post('/login', login);
+router.post('/reset-pin', resetPin);
 
 module.exports = router;
