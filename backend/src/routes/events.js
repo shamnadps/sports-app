@@ -9,7 +9,7 @@ const getEventById = async (req, res) => {
         const eventId = Number(req.params.id);
         const validationErrors = utils.events.validateEventId(eventId);
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             const events = await db.events.getEventById(eventId);
             if (events.length !== 0) {

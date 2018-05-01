@@ -58,22 +58,30 @@ describe('Users API testing.', () => {
 
     test('check for valid username', () => {
         const invalidUsername = 'Username is not valid';
-        expect(utils.users.validateUsername('ABCDEF')).not.toEqual(
-            invalidUsername
-        );
-        expect(utils.users.validateUsername('1234')).not.toEqual(
-            invalidUsername
-        );
+        expect(utils.users.validateUsername('ABCDEF')).toBeUndefined();
+        expect(utils.users.validateUsername('1234')).toBeUndefined();
         expect(utils.users.validateUsername('')).toEqual(invalidUsername);
         expect(utils.users.validateUsername(1234)).toEqual(invalidUsername);
     });
 
     test('check for valid Pin', () => {
         const invalidPin = 'Pin is not valid';
-        expect(utils.users.validateUserPin(1234)).not.toEqual(invalidPin);
+        expect(utils.users.validateUserPin(1234)).toBeUndefined();
         expect(utils.users.validateUserPin(123)).toEqual(invalidPin);
         expect(utils.users.validateUserPin(12345)).toEqual(invalidPin);
-        expect(utils.users.validateUserPin('1234')).not.toEqual(invalidPin);
+        expect(utils.users.validateUserPin('1234')).toBeUndefined();
+    });
+
+    test('check saldo update is working properly', async () => {
+        await db.users.createUser(user);
+        let dbuser = await db.users.getUserByToken(token);
+        expect(dbuser.balance).toEqual(100);
+        await db.reservations.updateUserBalance(dbuser.id, 1.5);
+        dbuser = await db.users.getUserByToken(token);
+        expect(dbuser.balance).toEqual(1.5);
+        await db.reservations.updateUserBalance(dbuser.id, 0);
+        dbuser = await db.users.getUserByToken(token);
+        expect(dbuser.balance).toEqual(0);
     });
 
     test('check for valid phone numbers', () => {
@@ -102,14 +110,8 @@ describe('Users API testing.', () => {
         expect(utils.users.validateUserPhone('+(358)503 085600')).toEqual(
             phoneNumberInvalid
         );
-        expect(utils.users.validateUserPhone('+3')).not.toEqual(
-            phoneNumberInvalid
-        );
-        expect(utils.users.validateUserPhone('+358')).not.toEqual(
-            phoneNumberInvalid
-        );
-        expect(utils.users.validateUserPhone('+1234545456')).not.toEqual(
-            phoneNumberInvalid
-        );
+        expect(utils.users.validateUserPhone('+3')).toBeUndefined();
+        expect(utils.users.validateUserPhone('+358')).toBeUndefined();
+        expect(utils.users.validateUserPhone('+1234545456')).toBeUndefined();
     });
 });

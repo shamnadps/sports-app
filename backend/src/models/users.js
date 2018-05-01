@@ -5,11 +5,18 @@ const model = db.define('users', {
     username: Sequelize.STRING,
     phoneNumber: {
         type: Sequelize.STRING,
-        primaryKey: true,
+        unique: true,
     },
     pin: Sequelize.INTEGER,
     token: Sequelize.STRING,
-    phoneNumberConfirmed: Sequelize.BOOLEAN,
+    phoneNumberConfirmed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+    },
+    balance: {
+        type: Sequelize.DOUBLE,
+        defaultValue: '100',
+    },
 });
 
 module.exports = model;
