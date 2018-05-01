@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 
-const Button = styled('button')`
+const ButtonStyled = styled('button')`
     background-color: rgba(255, 255, 255, 0.13);
     border-radius: 8px;
     border: 1px solid;
@@ -24,6 +24,27 @@ const Button = styled('button')`
         background-color: white;
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
     }
+
+    ${(props) =>
+        props.disabled &&
+        `
+        filter: grayscale(100%);
+        opacity: 0.5;
+        pointer-events: none;
+    `};
 `;
+
+class Button extends React.Component {
+    render() {
+        const { onClick, disabled, ...rest } = this.props;
+        return (
+            <ButtonStyled
+                {...rest}
+                disabled={disabled}
+                onClick={disabled ? () => {} : onClick}
+            />
+        );
+    }
+}
 
 export default Button;

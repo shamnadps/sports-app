@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import posed, { PoseGroup } from 'react-pose';
-import { connect } from 'utils';
+import { connect, getLocale } from 'utils';
 import { createPortal } from 'react-dom';
 import CloseIcon from '../../common/CloseIcon';
 import LocationIcon from '../../common/LocationIcon';
@@ -106,7 +106,9 @@ const ModalContentAnimatable = posed.div({
 const ModalContent = styled(ModalContentAnimatable)`
     margin: 2rem 0;
     width: 100%;
-    overflow: scroll;
+    max-height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     h4 {
         margin: 0 0 2rem 0;
@@ -240,7 +242,14 @@ class CourseModal extends React.Component {
                             <PaymentSection>
                                 <div>
                                     <div>
-                                        <span>Kesto 60 min</span>
+                                        <span>
+                                            Kesto{' '}
+                                            {dateFns.distanceInWords(
+                                                course.endDate,
+                                                course.startDate,
+                                                { locale: getLocale() }
+                                            )}
+                                        </span>
                                         <span>3 vapaana</span>
                                     </div>
                                     <span>2.5€</span>

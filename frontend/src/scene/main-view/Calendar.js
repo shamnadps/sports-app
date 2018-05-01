@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from 'react-emotion';
 import dateFns from 'date-fns';
-import fiLocale from 'date-fns/locale/fi';
-import { connect } from 'utils';
+import { connect, getLocale } from 'utils';
 import posed from 'react-pose';
-
-const getLocale = (lang) => {
-    if (lang === 'fi') return fiLocale;
-    // add cases for swedish later
-};
 
 const WeekTable = styled('div')`
     display: flex;
@@ -77,7 +71,7 @@ const DateFlag = styled('div')`
     padding: 4px;
 `;
 
-const dates = [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const dates = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 class WeeklyCalendar extends React.Component {
     state = {

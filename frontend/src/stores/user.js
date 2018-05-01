@@ -1,18 +1,13 @@
-import { decorate, observable, action, autorun } from 'mobx';
+import { decorate, observable, action, autorun, computed } from 'mobx';
 
-const fakeCredentials = {
-    phoneNumber: '+358444444444',
-    pinCode: '1234',
-};
+const toStringFromObject = (obj) => Object.values(obj).join('');
 
-const toStringFromObject = (obj) =>
-    Object.keys(obj)
-        .map((key) => obj[key])
-        .join('');
+const processPhoneNumber = (phoneNumber) =>
+    phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
 
 class UserStore {
-    isAuthenticated = false;
     isAuthenticating = false;
+    token = null;
     authenticationFailed = false;
     phoneNumber = '';
     phoneNumberIncorrect = false;
@@ -23,8 +18,22 @@ class UserStore {
         '3': '',
     };
     pinCodeIsSet = false;
-    balance = 0;
+    balance = 100;
 
+    get isAuthenticated() {
+        // user is authenticated if there exists a token, otherwise they are guests
+        return !!this.token;
+    }
+    constructor() {
+        try {
+            const value = window.localStorage.getItem('token');
+            if (value) {
+                this.token = value;
+            } else throw new Error('Token is null');
+        } catch (err) {
+            console.log('Session expired');
+        }
+    }
     // sets and validate phoneNumber
     setPhoneNumber(input) {
         this.phoneNumber = input;
@@ -57,36 +66,28 @@ class UserStore {
     };
 
     async authenticate() {
-        // code try to authenticate...
-
-        console.log('Beep beep.... I am authenticating');
+        this.isAuthenticating = true;
+        const pin = toStringFromObject(this.pinCode);
+        const phoneNumber = processPhoneNumber(this.phoneNumber);
         try {
-            await new Promise((resolve, reject) => {
-                // this is because "this" loses scope in setTimeOut
-                const execute = () => {
-                    const processedPhoneNumber = this.phoneNumber
-                        .replace(/\s/g, '')
-                        .replace('0', '+358');
-                    const proccessedPinCode = toStringFromObject(this.pinCode);
-
-                    if (
-                        fakeCredentials.phoneNumber === processedPhoneNumber &&
-                        fakeCredentials.pinCode === proccessedPinCode
-                    ) {
-                        resolve('done');
-                    } else {
-                        reject('Incorrect credentials');
-                    }
-                };
-                setTimeout(execute.bind(this), 1000);
+            const response = await fetch(`/api/users/login`, {
+                headers: {
+                    'content-type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    pin,
+                    phoneNumber,
+                }),
             });
-            console.log('Just kidding there is no such system atm. You are in');
-            this.isAuthenticated = true;
+            const userData = await response.json();
+            // @TODO: Token is a "for now" placeholder implementation. To be removed when official
+            // strategy for token is decided.
+            this.token = userData.token;
+            this.username = userData.username;
         } catch (err) {
-            console.error(err);
-            console.log('Resetting inputs');
-            // this boolean is flipped to true and set a chain of action to happen
             this.authenticationFailed = true;
+            console.log(err);
         }
     }
 
@@ -104,17 +105,26 @@ class UserStore {
             }, 1500);
         }
     });
+
+    authenticationSuccessfulReaction = autorun(() => {
+        if (!this.token) return;
+        this.isAuthenticating = false;
+        this.authenticationFailed = false;
+        window.localStorage.setItem('token', this.token);
+    });
 }
 
 export default decorate(UserStore, {
-    isAuthenticated: observable,
+    isAuthenticated: computed,
     isAuthenticating: observable,
     authenticationFailed: observable,
-    authenticate: action.bound,
-    phoneNumber: observable,
+    token: observable,
     phoneNumberIncorrect: observable,
+    phoneNumber: observable,
     pinCode: observable,
     balance: observable,
+    authenticate: action.bound,
     setPhoneNumber: action,
     setInputCode: action,
+    setStatusAsGuest: action.bound,
 });

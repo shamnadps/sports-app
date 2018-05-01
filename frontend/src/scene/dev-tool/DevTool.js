@@ -29,7 +29,6 @@ const Wrapper = styled(WrapperBase)`
 class DevTool extends React.Component {
     render() {
         const show = this.props.CourseStore.useMockCourse;
-        console.log(this.props.CourseStore);
         if (process.env.NODE_ENV === 'development') {
             return ReactDOM.createPortal(
                 <Wrapper pose={show ? 'enter' : 'exit'}>

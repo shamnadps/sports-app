@@ -3,9 +3,10 @@ import styled from 'react-emotion';
 import dateFns from 'date-fns';
 import { connect } from 'utils';
 import Button from '../../common/Button';
+import NotFoundIcon from '../../common/NotFoundIcon';
 import posed, { PoseGroup } from 'react-pose';
 
-const CardWrapperAnimatable = posed.div({
+const ItemAnimation = posed.div({
     enter: {
         y: '0%',
         opacity: 1,
@@ -14,18 +15,26 @@ const CardWrapperAnimatable = posed.div({
         y: '100%',
         opacity: 0,
     },
+    preEnter: {
+        opacity: 0,
+        y: '-100%',
+    },
 });
-const ScrollContainerBase = posed.div({
+const AnimationCoordinator = posed.div({
     enter: {
         delay: 1500,
         staggerChildren: 300,
     },
+    exit: {
+        staggerChildren: 300,
+    },
 });
 
-const ScrollContainer = styled(ScrollContainerBase)`
+const ScrollContainer = styled(AnimationCoordinator)`
     overflow: scroll;
+    height: 100%;
 `;
-const CardWrapper = styled(CardWrapperAnimatable)`
+const CardWrapper = styled(ItemAnimation)`
     width: 100%;
     background-color: white;
     margin: 1px 0;
@@ -85,8 +94,25 @@ const CourseArea = styled('div')`
     }
 `;
 
-const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
-    <CardWrapper {...rest}>
+const EmptyStateContainer = styled(AnimationCoordinator)`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+
+    svg {
+        margin-bottom: 2rem;
+        fill: rgba(0, 0, 0, 0.3);
+        width: 10rem;
+    }
+`;
+
+const Card = ({ course, buttonLabel, onButtonClick, disabled, ...rest }) => (
+    <CardWrapper {...rest} disabled={!course.isAvailable}>
         <TimeArea>
             <span>{dateFns.format(course.startDate, 'hh:mm')}</span>
             <span>{dateFns.format(course.endDate, 'hh:mm')}</span>
@@ -96,7 +122,9 @@ const Card = ({ course, buttonLabel, onButtonClick, ...rest }) => (
             <span>{course.location}</span>
             <div>
                 <span>€ {course.price}</span>
-                <Button onClick={onButtonClick}>{buttonLabel}</Button>
+                <Button onClick={onButtonClick} disabled={disabled}>
+                    {buttonLabel}
+                </Button>
             </div>
         </CourseArea>
     </CardWrapper>
@@ -107,25 +135,37 @@ class ClassCard extends React.Component {
         this.props.CourseStore.selectCourse(course);
     };
     render() {
-        const { useMockCourse, isFetchingCourses } = this.props.CourseStore;
         const courses = this.props.CourseStore.getCourses(Date.now());
         const buttonLabel = this.props.ContentStore.content.courseCard.select;
+        const noCourseContent = this.props.ContentStore.content.courseCard
+            .noCourse;
 
         return (
             <ScrollContainer pose="enter">
-                <PoseGroup animateOnMount>
-                    {courses.map((el, i) => (
-                        <Card
-                            key={el.id}
-                            course={el}
-                            buttonLabel={buttonLabel}
-                            onButtonClick={this.selectCourse(el)}
-                        />
-                    ))}
+                <PoseGroup animateOnMount preEnterPose="preEnter">
+                    {courses.length > 0 ? (
+                        courses.map((el, i) => (
+                            <Card
+                                key={el.id || i}
+                                course={el}
+                                buttonLabel={buttonLabel}
+                                onButtonClick={this.selectCourse(el)}
+                                disabled={
+                                    !el.isAvailable ||
+                                    !this.props.UserStore.isAuthenticated
+                                }
+                            />
+                        ))
+                    ) : (
+                        <EmptyStateContainer key={'emptyState'}>
+                            <NotFoundIcon />
+                            <ItemAnimation>{noCourseContent}</ItemAnimation>
+                        </EmptyStateContainer>
+                    )}
                 </PoseGroup>
             </ScrollContainer>
         );
     }
 }
 
-export default connect('CourseStore', 'ContentStore')(ClassCard);
+export default connect('CourseStore', 'ContentStore', 'UserStore')(ClassCard);

@@ -18,13 +18,15 @@
         "appHeader": {
             "myAccount": "Oma tilini",
             "balance": "Saldo",
-            "checkBalance": "Hallinnoi saldoasi"
+            "checkBalance": "Hallinnoi saldoasi",
+            "login": "Kirjaudu sisään"
         },
         "calendar": {
             "date": "Päivä"
         },
         "courseCard": {
-            "select": "Valitse"
+            "select": "Valitse",
+            "noCourse": "Ei löytynyt tunteja tälle päivälle"
         }
     }
 }

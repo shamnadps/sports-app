@@ -15,9 +15,6 @@ const Wrapper = styled('div')`
 `;
 class MainView extends React.Component {
     render() {
-        if (!this.props.UserStore.isAuthenticated) {
-            return <Redirect to="/login" />;
-        }
         return (
             <Wrapper>
                 <AppHeader />
