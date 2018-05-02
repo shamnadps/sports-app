@@ -1,9 +1,7 @@
-import { decorate, observable, computed, action, autorun } from 'mobx';
+import { decorate, observable, computed, action } from 'mobx';
 import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
-import API from '../apis';
-
-const BACKEND_API = new API();
+import { fetchCourses } from '../apis';
 
 const isAvailableByTime = (courseItem) =>
     // within 3 days from now
@@ -62,12 +60,13 @@ class CourseStore {
         this.isFetchingCourses = true;
 
         try {
-            const data = await BACKEND_API.fetchCourses({ startDate, endDate });
+            const data = await fetchCourses({ startDate, endDate });
             this.useMockCourse = false;
             this.courseList = data;
             // as soon as the courses are available in store, we will apply check on them
             this.checkAvailability();
         } catch (error) {
+            console.log(error);
             this.courseList = mockCourse;
             this.useMockCourse = true;
         }

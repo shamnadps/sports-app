@@ -6,10 +6,9 @@ import {
     hydrateFromStorage,
     persistToStorage,
 } from 'utils';
-import API from '../apis';
+import { login } from '../apis';
 
 // constants
-const BACKEND_API = new API();
 const DEFAULT_PIN = {
     '0': '',
     '1': '',
@@ -82,7 +81,7 @@ class UserStore {
         if (this.freezePinCode) {
             this.isAuthenticating = true;
             try {
-                const userData = await BACKEND_API.login({
+                const userData = await login({
                     pin: toStringFromObject(this.pinCode),
                     phoneNumber: processPhoneNumber(this.phoneNumber),
                 });
