@@ -19,9 +19,9 @@ class userStore {
     isAuthenticating = false;
     authenticationFailed = false;
     pinCode = DEFAULT_PIN;
-    username = undefined;
-    phoneNumber = undefined;
-    token = undefined;
+    username = null;
+    phoneNumber = null;
+    token = null;
     balance = 0;
 
     constructor(rootStore) {
