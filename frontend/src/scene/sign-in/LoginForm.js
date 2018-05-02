@@ -104,9 +104,6 @@ const FormLink = styled('div')`
 const pinArr = [0, 1, 2, 3];
 
 class LoginForm extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {
         autorun(() => {
             if (this.props.UserStore.authenticationFailed) this.input0.focus();

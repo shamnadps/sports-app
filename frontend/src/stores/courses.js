@@ -1,6 +1,7 @@
-import { decorate, observable, computed, action, autorun } from 'mobx';
+import { decorate, observable, computed, action } from 'mobx';
 import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
+import { fetchCourses } from '../apis';
 
 const isAvailableByTime = (courseItem) =>
     // within 3 days from now
@@ -53,17 +54,13 @@ class CourseStore {
                 ))
         );
     }
-    // This function is a behemoth. Find a way to make it only fetch
-    // all side effect be handled elsewhere
+
     async fetchCourses(startDate = Date.now()) {
         const endDate = dateFns.addDays(startDate, 14).getTime();
         this.isFetchingCourses = true;
 
         try {
-            const response = await window.fetch(
-                `/api/courses?startDate=${startDate}&endDate=${endDate}`
-            );
-            const data = await response.json();
+            const data = await fetchCourses({ startDate, endDate });
             this.useMockCourse = false;
             this.courseList = data;
             // as soon as the courses are available in store, we will apply check on them
@@ -73,6 +70,7 @@ class CourseStore {
             this.courseList = mockCourse;
             this.useMockCourse = true;
         }
+
         this.isFetchingCourses = false;
     }
 
@@ -88,7 +86,6 @@ class CourseStore {
 
     get courseIdList() {
         const takeId = (item) => item.id;
-
         return Object.values(this.courseList).map((arr) => arr.map(takeId));
     }
 

@@ -1,7 +1,16 @@
 import { decorate, observable, action, autorun, computed } from 'mobx';
+import { login } from '../apis';
 
+// constants
+const DEFAULT_PIN = {
+    '0': '',
+    '1': '',
+    '2': '',
+    '3': '',
+};
+
+// local utility helper
 const toStringFromObject = (obj) => Object.values(obj).join('');
-
 const processPhoneNumber = (phoneNumber) =>
     phoneNumber.replace(/^0/, '+358').replace(/\s/g, '');
 
@@ -11,12 +20,7 @@ class UserStore {
     authenticationFailed = false;
     phoneNumber = '';
     phoneNumberIncorrect = false;
-    pinCode = {
-        '0': '',
-        '1': '',
-        '2': '',
-        '3': '',
-    };
+    pinCode = DEFAULT_PIN;
     pinCodeIsSet = false;
     balance = 100;
 
@@ -67,20 +71,12 @@ class UserStore {
 
     async authenticate() {
         this.isAuthenticating = true;
-        const pin = toStringFromObject(this.pinCode);
-        const phoneNumber = processPhoneNumber(this.phoneNumber);
+
         try {
-            const response = await fetch(`/api/users/login`, {
-                headers: {
-                    'content-type': 'application/json',
-                },
-                method: 'POST',
-                body: JSON.stringify({
-                    pin,
-                    phoneNumber,
-                }),
+            const userData = await login({
+                pin: toStringFromObject(this.pinCode),
+                phoneNumber: processPhoneNumber(this.phoneNumber),
             });
-            const userData = await response.json();
             // @TODO: Token is a "for now" placeholder implementation. To be removed when official
             // strategy for token is decided.
             this.token = userData.token;
@@ -96,12 +92,7 @@ class UserStore {
             this.pinCodeIsSet = false;
             window.setTimeout(() => {
                 this.authenticationFailed = false;
-                this.pinCode = {
-                    '0': '',
-                    '1': '',
-                    '2': '',
-                    '3': '',
-                };
+                this.pinCode = DEFAULT_PIN;
             }, 1500);
         }
     });
