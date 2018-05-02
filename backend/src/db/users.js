@@ -1,45 +1,57 @@
 const models = require('../models');
 const db = require('../sequalize_pg');
 
+const createUser = async (user) => {
+    await models.users.create(user);
+    return await getUser(user.phoneNumber);
+};
+
+const getUser = (phoneNumber) =>
+    models.users.find({
+        where: { phoneNumber },
+    });
+
+const getUserById = (id) =>
+    models.users.find({
+        where: { id },
+    });
+
+const getUserByPhoneAndPin = (phoneNumber, pin) => {
+    return models.users.find({
+        where: { phoneNumber, pin },
+    });
+};
+
+const getUserByToken = (token) => {
+    return models.users.find({
+        where: { token },
+    });
+};
+
+const updateUser = (user, phoneNumber) => {
+    return models.users.update(
+        {
+            pin: user.pin,
+            username: user.username,
+        },
+        {
+            where: { phoneNumber },
+        }
+    );
+};
+
+const deleteUser = (phoneNumber) => {
+    return models.users.destroy({
+        where: { phoneNumber },
+    });
+};
+
 module.exports = {
-    createUser: async (user) => {
-        await db.sync();
-        return await models.users.create(user);
-    },
-
-    getUser: async (phoneNumber) => {
-        return await models.users.find({
-            where: { phoneNumber },
-        });
-    },
-
-    getUserByPhoneAndPin: async (phoneNumber, pin) => {
-        return await models.users.find({
-            where: { phoneNumber, pin },
-        });
-    },
-
-    getUserByToken: async (token) => {
-        return await models.users.find({
-            where: { token },
-        });
-    },
-
-    updateUser: async (user, phoneNumber) => {
-        return await models.users.update(
-            {
-                pin: user.pin,
-                username: user.username,
-            },
-            {
-                where: { phoneNumber },
-            }
-        );
-    },
-
-    deleteUser: async (phoneNumber) => {
-        return await models.users.destroy({
-            where: { phoneNumber },
-        });
-    },
+    getUser,
+    getUserById,
+    getUserByToken,
+    getUserByPhoneAndPin,
+    updateUser,
+    createUser,
+    deleteUser,
 };

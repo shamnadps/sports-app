@@ -35,7 +35,7 @@ const getCourseById = async (req, res) => {
         const courseId = Number(req.params.id);
         const validationErrors = utils.courses.validateCourseId(courseId);
         if (validationErrors) {
-            res.status(420).send(validationErrors);
+            res.status(422).send(validationErrors);
         } else {
             const course = await db.courses.getCourseById(courseId);
             if (course.length !== 0) {

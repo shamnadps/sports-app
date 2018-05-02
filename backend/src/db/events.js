@@ -1,11 +1,17 @@
 const models = require('../models');
 module.exports = {
-    getEvents: async () => {
-        return await models.events.findAll({});
+    getEvents: () => {
+        return models.events.findAll({});
     },
 
-    getEventById: async (id) => {
-        return await models.events.findAll({
+    getEventById: (id) => {
+        return models.events.findAll({
+            attributes: [
+                ['id', 'eventId'],
+                ['start', 'startDate'],
+                ['end', 'endDate'],
+                'teachingplace',
+            ],
             where: {
                 id,
             },
