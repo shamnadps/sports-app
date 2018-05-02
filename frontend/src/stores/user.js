@@ -1,8 +1,7 @@
 import { decorate, observable, action, autorun, computed } from 'mobx';
-import API from '../apis';
+import { login } from '../apis';
 
 // constants
-const BACKEND_API = new API();
 const DEFAULT_PIN = {
     '0': '',
     '1': '',
@@ -74,7 +73,7 @@ class UserStore {
         this.isAuthenticating = true;
 
         try {
-            const userData = await BACKEND_API.login({
+            const userData = await login({
                 pin: toStringFromObject(this.pinCode),
                 phoneNumber: processPhoneNumber(this.phoneNumber),
             });
