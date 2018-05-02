@@ -202,10 +202,10 @@ class Blur extends React.Component {
 
 class CourseModal extends React.Component {
     clear = (e) => {
-        this.props.CourseStore.selectCourse(null);
+        this.props.courseStore.selectCourse(null);
     };
     render() {
-        const course = this.props.CourseStore.courseInFocus;
+        const course = this.props.courseStore.courseInFocus;
         return createPortal(
             <Wrapper block={course || false}>
                 <PoseGroup animateOnMount>
@@ -266,4 +266,4 @@ class CourseModal extends React.Component {
     }
 }
 
-export default connect('CourseStore')(CourseModal);
+export default connect('courseStore')(CourseModal);

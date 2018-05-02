@@ -106,14 +106,14 @@ const pinArr = [0, 1, 2, 3];
 class LoginForm extends React.Component {
     componentDidMount() {
         autorun(() => {
-            if (this.props.UserStore.authenticationFailed) this.input0.focus();
+            if (this.props.userStore.authenticationFailed) this.input0.focus();
         });
     }
     onTelephoneInputChange = (e) => {
-        this.props.UserStore.setPhoneNumber(e.target.value);
+        this.props.userStore.setPhoneNumber(e.target.value);
     };
     onPinCodeInputsChange = (key) => (e) => {
-        const setResult = this.props.UserStore.setInputCode(
+        const setResult = this.props.userStore.setInputCode(
             key,
             e.target.value
         );
@@ -123,17 +123,11 @@ class LoginForm extends React.Component {
         }
     };
     render() {
-        // console.log(
-        //     this.props.UserStore.balance,
-        //     this.props.UserStore.username,
-        //     this.props.UserStore.phoneNumber
-        // );
-
-        const content = this.props.ContentStore.content;
-        const authenticationFailed = this.props.UserStore.authenticationFailed;
+        const content = this.props.i18nStore.content;
+        const authenticationFailed = this.props.userStore.authenticationFailed;
 
         // this view is forbidden for authenticated user
-        if (this.props.UserStore.isAuthenticated) {
+        if (this.props.userStore.isAuthenticated) {
             return <Redirect to="/main" />;
         }
         return (
@@ -147,7 +141,7 @@ class LoginForm extends React.Component {
                     <TelephoneInput
                         name="telephone"
                         type="tel"
-                        value={this.props.UserStore.phoneNumber || ''}
+                        value={this.props.userStore.phoneNumber || ''}
                         onChange={this.onTelephoneInputChange}
                     />
                 </InputField>
@@ -166,7 +160,7 @@ class LoginForm extends React.Component {
                                 key={key}
                                 type="password"
                                 onChange={this.onPinCodeInputsChange(key)}
-                                value={this.props.UserStore.pinCode[key]}
+                                value={this.props.userStore.pinCode[key]}
                                 name="pinCode"
                                 inputmode="numeric"
                             />
@@ -185,4 +179,4 @@ class LoginForm extends React.Component {
     }
 }
 
-export default connect('ContentStore', 'UserStore')(LoginForm);
+export default connect('i18nStore', 'userStore')(LoginForm);

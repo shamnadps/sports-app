@@ -7,7 +7,7 @@ export const connect = (...stores) => (component) => {
 };
 
 export const getLocale = () => {
-    if (stores.contentStore.language === 'fi') return fiLocale;
+    if (stores.i18nStore.language === 'fi') return fiLocale;
     // add cases for swedish later
 };
 
@@ -40,4 +40,15 @@ export const persistToStorage = (name, data) => {
     } catch (error) {
         console.err(error, 'Cannot persist to storage');
     }
+};
+
+export const pipable = (obj) => {
+    const pipe = (...funcList) =>
+        funcList.reduce(
+            (resultFromLast, currentFunc) => currentFunc(resultFromLast),
+            { ...obj }
+        );
+    return {
+        pipe,
+    };
 };

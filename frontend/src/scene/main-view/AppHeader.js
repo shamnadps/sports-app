@@ -40,9 +40,9 @@ const LogoBar = styled('div')`
 
 class AppHeader extends React.Component {
     render() {
-        const content = this.props.ContentStore.content.appHeader;
-        const appName = this.props.ContentStore.content.global.appName;
-        const { isAuthenticated, balance } = this.props.UserStore;
+        const content = this.props.i18nStore.content.appHeader;
+        const appName = this.props.i18nStore.content.global.appName;
+        const { isAuthenticated, balance } = this.props.userStore;
 
         return (
             <AppHeaderWrapper>
@@ -62,4 +62,4 @@ class AppHeader extends React.Component {
     }
 }
 
-export default connect('ContentStore', 'UserStore')(AppHeader);
+export default connect('i18nStore', 'userStore')(AppHeader);

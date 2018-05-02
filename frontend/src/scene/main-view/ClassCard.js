@@ -132,12 +132,12 @@ const Card = ({ course, buttonLabel, onButtonClick, disabled, ...rest }) => (
 
 class ClassCard extends React.Component {
     selectCourse = (course) => (e) => {
-        this.props.CourseStore.selectCourse(course);
+        this.props.courseStore.selectCourse(course);
     };
     render() {
-        const courses = this.props.CourseStore.getCourses(Date.now());
-        const buttonLabel = this.props.ContentStore.content.courseCard.select;
-        const noCourseContent = this.props.ContentStore.content.courseCard
+        const courses = this.props.courseStore.getCourses(Date.now());
+        const buttonLabel = this.props.i18nStore.content.courseCard.select;
+        const noCourseContent = this.props.i18nStore.content.courseCard
             .noCourse;
 
         return (
@@ -152,7 +152,7 @@ class ClassCard extends React.Component {
                                 onButtonClick={this.selectCourse(el)}
                                 disabled={
                                     !el.isAvailable ||
-                                    !this.props.UserStore.isAuthenticated
+                                    !this.props.userStore.isAuthenticated
                                 }
                             />
                         ))
@@ -168,4 +168,4 @@ class ClassCard extends React.Component {
     }
 }
 
-export default connect('CourseStore', 'ContentStore', 'UserStore')(ClassCard);
+export default connect('courseStore', 'i18nStore', 'userStore')(ClassCard);

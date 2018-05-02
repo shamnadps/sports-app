@@ -28,7 +28,7 @@ const Wrapper = styled(WrapperBase)`
 
 class DevTool extends React.Component {
     render() {
-        const show = this.props.CourseStore.useMockCourse;
+        const show = this.props.courseStore.useMockCourse;
         if (process.env.NODE_ENV === 'development') {
             return ReactDOM.createPortal(
                 <Wrapper pose={show ? 'enter' : 'exit'}>
@@ -40,4 +40,4 @@ class DevTool extends React.Component {
     }
 }
 
-export default connect('UserStore', 'CourseStore')(DevTool);
+export default connect('userStore', 'courseStore')(DevTool);

@@ -37,7 +37,7 @@ html {
 body {
     display: flex;
     width: 375px;
-    height: 667px;
+    max-height: 812px;
     margin: auto;
     position: relative;
 }

@@ -20,12 +20,14 @@ const theme = {
     green: '#66BB6A',
 };
 
+const { i18nStore, userStore, courseStore } = stores;
+
 const Root = () => (
     <BrowserRouter>
         <Provider
-            ContentStore={stores.contentStore}
-            UserStore={stores.userStore}
-            CourseStore={stores.courseStore}
+            i18nStore={i18nStore}
+            userStore={userStore}
+            courseStore={courseStore}
         >
             <ThemeProvider theme={theme}>
                 <App />

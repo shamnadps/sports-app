@@ -1,6 +1,5 @@
 import { decorate, observable, action, autorun, computed } from 'mobx';
 import {
-    serialize,
     toStringFromObject,
     processPhoneNumber,
     hydrateFromStorage,
@@ -16,7 +15,7 @@ const DEFAULT_PIN = {
     '3': '',
 };
 
-class UserStore {
+class userStore {
     isAuthenticating = false;
     authenticationFailed = false;
     pinCode = DEFAULT_PIN;
@@ -25,7 +24,8 @@ class UserStore {
     token = undefined;
     balance = 0;
 
-    constructor() {
+    constructor(rootStore) {
+        this.rootStore = rootStore;
         try {
             const userData = hydrateFromStorage('user');
             this.setCredentials(userData);
@@ -85,8 +85,6 @@ class UserStore {
                     pin: toStringFromObject(this.pinCode),
                     phoneNumber: processPhoneNumber(this.phoneNumber),
                 });
-                // @TODO: Token is a "for now" placeholder implementation. To be removed when official
-                // strategy for token is decided.
                 this.setCredentials(userData);
             } catch (err) {
                 this.authenticationFailed = true;
@@ -98,6 +96,7 @@ class UserStore {
         if (this.authenticationFailed) {
             this.pinCodeIsSet = false;
             this.isAuthenticating = false;
+
             window.setTimeout(() => {
                 this.authenticationFailed = false;
                 this.pinCode = DEFAULT_PIN;
@@ -107,8 +106,10 @@ class UserStore {
     authenticationSuccessfulReaction = autorun(() => {
         if (!this.isAuthenticated) return;
         console.log('Logged in successful, persisting to local storage');
+
         this.isAuthenticating = false;
         this.authenticationFailed = false;
+
         persistToStorage('user', {
             username: this.username,
             token: this.token,
@@ -118,7 +119,7 @@ class UserStore {
     });
 }
 
-export default decorate(UserStore, {
+export default decorate(userStore, {
     isAuthenticating: observable,
     isAuthenticated: computed,
     authenticationFailed: observable,

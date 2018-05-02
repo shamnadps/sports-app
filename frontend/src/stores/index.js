@@ -1,10 +1,12 @@
-import ContentStore from './content-store';
-import UserStore from './user';
-import CourseStore from './courses';
+import I18NStore from './i18n';
+import userStore from './user';
+import courseStore from './courses';
 
-const stores = {
-    contentStore: new ContentStore(),
-    userStore: new UserStore(),
-    courseStore: new CourseStore(),
-};
-export default stores;
+class RootStore {
+    constructor() {
+        this.userStore = new userStore(this);
+        this.courseStore = new courseStore(this);
+        this.i18nStore = new I18NStore(this);
+    }
+}
+export default new RootStore();

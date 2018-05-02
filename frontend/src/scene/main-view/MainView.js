@@ -25,4 +25,4 @@ class MainView extends React.Component {
     }
 }
 
-export default connect('ContentStore', 'UserStore')(MainView);
+export default connect('i18nStore', 'userStore')(MainView);
