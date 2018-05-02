@@ -7,7 +7,7 @@ const model = db.define('users', {
         type: Sequelize.STRING,
         unique: true,
     },
-    pin: Sequelize.INTEGER,
+    pin: Sequelize.STRING,
     token: Sequelize.STRING,
     phoneNumberConfirmed: {
         type: Sequelize.BOOLEAN,

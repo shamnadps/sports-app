@@ -90,8 +90,8 @@ const getCourseById = (id) => {
 
 const reduceCoursesByDate = (courses) => {
     return courses
-        .filter((course) => course.location[0])
-        .filter((course) => course.teachingSession[0])
+        .filter((course) => course.location[0]) // Removes courses that doesn't have any locations
+        .filter((course) => course.teachingSession[0]) // Removes courses that doesn't have any teaching sessions
         .map((course) => ({
             id: course.id,
             name: course.name,

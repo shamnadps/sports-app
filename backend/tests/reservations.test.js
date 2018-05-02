@@ -3,8 +3,8 @@ const utils = require('../src/utils');
 
 describe('Reservation Testing', () => {
     let reservation = {
-        courseId: 186399,
-        eventId: 2554743,
+        courseId: 1,
+        eventId: 1,
         ticketType: 'Single_Ticket',
         ticketPrice: 90.5,
         bookingStatus: 1,
