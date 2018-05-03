@@ -9,6 +9,11 @@ const myFetch = (url, config = {}) =>
         body: JSON.stringify(config.body),
     });
 
+export const checkLoginStatus = () =>
+    myFetch(`/users/me`)
+        .then((res) => res.json())
+        .catch((error) => console.log(error));
+
 export const login = ({ pin, phoneNumber }) =>
     myFetch(`/users/login`, {
         method: 'POST',

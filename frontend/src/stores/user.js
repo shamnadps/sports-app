@@ -5,7 +5,7 @@ import {
     hydrateFromStorage,
     persistToStorage,
 } from 'utils';
-import { login } from '../apis';
+import { login, checkLoginStatus } from '../apis';
 
 // constants
 const DEFAULT_PIN = {
@@ -27,7 +27,7 @@ class userStore {
     constructor(rootStore) {
         this.rootStore = rootStore;
         try {
-            const userData = hydrateFromStorage('user');
+            const userData = checkLoginStatus();
             this.setCredentials(userData);
         } catch (error) {
             console.error(error);
