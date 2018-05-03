@@ -4,6 +4,7 @@ import {
     processPhoneNumber,
     hydrateFromStorage,
     persistToStorage,
+    validatePhoneNumber,
 } from 'utils';
 import { login, checkLoginStatus } from '../apis';
 
@@ -43,9 +44,7 @@ class userStore {
         return this.token && this.username && this.phoneNumber;
     }
     get phoneNumberIncorrect() {
-        return this.phoneNumber.match(
-            /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
-        );
+        return validatePhoneNumber(this.phoneNumber);
     }
     get freezePinCode() {
         return (
@@ -92,7 +91,7 @@ class userStore {
                 this.setCredentials(userData);
             } catch (err) {
                 this.authenticationFailed = true;
-                console.log(err);
+                console.error(err);
             }
         }
     });
