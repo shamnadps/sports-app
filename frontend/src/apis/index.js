@@ -6,11 +6,18 @@ const myFetch = (url, config = {}) =>
     window.fetch(BASE_PATH + url, {
         headers: { 'content-type': 'application/json', ...config.headers },
         method: config.method || 'GET',
+        credentials: 'same-origin',
         body: JSON.stringify(config.body),
     });
 
+export const checkLoginStatus = () =>
+    myFetch(`/users/me`).then((res) => res.json());
+
 export const login = ({ pin, phoneNumber }) =>
     myFetch(`/users/login`, {
+        headers: {
+            credentials: 'same-origin',
+        },
         method: 'POST',
         body: {
             pin,

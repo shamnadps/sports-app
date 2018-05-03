@@ -9,7 +9,12 @@ const isAvailableByTime = (courseItem) =>
     // and must not be 1 hours before starting time
     dateFns.differenceInHours(courseItem.startDate, new Date()) > 1;
 
-class CourseStore {
+const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
+
+const isAvailable = (balance, courseItem) =>
+    hasSufficientFund(balance, courseItem) && isAvailableByTime(courseItem);
+
+class courseStore {
     courseList = [];
     isFetchingCourses = true;
     useMockCourse = false;
@@ -18,7 +23,8 @@ class CourseStore {
     };
     courseInFocus;
 
-    constructor() {
+    constructor(rootStore) {
+        this.rootStore = rootStore;
         const checkEvery5Sec = () => {
             // schedule this checking every 5 seconds
             // when browser is idle, to avoid hagging resources for UI
@@ -41,7 +47,7 @@ class CourseStore {
 
     // this check the availability regarding time constrains
     checkAvailability() {
-        if (!this.courseList || this.courseList.length == 0) return;
+        if (!this.courseList || this.courseList.length === 0) return;
         // loop throught courseList recursively
         // add an evaluation to the item
         Object.keys(this.courseList).forEach(
@@ -49,7 +55,10 @@ class CourseStore {
                 (this.courseList[key] = this.courseList[key].map(
                     (courseItem) => ({
                         ...courseItem,
-                        isAvailable: isAvailableByTime(courseItem),
+                        isAvailable: isAvailable(
+                            this.rootStore.userStore.balance,
+                            courseItem
+                        ),
                     })
                 ))
         );
@@ -98,7 +107,7 @@ class CourseStore {
     }
 }
 
-export default decorate(CourseStore, {
+export default decorate(courseStore, {
     courseList: observable.deep,
     courseIdList: computed,
     isFetchingCourses: observable,

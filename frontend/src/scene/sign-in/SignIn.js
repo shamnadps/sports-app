@@ -53,10 +53,10 @@ class SignIn extends React.Component {
                 <AppBrand>
                     <div>
                         <AppName>
-                            {this.props.ContentStore.content.global.appName}
+                            {this.props.i18nStore.content.global.appName}
                         </AppName>
                         <AppHeadLine>
-                            {this.props.ContentStore.content.global.appHeadLine}
+                            {this.props.i18nStore.content.global.appHeadLine}
                         </AppHeadLine>
                     </div>
                 </AppBrand>
@@ -67,4 +67,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default connect('ContentStore')(SignIn);
+export default connect('i18nStore')(SignIn);

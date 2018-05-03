@@ -2,7 +2,7 @@ import content from './content.json';
 import { observable, computed, decorate } from 'mobx';
 
 // this is a store of worded content, for internationalization
-class ContentStore {
+class I18NStore {
     language = 'fi';
     get content() {
         switch (this.language.toLowerCase()) {
@@ -16,9 +16,9 @@ class ContentStore {
     }
 }
 
-decorate(ContentStore, {
+decorate(I18NStore, {
     language: observable,
     content: computed,
 });
 
-export default ContentStore;
+export default I18NStore;

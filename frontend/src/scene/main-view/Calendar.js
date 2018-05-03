@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'react-emotion';
 import dateFns from 'date-fns';
 import { connect, getLocale } from 'utils';
-import posed from 'react-pose';
 
 const WeekTable = styled('div')`
     display: flex;
@@ -78,14 +77,14 @@ class WeeklyCalendar extends React.Component {
         viewableDateRange: dates.map((i) => dateFns.addDays(new Date(), i)),
     };
     setDate = (date) => (e) => {
-        this.props.CourseStore.setFilters({
+        this.props.courseStore.setFilters({
             date,
         });
     };
     render() {
         const today = new Date();
-        const seletectedDate = this.props.CourseStore.filters.date;
-        const locale = getLocale(this.props.ContentStore.language);
+        const seletectedDate = this.props.courseStore.filters.date;
+        const locale = getLocale(this.props.i18nStore.language);
         return (
             <div>
                 <WeekTable>
@@ -115,4 +114,4 @@ class WeeklyCalendar extends React.Component {
     }
 }
 
-export default connect('ContentStore', 'CourseStore')(WeeklyCalendar);
+export default connect('i18nStore', 'courseStore')(WeeklyCalendar);
