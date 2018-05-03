@@ -26,13 +26,17 @@ class userStore {
 
     constructor(rootStore) {
         this.rootStore = rootStore;
+        this.checkAuthenticationStatusOnStart();
+    }
+
+    checkAuthenticationStatusOnStart = async () => {
         try {
-            const userData = checkLoginStatus();
+            const userData = await checkLoginStatus();
             this.setCredentials(userData);
         } catch (error) {
             console.error(error);
         }
-    }
+    };
     // computed values
     get isAuthenticated() {
         // user is authenticated if there exists a token, otherwise they are guests
@@ -128,6 +132,7 @@ export default decorate(userStore, {
     phoneNumber: observable,
     balance: observable,
     pinCode: observable,
+    checkAuthenticationStatusOnStart: action,
     setPhoneNumber: action,
     setInputCode: action,
     setCredentials: action,
