@@ -4,7 +4,12 @@ import {
     processPhoneNumber,
     validatePhoneNumber,
 } from 'utils';
-import { login, checkLoginStatus } from '../apis';
+import {
+    login,
+    checkLoginStatus,
+    logout as logoutApi,
+    fetchReservedCourses,
+} from '../apis';
 
 // constants
 const DEFAULT_PIN = {
@@ -22,6 +27,7 @@ class userStore {
     phoneNumber = null;
     token = null;
     balance = 0;
+    reservedCourses = [];
 
     constructor(rootStore) {
         this.rootStore = rootStore;
@@ -76,9 +82,24 @@ class userStore {
         this.balance = userData.balance;
         this.phoneNumber = userData.phoneNumber;
     }
+    resetCredentials() {
+        this.token = null;
+        this.username = null;
+        this.balance = null;
+        this.phoneNumber = null;
+    }
     setBalance(amount) {
         if (amount > this.balance) throw new Error('Insufficient fund!');
         else this.balance = this.balance - amount;
+    }
+
+    async logout() {
+        try {
+            await logoutApi();
+            this.resetCredentials();
+        } catch (error) {
+            console.error('Cannot logout', error);
+        }
     }
     // reactions that do SIDE EFFECTS
     authenticateReaction = autorun(async () => {
@@ -96,6 +117,19 @@ class userStore {
             }
         }
     });
+    fetchUserReservedCoursesOnAuth = autorun(async () => {
+        if (this.isAuthenticated) {
+            try {
+                const reservedCourses = await fetchReservedCourses();
+                this.reservedCourses = reservedCourses;
+            } catch (error) {
+                console.err(
+                    'Cannot fetch reserved courses for this user',
+                    error
+                );
+            }
+        }
+    });
     authenticationFailedReaction = autorun(() => {
         if (this.authenticationFailed) {
             this.pinCodeIsSet = false;
@@ -109,7 +143,7 @@ class userStore {
     });
     authenticationSuccessfulReaction = autorun(() => {
         if (!this.isAuthenticated) return;
-        console.log('Logged in successful, persisting to local storage');
+        console.log('Logged in successful');
 
         this.isAuthenticating = false;
         this.authenticationFailed = false;
@@ -125,9 +159,12 @@ export default decorate(userStore, {
     phoneNumber: observable,
     balance: observable,
     pinCode: observable,
+    reservedCourses: observable,
     checkAuthenticationStatusOnStart: action,
     setPhoneNumber: action,
     setInputCode: action,
     setCredentials: action,
     setBalance: action,
+    resetCredentials: action,
+    logout: action.bound,
 });

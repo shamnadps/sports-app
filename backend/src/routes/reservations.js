@@ -67,8 +67,10 @@ const createReservation = async (req, res) => {
                         'You have already made a reservation for the same event!. Try for another event.'
                     );
             } else {
-                await db.reservations.createReservation(reservationObj);
-                res.status(201).json('Created reservation successfully');
+                const reservation = await db.reservations.createReservation(
+                    reservationObj
+                );
+                res.status(201).json(reservation);
             }
         }
     } catch (err) {

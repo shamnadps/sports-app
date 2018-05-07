@@ -7,7 +7,7 @@
         "signIn": {
             "form": {
                 "tel": "Puhelinnumero",
-                "name": "Nimi",
+                "name": "Etunimi",
                 "telIsWrong": "Puhelinnumero on väärä",
                 "pinCode": "PIN-koodi",
                 "pinCodeIsWrong": "PIN-koodi on väärä",
@@ -27,7 +27,7 @@
             "submit": "Lähetä tiedot"
         },
         "appHeader": {
-            "myAccount": "Oma tilini",
+            "logout": "Kirjaudu ulos",
             "balance": "Saldo",
             "checkBalance": "Hallinnoi saldoasi",
             "login": "Kirjaudu sisään"
@@ -37,7 +37,14 @@
         },
         "courseCard": {
             "select": "Valitse",
-            "noCourse": "Ei löytynyt tunteja tälle päivälle"
+            "noCourse": "Ei löytynyt tunteja tälle päivälle",
+            "errorMessages": {
+                "openTime": "Ilmoittautuminen aukeaa {date} kello {time}",
+                "closeTime": "Ilmoittautuminen on päättynyt",
+                "resource": "Ei tarpeeksi saldoa",
+                "reserved": "Olet jo ilmoittautunut tunnille",
+                "auth": "Kirjaudu sisään tunnin varaamista varten"
+            }
         }
     }
 }

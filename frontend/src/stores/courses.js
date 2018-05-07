@@ -3,16 +3,47 @@ import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
 import { fetchCourses, reserveTicket } from '../apis';
 
-const isAvailableByTime = (courseItem) =>
+const isOpenYet = (courseItem) =>
     // within 3 days from now
-    dateFns.differenceInDays(courseItem.startDate, new Date()) < 3 &&
+    dateFns.differenceInDays(courseItem.startDate, new Date()) < 3;
+
+const isClosedYet = (courseItem) =>
     // and must not be 1 hours before starting time
     dateFns.differenceInHours(courseItem.startDate, new Date()) > 1;
 
 const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
 
-const isAvailable = (balance, courseItem) =>
-    hasSufficientFund(balance, courseItem) && isAvailableByTime(courseItem);
+const hasBeenReserved = (reservedCourseList = [], courseItem) => {
+    const list = reservedCourseList.map((item) => item.courseId);
+    return list.includes(courseItem.id);
+};
+
+const isAvailable = (
+    balance,
+    courseItem,
+    authenticationStatus,
+    reservedCourseList
+) => {
+    const openedYet = isOpenYet(courseItem);
+    const closedYet = isClosedYet(courseItem);
+    const enoughFund = hasSufficientFund(balance, courseItem);
+    const notReserved = !hasBeenReserved(reservedCourseList, courseItem);
+    return {
+        isAvailable:
+            openedYet &&
+            closedYet &&
+            enoughFund &&
+            authenticationStatus &&
+            notReserved,
+        reasons: [
+            !authenticationStatus && 'auth',
+            !openedYet && 'openTime',
+            !closedYet && 'closingTime',
+            !enoughFund && 'resource',
+            !notReserved && 'reserved',
+        ].filter((reason) => typeof reason !== 'boolean'),
+    };
+};
 
 class courseStore {
     courseList = [];
@@ -21,7 +52,7 @@ class courseStore {
     filters = {
         date: new Date(), // today
     };
-    courseInFocus;
+    courseInFocus = null;
 
     constructor(rootStore) {
         this.rootStore = rootStore;
@@ -55,9 +86,11 @@ class courseStore {
                 (this.courseList[key] = this.courseList[key].map(
                     (courseItem) => ({
                         ...courseItem,
-                        isAvailable: isAvailable(
+                        ...isAvailable(
                             this.rootStore.userStore.balance,
-                            courseItem
+                            courseItem,
+                            this.rootStore.userStore.isAuthenticated,
+                            this.rootStore.userStore.reservedCourses
                         ),
                     })
                 ))
@@ -108,11 +141,12 @@ class courseStore {
 
     async reserveCourse(course) {
         try {
-            await reserveTicket({
+            const reservation = await reserveTicket({
                 courseId: course.id,
                 eventId: course.eventId,
             });
             this.rootStore.userStore.setBalance(course.price);
+            this.rootStore.userStore.reservedCourses.push(reservation);
             this.selectCourse(null);
             // @TODO: handle failure states: Error messages, etc
         } catch (error) {
@@ -120,6 +154,12 @@ class courseStore {
             return false;
         }
     }
+
+    checkAvailabilityOnAction = action(() => {
+        if (this.rootStore.userStore.isAuthenticated) {
+            window.requestIdleCallback(this.checkAvailability);
+        }
+    });
 }
 
 export default decorate(courseStore, {
