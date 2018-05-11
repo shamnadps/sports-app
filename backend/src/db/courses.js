@@ -21,6 +21,11 @@ const getCourses = (startDate, endDate) => {
             'firstSessionDate',
             'lastSessionDate',
             'internetEnrollment',
+            'single_payment_count',
+            'company_name',
+            'course_type_id',
+            'course_type_name',
+            'teacher',
         ],
         include: [
             {
@@ -64,6 +69,11 @@ const getCourseById = (id) => {
             'firstSessionDate',
             'lastSessionDate',
             'internetEnrollment',
+            'single_payment_count',
+            'company_name',
+            'course_type_id',
+            'course_type_name',
+            'teacher',
         ],
         include: [
             {
@@ -108,6 +118,11 @@ const reduceCoursesByDate = (courses) => {
             firstSessionWeekDay: course.firstSessionWeekDay,
             firstSessionDate: course.firstSessionDate,
             lastSessionDate: course.lastSessionDate,
+            single_payment_count: course.single_payment_count,
+            company_name: course.company_name,
+            course_type_id: course.course_type_id,
+            course_type_name: course.course_type_name,
+            tacher: course.teacher,
             location: course.location[0].dataValues.location,
             eventId: course.teachingSession[0].dataValues.eventId,
             startDate: course.teachingSession[0].dataValues.startDate,

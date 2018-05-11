@@ -9,10 +9,10 @@ describe('getCourses API call', () => {
     test('should load course data', async () => {
         const courses = await db.courses.getCourses('2018-05-02', '2018-05-19');
         expect(courses).not.toBeNull();
-        expect(courses).toHaveLength(20);
+        expect(courses).toHaveLength(24);
         const courseObj = courses[0];
         expect(courseObj.name).toEqual('Englantia perustasolla A1+/A2');
-        expect(courseObj.price).toEqual(6);
+        expect(courseObj.price).toEqual(86);
         expect(courseObj.location).toHaveLength(1);
         expect(courseObj.teachingSession).toHaveLength(1);
     });
