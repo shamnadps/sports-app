@@ -13,17 +13,19 @@ const BamboraReturnCodes = {
 const addBalance = async (req, res) => {
     try {
         const amount = +req.query.amount;
-        let paymentObj = {};
-        paymentObj.amount = amount;
-        const validationErrors = utils.payments.validateAmount(
-            +paymentObj.amount
-        );
+
+        const validationErrors = utils.payments.validateAmount(amount);
         if (validationErrors) {
             return res.status(422).json(validationErrors);
         }
         const dbUser = await db.users.getUser(req.user.phoneNumber);
-        paymentObj.userId = dbUser.id;
-        paymentObj.username = dbUser.username;
+
+        const paymentObj = {
+            amount,
+            userId: dbUser.id,
+            username: dbUser.username,
+        };
+
         const url = await services.payments.getPaymentRedirectUrl(paymentObj);
         res.redirect(url);
     } catch (err) {

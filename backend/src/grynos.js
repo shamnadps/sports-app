@@ -4,7 +4,7 @@ const models = require('./models');
 const db = require('./db');
 
 const url = process.env.GRYNOS_COURSE_API_URL;
-const course_detail = process.env.GRYNOS_COURSE_DETAILS_API_URL;
+const courseDetailUrl = process.env.GRYNOS_COURSE_DETAILS_API_URL;
 
 const mapCourseFromGrynos = (course) => ({
     id: course.id,
@@ -28,7 +28,7 @@ const mapCourseFromGrynos = (course) => ({
 });
 
 const mapCourseDetailsFromGrynos = async (course) => {
-    const courseDetails = await axios(course_detail + course.code);
+    const courseDetails = await axios(courseDetailUrl + course.code);
     return {
         ...course,
         description: courseDetails.data.description,
@@ -40,7 +40,7 @@ const mapCourseDetailsFromGrynos = async (course) => {
     };
 };
 
-const fetchCourses = async () => {
+const fetchCoursesFromGrynos = async () => {
     const response = await axios(url);
     if (response.data.course) {
         return await Promise.all(
@@ -54,13 +54,13 @@ const fetchCourses = async () => {
 const updateCoursesToDb = async () => {
     try {
         await sequelize.sync();
-        let courses = await fetchCourses();
-        const dbCourses = await db.courses.getCourses();
-        if (dbCourses.length > 0) {
-            courses = courses.filter((course) => {
-                dbCourses.filter((dbCourse) => course.id !== dbCourse.id);
-            });
-        }
+        let courses = await fetchCoursesFromGrynos();
+        const dbCourses = await db.courses.getAllCourses();
+
+        courses = courses.filter(
+            (course) => !dbCourses.find((dbCourse) => course.id === dbCourse.id)
+        );
+
         if (courses) {
             return await Promise.all(
                 courses.map((course) => {
@@ -80,4 +80,8 @@ const updateCoursesToDb = async () => {
     }
 };
 
-module.exports = { mapCourseFromGrynos, fetchCourses, updateCoursesToDb };
+module.exports = {
+    mapCourseFromGrynos,
+    fetchCoursesFromGrynos,
+    updateCoursesToDb,
+};

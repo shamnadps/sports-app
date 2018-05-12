@@ -51,6 +51,50 @@ const getCourses = (startDate, endDate) => {
     });
 };
 
+const getAllCourses = () => {
+    return models.courses.findAll({
+        attributes: [
+            'id',
+            'name',
+            'code',
+            'price',
+            'priceMaterial',
+            'description',
+            'minStudentCount',
+            'maxStudentCount',
+            'acceptedCount',
+            'firstEnrollmentDate',
+            'lastEnrollmentDate',
+            'firstSessionWeekDay',
+            'firstSessionDate',
+            'lastSessionDate',
+            'internetEnrollment',
+            'single_payment_count',
+            'company_name',
+            'course_type_id',
+            'course_type_name',
+            'teacher',
+        ],
+        include: [
+            {
+                model: models.locations,
+                as: 'location',
+                attributes: [['path', 'location']],
+            },
+            {
+                model: models.events,
+                as: 'teachingSession',
+                attributes: [
+                    ['id', 'eventId'],
+                    ['start', 'startDate'],
+                    ['end', 'endDate'],
+                ],
+            },
+        ],
+
+        validate: false,
+    });
+};
 const getCourseById = (id) => {
     return models.courses.find({
         attributes: [
@@ -122,7 +166,7 @@ const reduceCoursesByDate = (courses) => {
             company_name: course.company_name,
             course_type_id: course.course_type_id,
             course_type_name: course.course_type_name,
-            tacher: course.teacher,
+            teacher: course.teacher,
             location: course.location[0].dataValues.location,
             eventId: course.teachingSession[0].dataValues.eventId,
             startDate: course.teachingSession[0].dataValues.startDate,
@@ -136,4 +180,9 @@ const reduceCoursesByDate = (courses) => {
         }, {});
 };
 
-module.exports = { getCourses, reduceCoursesByDate, getCourseById };
+module.exports = {
+    getCourses,
+    getAllCourses,
+    reduceCoursesByDate,
+    getCourseById,
+};
