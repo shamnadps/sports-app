@@ -57,7 +57,9 @@ class AppHeader extends React.Component {
             )
                 .pipe(Math.round)
                 .start((v) => {
-                    this.balanceButton.textContent = '€ ' + v;
+                    try {
+                        this.balanceButton.textContent = '€ ' + v;
+                    } catch (error) {}
                 });
         }
         this.previousBalance = this.props.userStore.balance;
@@ -83,6 +85,7 @@ class AppHeader extends React.Component {
                             innerRef={(instance) =>
                                 (this.balanceButton = instance)
                             }
+                            onClick={this.props.requestShowBalance}
                         >
                             0 €
                         </Button>

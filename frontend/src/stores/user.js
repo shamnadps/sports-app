@@ -9,6 +9,7 @@ import {
     checkLoginStatus,
     logout as logoutApi,
     fetchReservedCourses,
+    requestAddBalance as requestAddBalanceApi,
 } from '../apis';
 
 // constants
@@ -51,10 +52,7 @@ class userStore {
         return validatePhoneNumber(this.phoneNumber);
     }
     get freezePinCode() {
-        return (
-            Object.values(this.pinCode).every((code) => code !== '') &&
-            !this.phoneNumberIncorrect
-        );
+        return Object.values(this.pinCode).every((code) => code !== '');
     }
 
     // actions, that alters state
@@ -91,6 +89,13 @@ class userStore {
     setBalance(amount) {
         if (amount > this.balance) throw new Error('Insufficient fund!');
         else this.balance = this.balance - amount;
+    }
+    requestAddBalance(amount) {
+        try {
+            requestAddBalanceApi(amount);
+        } catch (error) {
+            console.err(error);
+        }
     }
 
     async logout() {

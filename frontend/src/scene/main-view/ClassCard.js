@@ -26,7 +26,7 @@ const ItemAnimation = posed.div({
 
 const ErrorMessageAnimation = posed.h4({
     hidden: {
-        scale: 0.3,
+        scale: 0,
         y: 0,
         opacity: 0,
     },
@@ -39,8 +39,9 @@ const ErrorMessageAnimation = posed.h4({
 
 const AnimationCoordinator = posed.div({
     enter: {
-        delay: 1500,
-        staggerChildren: 300,
+        delay: 500,
+        delayChildren: 300,
+        staggerChildren: 100,
     },
     exit: {
         staggerChildren: 300,
@@ -50,7 +51,7 @@ const AnimationCoordinator = posed.div({
 // styled components
 const ScrollContainer = styled(AnimationCoordinator)`
     overflow: scroll;
-    height: 100%;
+    flex-basis: 100%;
 `;
 const CardWrapper = styled(ItemAnimation)`
     width: 100%;
@@ -60,6 +61,8 @@ const CardWrapper = styled(ItemAnimation)`
     color: rgba(0, 0, 0, 0.86);
     transition: background-color 0.5s ease;
     overflow: hidden;
+    ${(props) => props.blur && `background-color: rgba(200,200,200, .1)`};
+    }
 
     & > div {
         transition: filter 0.5s ease, transform 0.5s ease;
@@ -67,7 +70,7 @@ const CardWrapper = styled(ItemAnimation)`
         width: 100%;
         ${(props) =>
             props.blur &&
-            `filter: blur(6px); pointer-events: none; transform: scale(1.1);`};
+            `filter: blur(6px); pointer-events: none; transform: scale(1.2);`};
     }
 `;
 
@@ -81,7 +84,6 @@ const ErrorMessage = styled(ErrorMessageAnimation)`
     left: 0;
     width: 100%;
     z-index: 10;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
     * {
         color: inherit !important;
     }
@@ -178,6 +180,7 @@ const Card = class extends React.Component {
                 date: dateFns.format(course.startDate, 'DD/MM'),
                 time: dateFns.format(course.startDate, 'HH:MM'),
             });
+        if (type === 'closingTime') return closeTime;
         if (type === 'resource') return resource;
         if (type === 'reserved') return reserved;
         if (type === 'auth') return <Link to="/login">{auth}</Link>;
@@ -188,6 +191,7 @@ const Card = class extends React.Component {
             buttonLabel,
             onButtonClick,
             disabled,
+            errorMessages,
             ...rest
         } = this.props;
         const blurAndShowMessage = disabled && this.state.showMessage;
@@ -235,7 +239,7 @@ class ClassCard extends React.Component {
 
         return (
             <ScrollContainer pose="enter">
-                <PoseGroup animateOnMount preEnterPose="preEnter">
+                <PoseGroup preEnterPose="preEnter">
                     {courses.length > 0 ? (
                         courses.map((el, i) => (
                             <Card
