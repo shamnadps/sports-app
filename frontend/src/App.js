@@ -29,6 +29,7 @@ class App extends React.Component {
                 <AppLoader />
                 <Switch>
                     <Route exact path="/main" component={MainView} />
+                    <Route path="/payment-complete" component={MainView} />
                     <Route path="/" component={SignIn} />
                     <Route exact path="/login" component={SignIn} />
                     <Route exact path="/register" component={SignIn} />

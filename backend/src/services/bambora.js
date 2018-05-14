@@ -6,6 +6,9 @@ const payemnt_notify_url = process.env.PAYMENT_NOTIFY_URL;
 const secret = process.env.SECRET_KEY;
 const apiKey = process.env.API_KEY;
 
+const bamboraProductID = process.env.BAMBORA_PRODUCT_ID;
+const bamboraProductTitle = process.env.BAMBORA_PRODUCT_TITLE;
+
 module.exports = {
     createPaymentModel: (paymentModel) => {
         const orderNumber = 'vantaa-order-' + Date.now();
@@ -22,11 +25,16 @@ module.exports = {
     },
 
     createBamboraPaymentRequest: (paymentModel) => {
+        const amount = paymentModel.amount * 100;
+        const preTaxAmount = Math.round(Number((amount * 10 / 11).toFixed(2)));
+        const taxAmount = Math.round(
+            Number((amount - preTaxAmount).toFixed(2))
+        );
         return {
             version: 'w3.1',
             api_key: apiKey,
             order_number: paymentModel.order_number,
-            amount: paymentModel.amount,
+            amount: amount,
             currency: 'EUR',
             payment_method: {
                 type: 'e-payment',
@@ -41,12 +49,12 @@ module.exports = {
             },
             products: [
                 {
-                    id: '1',
-                    title: 'Vanta_App',
+                    id: bamboraProductID,
+                    title: bamboraProductTitle,
                     count: 1,
-                    pretax_price: paymentModel.amount,
-                    tax: 0,
-                    price: paymentModel.amount,
+                    pretax_price: preTaxAmount,
+                    tax: taxAmount,
+                    price: amount,
                     type: 1,
                 },
             ],

@@ -68,38 +68,39 @@ const createUser = async (req, res) => {
         const user = req.body;
         const validationErrors = utils.users.validateUserObj(user);
         if (validationErrors) {
-            res.status(422).json(validationErrors);
-        } else {
-            const token = randtoken.generate(16);
-            user.token = token;
-            const pin = randtoken.generate(4, '0123456789');
-            user.pin = pin;
-            const createdUser = await db.users.createUser(user);
-            const message = stringInterpolator(
-                i18n.users.register.confirmationSms,
-                {
-                    pin,
-                }
-            );
-            const response = await services.sms.sendMessageToUser(
-                createdUser,
-                message
-            );
-            if (response) {
-                return res
-                    .status(201)
-                    .json(
-                        `Successfully created the account. Your login PIN will arrive shortly in your phone number ${
-                            createdUser.phoneNumber
-                        }.`
-                    );
-            } else {
-                return res
-                    .status(500)
-                    .json(
-                        `Failed to generate new PIN for you. Please try again.`
-                    );
+            return res.status(422).json(validationErrors);
+        }
+        const dbUser = await db.users.getUser(user.phoneNumber);
+        if (dbUser) {
+            return res.status(409).json('PhoneNumber already exists!.');
+        }
+        const token = randtoken.generate(16);
+        user.token = token;
+        const pin = randtoken.generate(4, '0123456789');
+        user.pin = pin;
+        const createdUser = await db.users.createUser(user);
+        const message = stringInterpolator(
+            i18n.users.register.confirmationSms,
+            {
+                pin,
             }
+        );
+        const response = await services.sms.sendMessageToUser(
+            createdUser,
+            message
+        );
+        if (response) {
+            return res
+                .status(201)
+                .json(
+                    `Successfully created the account. Your login PIN will arrive shortly in your phone number ${
+                        createdUser.phoneNumber
+                    }.`
+                );
+        } else {
+            return res
+                .status(500)
+                .json(`Failed to generate new PIN for you. Please try again.`);
         }
     } catch (err) {
         res

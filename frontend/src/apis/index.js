@@ -33,6 +33,11 @@ export const login = ({ pin, phoneNumber }) =>
         },
     });
 
+export const getPaymentDetails = ({ orderNumber }) =>
+    myFetch(`/payments/get-payment-details?orderNumber=${orderNumber}`, {
+        method: 'GET',
+    });
+
 export const logout = () =>
     myFetch(`/users/logout`, {
         method: 'POST',
