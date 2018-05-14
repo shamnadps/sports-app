@@ -15,7 +15,7 @@ const addBalance = async (req, res) => {
         let paymentObj = {};
         paymentObj.amount = amount;
         const validationErrors = utils.payments.validateAmount(
-            paymentObj.amount
+            +paymentObj.amount
         );
         if (validationErrors) {
             return res.status(422).json(validationErrors);
