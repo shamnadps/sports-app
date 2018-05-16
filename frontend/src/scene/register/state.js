@@ -12,6 +12,7 @@ class RegisterFormState {
     submitError = false;
     submitting = false;
     submitSuccess = false;
+    phoneNumberAlreadyExists = false;
 
     constructor(userStore) {
         this.userStore = userStore;
@@ -44,6 +45,11 @@ class RegisterFormState {
             console.error(error);
             this.submitError = true;
             this.submitting = false;
+            if (error.message === '409') {
+                this.phoneNumberAlreadyExists = true;
+            } else {
+                this.phoneNumberAlreadyExists = false;
+            }
         }
     };
 }
@@ -53,6 +59,7 @@ export default decorate(RegisterFormState, {
     phoneNumber: observable,
     submitError: observable,
     submitting: observable,
+    phoneNumberAlreadyExists: observable,
     submitSuccess: observable,
     formIsValid: computed,
     setPhoneNumber: action.bound,

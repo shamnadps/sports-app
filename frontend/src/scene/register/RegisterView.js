@@ -64,8 +64,18 @@ class RegisterForm extends React.Component {
                         />
                     </InputField>
                     <ErrorMessage show={this.state.submitError}>
-                        {i18nContent.registrationForm.errorMessage}
+                        {this.state.phoneNumberAlreadyExists
+                            ? i18nContent.registrationForm
+                                  .phoneNumberAlreadyExists
+                            : i18nContent.registrationForm.errorMessage}
                     </ErrorMessage>
+                    {this.state.phoneNumberAlreadyExists && (
+                        <FormLink>
+                            <Link to="/reset-pin">
+                                {i18nContent.signIn.form.forgotPassword}
+                            </Link>
+                        </FormLink>
+                    )}
                     <FormAction>
                         <Button
                             disabled={!this.state.formIsValid}
