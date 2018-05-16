@@ -16,7 +16,7 @@ const myFetch = async (url, config = {}) => {
         } catch (error) {
             console.log('Not a json :)');
         }
-    } else throw new Error('Error in making request');
+    } else throw new Error(response.status);
 };
 
 export const checkLoginStatus = () => myFetch(`/users/me`);
