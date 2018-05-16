@@ -90,6 +90,10 @@ class userStore {
         if (amount > this.balance) throw new Error('Insufficient fund!');
         else this.balance = this.balance - amount;
     }
+
+    addBalance(amount) {
+        this.balance = this.balance + amount;
+    }
     requestAddBalance(amount) {
         try {
             requestAddBalanceApi(amount);

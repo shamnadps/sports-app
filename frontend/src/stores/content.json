@@ -61,6 +61,34 @@
             "topUp": "Lataa saldoa",
             "amount": "Syötä määrä (enintään 50 euroa)",
             "confirm": "Lataa Saldoa"
+        },
+        "paymentConfirmationForm": {
+            "success": {
+                "title": "Payment Success!",
+                "amountDesc": "Amount added is",
+                "newBalanceDesc": "New Balance is"
+            },
+            "failure": {
+                "title": "Payment Failed! Please try again!.",
+                "balanceDesc": "Your Balance is"
+            },
+
+            "dismiss": "Dismiss"
+        },
+        "reservationConfirmationForm": {
+            "success": {
+                "title": "Varaus onnistui!.",
+                "reservationAmountDesc": "Reservation Amount is"
+            },
+            "failure": {
+                "title": "Reservation Failed! Please try again!."
+            },
+
+            "dismiss": "Dismiss"
+        },
+        "courseDescriptionForm": {
+            "dismiss": "Varaa ja Maksa",
+            "dateFormat": "MM.DD.YYYY"
         }
     }
 }

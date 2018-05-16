@@ -86,7 +86,7 @@ const createReservation = async (req, res) => {
                 dbUser,
                 message
             );
-            res.status(201).json('Created reservation successfully');
+            res.status(201).json(reservationObj);
         }
     } catch (err) {
         console.log(err);

@@ -35,40 +35,105 @@ const addBalance = async (req, res) => {
     }
 };
 
-const paymentNotify = async (req, res) => {
-    res.status(200).json('Payment notification request received from Bambora');
-};
-
-const paymentReturn = async (req, res) => {
-    const response = req.query.RETURN_CODE;
-    if (response === BamboraReturnCodes.SUCCESS) {
-        const ordernumber = req.query.ORDER_NUMBER;
-        const payment = await db.payments.getPaymentByOrderNumber(ordernumber);
+const getPaymentDetails = async (req, res) => {
+    try {
+        const orderNumber = req.query.orderNumber;
+        const user = req.user;
+        if (orderNumber === null) {
+            return res.status(422).json('Order number is not valid');
+        }
+        const payment = await db.payments.getPaymentByOrderNumber(orderNumber);
         if (!payment) {
             return res
                 .status(422)
                 .json('Payment details not available in the system.');
         }
-        await db.payments.updatePaymentStatus(ordernumber, req.query.SETTLED);
-        const dbUser = await db.users.getUserById(payment.userId);
-        const newBalance = payment.amount + dbUser.balance;
-        sequalize.transaction(async (transaction) => {
-            await db.reservations.updateUserBalance(
-                dbUser.id,
-                newBalance,
-                transaction
+
+        const dbUser = await db.users.getUser(user.phoneNumber);
+        const paymentDetails = {
+            amount: payment.amount,
+            status: payment.payment_status,
+            balance: dbUser.balance,
+        };
+        res.status(200).json(paymentDetails);
+    } catch (err) {
+        res
+            .status(500)
+            .json(`Failed to get payment details. Error: ${err.message}`);
+    }
+};
+
+const paymentNotify = async (req, res) => {
+    console.log(
+        `Payment notification request received from Bambora. Req: ${req.query}`
+    );
+};
+
+const paymentReturn = async (req, res) => {
+    try {
+        const response = req.query.RETURN_CODE;
+        if (response === BamboraReturnCodes.SUCCESS) {
+            const orderNumber = req.query.ORDER_NUMBER;
+            const payment = await db.payments.getPaymentByOrderNumber(
+                orderNumber
             );
-        });
-        const balance = await db.reservations.getUserBalance(dbUser.id);
-        res.redirect(
-            `/payment-complete?ordernumber=${ordernumber}&balance=${balance}`
+            if (!payment) {
+                console.error(
+                    `Payment details not available in the system. Payment Order: ${
+                        payment.order_number
+                    }`
+                );
+                return res.redirect(`/payment-complete?status=1`);
+            }
+
+            if (payment.payment_status) {
+                console.error(
+                    `This payment was already processed!. Payment Order: ${
+                        payment.order_number
+                    }`
+                );
+                return res.redirect(`/payment-complete?status=2`);
+            }
+
+            const dbUser = await db.users.getUserById(payment.userId);
+            const newBalance = payment.amount + dbUser.balance;
+            await sequalize.transaction(async (transaction) => {
+                await db.payments.updatePaymentStatus(
+                    orderNumber,
+                    req.query.SETTLED,
+                    transaction
+                );
+
+                await db.reservations.updateUserBalance(
+                    dbUser.id,
+                    newBalance,
+                    transaction
+                );
+            });
+            const balance = await db.reservations.getUserBalance(dbUser.id);
+            res.redirect(
+                `/payment-complete?orderNumber=${orderNumber}&amount=${
+                    payment.amount
+                }&balance=${newBalance}&status=0`
+            );
+        } else {
+            console.error(
+                `Payment failed with error code: ${response}. Please try again later`
+            );
+            return res.redirect(`/payment-complete?status=3`);
+        }
+    } catch (err) {
+        console.error(
+            `Payment failed with error code: ${
+                err.message
+            }. Please try again later`
         );
-    } else {
-        res.status(422).json(`Payment failed. Please try again later`);
+        return res.redirect(`/payment-complete?status=4`);
     }
 };
 
 router.get('/add-balance', auth.requireAuth, addBalance);
+router.get('/get-payment-details', auth.requireAuth, getPaymentDetails);
 router.get('/payment-notify', paymentNotify);
 router.get('/payment-return', paymentReturn);
 

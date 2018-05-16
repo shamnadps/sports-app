@@ -89,6 +89,7 @@ class CourseModal extends React.Component {
     };
     render() {
         const course = this.props.courseStore.courseInFocus;
+        const i18nContent = this.props.i18nStore.content;
         return (
             <Modal show={course || false} onClear={this.clear}>
                 {course && (
@@ -99,6 +100,15 @@ class CourseModal extends React.Component {
                                 <li>
                                     <LocationIcon />
                                     {course.location}
+                                </li>
+                                <li>
+                                    <strong>
+                                        {dateFns.format(
+                                            course.startDate,
+                                            i18nContent.courseDescriptionForm
+                                                .dateFormat
+                                        )}
+                                    </strong>
                                 </li>
                                 <li>
                                     <ClockLogo />
@@ -133,7 +143,7 @@ class CourseModal extends React.Component {
                                     this.props.courseStore.reserveCourse(course)
                                 }
                             >
-                                Varaa ja Maksa
+                                {i18nContent.courseDescriptionForm.dismiss}
                             </Button>
                         </PaymentSection>
                     </Fragment>
@@ -143,4 +153,4 @@ class CourseModal extends React.Component {
     }
 }
 
-export default connect('courseStore')(CourseModal);
+export default connect('i18nStore', 'courseStore')(CourseModal);
