@@ -79,6 +79,7 @@ class userStore {
         this.username = userData.username;
         this.balance = userData.balance;
         this.phoneNumber = userData.phoneNumber;
+        this.authenticationFailed = false;
     }
     resetCredentials() {
         this.token = null;
