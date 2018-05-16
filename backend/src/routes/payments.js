@@ -27,7 +27,7 @@ const addBalance = async (req, res) => {
         };
 
         const url = await services.payments.getPaymentRedirectUrl(paymentObj);
-        res.redirect(url);
+        res.status(301).redirect(url);
     } catch (err) {
         res
             .status(500)
@@ -83,7 +83,7 @@ const paymentReturn = async (req, res) => {
                         payment.order_number
                     }`
                 );
-                return res.redirect(`/payment-complete?status=1`);
+                return res.redirect(`/app/payment-complete?status=1`);
             }
 
             if (payment.payment_status) {
@@ -92,7 +92,7 @@ const paymentReturn = async (req, res) => {
                         payment.order_number
                     }`
                 );
-                return res.redirect(`/payment-complete?status=2`);
+                return res.redirect(`/app/payment-complete?status=2`);
             }
 
             const dbUser = await db.users.getUserById(payment.userId);
@@ -112,7 +112,7 @@ const paymentReturn = async (req, res) => {
             });
             const balance = await db.reservations.getUserBalance(dbUser.id);
             res.redirect(
-                `/payment-complete?orderNumber=${orderNumber}&amount=${
+                `/app/payment-complete?orderNumber=${orderNumber}&amount=${
                     payment.amount
                 }&balance=${newBalance}&status=0`
             );
@@ -120,7 +120,7 @@ const paymentReturn = async (req, res) => {
             console.error(
                 `Payment failed with error code: ${response}. Please try again later`
             );
-            return res.redirect(`/payment-complete?status=3`);
+            return res.redirect(`/app/payment-complete?status=3`);
         }
     } catch (err) {
         console.error(
@@ -128,7 +128,7 @@ const paymentReturn = async (req, res) => {
                 err.message
             }. Please try again later`
         );
-        return res.redirect(`/payment-complete?status=4`);
+        return res.redirect(`/app/payment-complete?status=4`);
     }
 };
 

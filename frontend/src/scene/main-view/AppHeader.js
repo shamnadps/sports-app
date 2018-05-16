@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Button from '../../common/Button';
 import styled from 'react-emotion';
 import { connect } from 'utils';
 import { Link } from 'react-router-dom';
 import { tween, easing, chain, delay } from 'popmotion';
+import BalanceView from '../balance';
 
 const AppHeaderWrapper = styled('div')`
     width: 100%;
@@ -40,12 +41,26 @@ const LogoBar = styled('div')`
 `;
 
 class AppHeader extends React.Component {
+    state = {
+        show: false,
+    };
     previousBalance = 0;
+
     componentDidMount = () => this.animateBalance();
     componentDidUpdate = () => this.animateBalance();
 
+    clear = () => {
+        this.setState({ show: false });
+    };
+    show = () => {
+        this.setState({ show: true });
+    };
+
     animateBalance = () => {
-        if (this.balanceButton) {
+        if (
+            this.balanceButton &&
+            this.previousBalance !== this.props.userStore.balance
+        ) {
             chain(
                 delay(500),
                 tween({
@@ -59,7 +74,9 @@ class AppHeader extends React.Component {
                 .start((v) => {
                     try {
                         this.balanceButton.textContent = '€ ' + v;
-                    } catch (error) {}
+                    } catch (error) {
+                        console.log(error);
+                    }
                 });
         }
         this.previousBalance = this.props.userStore.balance;
@@ -85,12 +102,13 @@ class AppHeader extends React.Component {
                             innerRef={(instance) =>
                                 (this.balanceButton = instance)
                             }
-                            onClick={this.props.requestShowBalance}
+                            onClick={this.show}
                         >
                             0 €
                         </Button>
                     )}
                 </LogoBar>
+                <BalanceView show={this.state.show} onClear={this.clear} />
             </AppHeaderWrapper>
         );
     }
