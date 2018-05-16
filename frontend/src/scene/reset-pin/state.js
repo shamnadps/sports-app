@@ -25,6 +25,7 @@ class ResetPinFormState {
             this.submitSuccess = true;
             this.submitError = false;
             this.submitting = false;
+            this.userStore.authenticationFailed = false;
         } catch (error) {
             console.error(error);
             this.submitError = true;
