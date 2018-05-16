@@ -11,6 +11,9 @@ import posed, { PoseGroup } from 'react-pose';
 import { connect } from 'utils';
 import BalanceViewState from './state';
 
+const BalanceModal = styled(Modal)`
+    max-height: 100%;
+`;
 const Content = styled(ModalContent)`
     width: 100%;
     height: 100%;
@@ -18,7 +21,8 @@ const Content = styled(ModalContent)`
     justify-content: baseline;
     align-items: center;
     flex-direction: column;
-    margin-top: 10rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 
     div {
         display: inherit;
@@ -85,6 +89,12 @@ const InputField = styled(DefaultInputField)`
         border: 1px ${(props) => props.theme.main} solid;
         width: auto;
     }
+    button {
+        padding: 2rem !important;
+        border: 1px ${(props) => props.theme.main} solid;
+        width: auto;
+        margin-bottom: 10rem !important;
+    }
 `;
 
 class BalanceView extends Component {
@@ -102,7 +112,7 @@ class BalanceView extends Component {
         const balance = this.props.userStore.balance;
         const i18nContent = this.props.i18nStore.content.balanceView;
         return (
-            <Modal
+            <BalanceModal
                 show={this.props.show}
                 onClear={() => {
                     this.props.onClear();
@@ -139,20 +149,20 @@ class BalanceView extends Component {
                                             value={this.state.amount}
                                             onChange={this.setAmount}
                                         />
+                                        <Button
+                                            bold
+                                            onClick={this.onConfirm}
+                                            disabled={this.state.formIncorrect}
+                                        >
+                                            {i18nContent.confirm}!
+                                        </Button>
                                     </InputField>
-                                    <Button
-                                        bold
-                                        onClick={this.onConfirm}
-                                        disabled={this.state.formIncorrect}
-                                    >
-                                        {i18nContent.confirm}!
-                                    </Button>
                                 </Form>
                             </FormWarpper>
                         )}
                     </PoseGroup>
                 </Content>
-            </Modal>
+            </BalanceModal>
         );
     }
 }
