@@ -13,13 +13,13 @@ const Content = styled(ModalContent)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 10rem;
+    margin-top: 5rem;
 
     div {
         display: inherit;
         flex-direction: column;
         text-align: center;
-        margin: 4rem;
+        margin: 2rem;
 
         * {
             margin: 1rem;
@@ -61,13 +61,6 @@ class PaymentView extends Component {
                             <Title>
                                 {
                                     i18nContent.paymentConfirmationForm.success
-                                        .amountDesc
-                                }
-                            </Title>
-                            <span>{parsed.amount} €</span>
-                            <Title>
-                                {
-                                    i18nContent.paymentConfirmationForm.success
                                         .newBalanceDesc
                                 }
                             </Title>
@@ -91,7 +84,6 @@ class PaymentView extends Component {
                             <span>{this.props.userStore.balance} €</span>
                         </div>
                     )}
-
                     <Button bold onClick={this.clear}>
                         {i18nContent.paymentConfirmationForm.dismiss}
                     </Button>

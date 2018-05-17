@@ -52,9 +52,9 @@
         "resetPinForm": {
             "title": "Lähetä uusi PIN-koodi",
             "errorMessage": "Salasanan nollaus epäonnistui. Yritä uudelleen",
-            "welcome": "Palauta valmis",
+            "welcome": "PIN-koodin lähetys onnistui",
             "congratulationMessage":
-                "PIN-koodi on pudonnut. Uusi PIN-koodi on lähetetty puhelinnumerosi Syötä nelinumeroinen PIN-koodi",
+                "PIN-koodi on lähetetty puhelinnumeroosi. Syötä uusi nelinumeroinen PIN-koodi kirjautuaksesi",
             "promptPinCode": "Kirjoita nelinumeroinen PIN-koodi kirjautuaksesi",
             "submit": "Lähetä"
         },
@@ -66,16 +66,16 @@
         },
         "paymentConfirmationForm": {
             "success": {
-                "title": "Payment Success!",
-                "amountDesc": "Amount added is",
-                "newBalanceDesc": "New Balance is"
+                "title": "Maksu onnistui!",
+                "amountDesc": "Ostit saldoa",
+                "newBalanceDesc": "Uusi saldo on"
             },
             "failure": {
-                "title": "Payment Failed! Please try again!.",
-                "balanceDesc": "Your Balance is"
+                "title": "Maksu keskeytyi. Yritä uudelleen.",
+                "balanceDesc": "Saldosi on"
             },
 
-            "dismiss": "Dismiss"
+            "dismiss": "Sulje"
         },
         "reservationConfirmationForm": {
             "success": {
@@ -86,7 +86,7 @@
                 "title": "Reservation Failed! Please try again!."
             },
 
-            "dismiss": "Dismiss"
+            "dismiss": "Sulje"
         },
         "courseDescriptionForm": {
             "dismiss": "Varaa ja Maksa",
