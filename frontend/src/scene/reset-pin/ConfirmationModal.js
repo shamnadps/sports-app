@@ -10,7 +10,12 @@ const SmallModal = styled(Modal)`
 `;
 
 const ModalAction = styled('div')`
-    align-self: flex-end;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
 `;
 const CustomTitle = styled(Title)`
     font-weight: 400;
@@ -33,12 +38,12 @@ export default class ConfirmationModal extends React.Component {
                         <p>{i18nContent.resetPinForm.congratulationMessage}</p>
                         <p>{i18nContent.resetPinForm.promptPinCode}</p>
                     </Content>
+                    <ModalAction>
+                        <Link to="/login">
+                            <Button bold>{i18nContent.appHeader.login}</Button>
+                        </Link>
+                    </ModalAction>
                 </div>
-                <ModalAction>
-                    <Link to="/login">
-                        <Button bold>{i18nContent.appHeader.login}</Button>
-                    </Link>
-                </ModalAction>
             </SmallModal>
         );
     }
