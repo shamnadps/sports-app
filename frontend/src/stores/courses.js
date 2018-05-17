@@ -38,10 +38,10 @@ const isAvailable = (
             notReserved,
         reasons: [
             !notReserved && 'reserved',
+            !authenticationStatus && 'auth',
             !openedYet && 'openTime',
             closedYet && 'closingTime',
             !enoughFund && 'resource',
-            !authenticationStatus && 'auth',
         ].filter((reason) => typeof reason !== 'boolean'),
     };
 };
