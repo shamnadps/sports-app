@@ -105,6 +105,7 @@ const TimeArea = styled('div')`
         font-weight: bold;
     }
 `;
+
 const CourseArea = styled('div')`
     padding-left: 2rem;
     display: flex;
@@ -125,8 +126,8 @@ const CourseArea = styled('div')`
     }
     div {
         span {
-            display: inline;
-            margin-right: 3rem;
+            display: inline-block;
+            width: 10rem;
             color: ${(props) => props.theme.main};
             text-transform: uppercase;
             font-size: 2.5rem;
