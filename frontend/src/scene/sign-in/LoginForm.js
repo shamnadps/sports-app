@@ -18,23 +18,25 @@ const PinCodeInput = styled(Input)`
 const pinArr = [0, 1, 2, 3];
 
 class LoginForm extends React.Component {
+    state = {
+        hasEverFailed: false,
+    };
+
     componentDidMount() {
         autorun(() => {
-            if (this.props.userStore.authenticationFailed && this.input0)
-                this.input0.focus();
+            if (this.props.userStore.authenticationFailed && this.input0) {
+                this.setState({ hasEverFailed: true }, () =>
+                    this.input0.focus()
+                );
+            }
         });
     }
     onTelephoneInputChange = (e) => {
         this.props.userStore.setPhoneNumber(e.target.value);
     };
+
     onPinCodeInputsKeyUp = (key) => (e) => {
-        if (/\d/.test(e.key)) {
-            const setResult = this.props.userStore.setInputCode(key, e.key);
-            if (setResult && key !== 3) {
-                if (key === 3) this[`input0`].focus();
-                else this[`input${key + 1}`].focus();
-            }
-        } else if (e.key === 'Backspace') {
+        if (e.key === 'Backspace') {
             const setResult = this.props.userStore.setInputCode(key - 1, '');
             if (setResult && key !== 0) {
                 if (key === 1) this[`input0`].focus();
@@ -42,15 +44,26 @@ class LoginForm extends React.Component {
             }
         }
     };
+    onPinCodeInputsChange = (key) => (e) => {
+        const setResult = this.props.userStore.setInputCode(
+            key,
+            e.target.value
+        );
+        if (setResult && key !== 3) {
+            if (key === 3) this[`input0`].focus();
+            else this[`input${key + 1}`].focus();
+        }
+    };
     render() {
         const content = this.props.i18nStore.content;
         const authenticationFailed = this.props.userStore.authenticationFailed;
+        const { hasEverFailed } = this.state;
 
         return (
             <Form>
-                <InputField error={authenticationFailed}>
+                <InputField error={hasEverFailed}>
                     <label htmlFor="telephone">
-                        {authenticationFailed
+                        {hasEverFailed
                             ? content.signIn.form.telIsWrong
                             : content.signIn.form.tel}
                     </label>
@@ -61,9 +74,9 @@ class LoginForm extends React.Component {
                         onChange={this.onTelephoneInputChange}
                     />
                 </InputField>
-                <InputField error={authenticationFailed}>
+                <InputField error={hasEverFailed}>
                     <label htmlFor="pinCode">
-                        {authenticationFailed
+                        {hasEverFailed
                             ? content.signIn.form.pinCodeIsWrong
                             : content.signIn.form.pinCode}
                     </label>
@@ -76,9 +89,9 @@ class LoginForm extends React.Component {
                                 key={key}
                                 type="number"
                                 onKeyUp={this.onPinCodeInputsKeyUp(key)}
+                                onChange={this.onPinCodeInputsChange(key)}
                                 value={this.props.userStore.pinCode[key]}
                                 name="pinCode"
-                                inputmode="tel"
                             />
                         ))}
                     </div>
