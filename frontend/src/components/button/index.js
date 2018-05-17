@@ -63,6 +63,7 @@ class Button extends React.Component {
             <ButtonStyled
                 disabled={disabled}
                 onClick={disabled ? () => {} : onClick}
+                onTapStart={disabled ? () => {} : onClick}
                 {...rest}
             />
         );

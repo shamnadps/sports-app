@@ -107,6 +107,10 @@
         "courseDescriptionForm": {
             "dismiss": "Varaa ja Maksa",
             "dateFormat": "MM.DD.YYYY"
+        },
+        "cookieBanner": {
+            "message": "Käytämme evästeitä parantaaksemme käyttäjäkokemusta",
+            "buttonLabel": "Hyvää"
         }
     }
 }
