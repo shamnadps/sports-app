@@ -59,7 +59,7 @@ describe('Reservation Testing', () => {
 
     test('Should be able to get all the reservations for a user', async () => {
         const cancelledStatus = 0;
-        const reservations = await db.reservations.getReservations(
+        const reservations = await db.reservations.getReservationsByUser(
             reservation.userId
         );
         expect(reservations[0].userId).toEqual(reservation.userId);

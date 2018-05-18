@@ -7,17 +7,39 @@ const services = require('../services');
 const datefns = require('date-fns');
 const eventReservationLimit = process.env.EVENT_RESERVATION_LIMIT || 5;
 const i18n = require('../i18n').i18n();
-const getReservations = async (req, res) => {
+const getReservationsByUser = async (req, res) => {
     try {
         const user = req.user;
         const dbuser = await db.users.getUser(user.phoneNumber);
-        const reservations = await db.reservations.getReservations(dbuser.id);
+        const reservations = await db.reservations.getReservationsByUser(
+            dbuser.id
+        );
         res.status(200).json(reservations);
     } catch (err) {
         res.status(500).json(`Failed to get reservation.`);
     }
 };
+
+const getAllReservations = async (req, res) => {
+    try {
+        const reservations = await db.reservations.getAllReservations();
+        res.status(200).json(reservations);
+    } catch (err) {
+        res.status(500).json(`Failed to get reservation.`);
+    }
+};
+
+const getReservationCountForEvents = async (req, res) => {
+    try {
+        const eventReservations = await db.reservations.getReservationCountForEvents();
+        res.status(200).json(eventReservations);
+    } catch (err) {
+        res.status(500).json(`Failed to get reservation count for events.`);
+    }
+};
+
 const formatDate = (date) => datefns.format(date, i18n.reservations.dateFormat);
+
 const createReservation = async (req, res) => {
     try {
         const reservationObj = req.body;
@@ -113,7 +135,9 @@ const cancelReservation = async (req, res) => {
     }
 };
 
-router.get('/', auth.requireAuth, getReservations);
+router.get('/', auth.requireAuth, getReservationsByUser);
+router.get('/all', auth.requireAuth, getAllReservations);
+router.get('/reserved-events', auth.requireAuth, getReservationCountForEvents);
 router.post('/', auth.requireAuth, createReservation);
 router.post('/cancel/:id', auth.requireAuth, cancelReservation);
 
