@@ -4,7 +4,7 @@ const models = require('../models');
 const db = require('../sequalize_pg');
 const Sequelize = require('sequelize');
 
-const getReservations = async (userId) => {
+const getReservationsByUser = async (userId) => {
     return await models.reservations.findAll({
         include: [
             {
@@ -22,6 +22,26 @@ const getReservations = async (userId) => {
             },
         ],
         where: { userId },
+    });
+};
+
+const getAllReservations = async () => {
+    return await models.reservations.findAll({
+        include: [
+            {
+                model: models.courses,
+                attributes: ['name', 'price', 'id', 'description'],
+            },
+            {
+                model: models.events,
+                attributes: [
+                    'id',
+                    ['start', 'startDate'],
+                    ['end', 'endDate'],
+                    'teachingplace',
+                ],
+            },
+        ],
     });
 };
 // TODO: Can't we join tables and find from that table here?
@@ -72,6 +92,16 @@ const getReservationCount = (eventId) => {
 const getReservationForEvent = (eventId, userId) => {
     return models.reservations.find({
         where: { eventId, userId },
+    });
+};
+
+const getReservationCountForEvents = (eventId) => {
+    return models.reservations.findAll({
+        attributes: [
+            'eventId',
+            Sequelize.fn('count', Sequelize.col('eventId')),
+        ],
+        group: ['reservations.eventId'],
     });
 };
 
@@ -144,7 +174,8 @@ const getUserBalance = (userId) => {
 };
 
 module.exports = {
-    getReservations,
+    getAllReservations,
+    getReservationsByUser,
     getReservationById,
     getReservationCount,
     getReservationForEvent,
@@ -152,4 +183,5 @@ module.exports = {
     cancelReservation,
     getUserBalance,
     updateUserBalance,
+    getReservationCountForEvents,
 };

@@ -35,7 +35,7 @@ describe('getCourses API call', () => {
         const responseObj = response['04-18-2018'][0];
         expect(response['04-18-2018']).toHaveLength(4);
         expect(responseObj.name).toEqual('English Conversation');
-        expect(responseObj.price).toEqual(43);
+        expect(responseObj.price).toEqual(30);
         expect(responseObj.location).toEqual('Tapiola, Vindängens skola');
         expect(responseObj.startDate).toEqual('2018-04-18T07:00:00.000Z');
         expect(responseObj.endDate).toEqual('2018-04-18T08:30:00.000Z');

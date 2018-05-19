@@ -1,6 +1,7 @@
 const models = require('../models');
 const datefns = require('date-fns');
 const Sequelize = require('sequelize');
+const utils = require('../utils');
 const Op = Sequelize.Op;
 
 const getCourses = (startDate, endDate) => {
@@ -149,7 +150,6 @@ const reduceCoursesByDate = (courses) => {
         .map((course) => ({
             id: course.id,
             name: course.name,
-            price: course.price,
             code: course.code,
             priceMaterial: course.priceMaterial,
             description: course.description,
@@ -174,6 +174,11 @@ const reduceCoursesByDate = (courses) => {
         }))
         .reduce((obj, course) => {
             const date = datefns.format(course.startDate, 'MM-DD-YYYY');
+            const price = utils.courses.getCoursePrice(
+                course.course_type_id,
+                course.startDate
+            );
+            course.price = price;
             obj[date] = obj[date] || [];
             obj[date].push(course);
             return obj;
