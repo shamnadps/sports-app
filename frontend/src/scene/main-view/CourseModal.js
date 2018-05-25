@@ -6,7 +6,7 @@ import LocationIcon from '../../common/LocationIcon';
 import DateLogo from '../../common/DateLogo';
 import ClockLogo from '../../common/ClockLogo';
 import EuroLogo from '../../common/EuroLogo';
-import Button from '../../common/Button';
+import Button from '../../components/button';
 import dateFns from 'date-fns';
 
 const CourseContent = styled(Content)`
@@ -128,7 +128,10 @@ const MainModal = ({ course, seletectedDate, onConfirm, clear }) => (
                         <li>
                             <DateLogo />
                             <strong>
-                                {dateFns.format(seletectedDate, 'DD.MM.YYYY')}
+                                {dateFns.format(
+                                    seletectedDate,
+                                    'dd DD.MM.YYYY'
+                                )}
                             </strong>
                         </li>
                         <li>
@@ -172,7 +175,7 @@ const ConfirmationModal = ({ course, seletectedDate, reserve, clear }) => (
         {course && (
             <Fragment>
                 <CourseContent>
-                    <Title>Vahvista Varaus</Title>
+                    <Title>Vahvista varaus</Title>
                     <ul>
                         <li>Olet varaamassa kurssia:</li>
                         <li>
@@ -184,7 +187,7 @@ const ConfirmationModal = ({ course, seletectedDate, reserve, clear }) => (
                         </li>
                         <li>
                             <DateLogo />
-                            {dateFns.format(seletectedDate, 'DD.MM.YYYY')}
+                            {dateFns.format(seletectedDate, 'dd DD.MM.YYYY')}
                         </li>
                         <li>
                             <ClockLogo />
