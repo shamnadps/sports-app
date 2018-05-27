@@ -8,7 +8,7 @@ describe('Payment test', () => {
         const paymentRequest = services.bambora.createBamboraPaymentRequest(
             paymentModel
         );
-        expect(paymentRequest.products[0].tax).toEqual(109);
+        expect(paymentRequest.products[0].tax).toEqual(10);
         expect(paymentRequest.products[0].pretax_price).toEqual(1091);
         expect(paymentRequest.products[0].price).toEqual(1200);
     });
