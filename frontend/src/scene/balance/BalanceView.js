@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import Modal, { Title, Content as ModalContent } from '../../components/modal';
+import BaseModal, {
+    Title,
+    Content as ModalContent,
+} from '../../components/modal';
 import Button from '../../components/button';
 import {
     Form as DefaultForm,
@@ -11,44 +14,41 @@ import posed, { PoseGroup } from 'react-pose';
 import { connect } from 'utils';
 import BalanceViewState from './state';
 
-const BalanceModal = styled(Modal)`
-    max-height: 100%;
+const Modal = styled(BaseModal)`
+    justify-content: center;
 `;
 const Content = styled(ModalContent)`
-    width: 100%;
-    height: 100%;
     display: flex;
-    justify-content: baseline;
-    align-items: center;
     flex-direction: column;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
 
     div {
         display: inherit;
         flex-direction: column;
         text-align: center;
-        margin: 4rem;
+        justify-content: center;
 
+        h4 {
+            text-transform: uppercase;
+        }
         * {
             margin: 1rem;
         }
         span {
-            font-size: 8rem;
+            font-size: 7rem;
             font-family: GT-Walsheim, sans-serif;
             color: ${(props) => props.theme.main};
         }
     }
 `;
 
-const BalanceInfoArea = posed.div({
+const BalanceInfoAreaAnimation = posed.div({
     show: {
-        y: -50,
-    },
-    normal: {
-        y: 0,
+        top: true,
     },
 });
+const BalanceInfoArea = styled(BalanceInfoAreaAnimation)`
+    align-self: center;
+`;
 const FormWarpper = posed.div({
     preEnter: {
         y: 300,
@@ -63,20 +63,12 @@ const FormWarpper = posed.div({
         opacity: 0,
     },
 });
-
 const Form = styled(DefaultForm)`
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-top: 5px ${(props) => props.theme.main} solid;
-    width: auto;
     margin: 0 !important;
-
-    button {
-        padding: 2rem !important;
-        width: auto;
-        align-self: center;
-    }
 `;
 const InputField = styled(DefaultInputField)`
     margin: 2rem 0 !important;
@@ -86,14 +78,13 @@ const InputField = styled(DefaultInputField)`
         text-align: left;
     }
     input {
+        width: auto;
         border: 1px ${(props) => props.theme.main} solid;
         width: auto;
     }
-    button {
-        padding: 2rem !important;
-        border: 1px ${(props) => props.theme.main} solid;
-        width: auto;
-    }
+`;
+const SubmitButton = styled(Button)`
+    align-self: center;
 `;
 
 class BalanceView extends Component {
@@ -111,7 +102,7 @@ class BalanceView extends Component {
         const balance = this.props.userStore.balance;
         const i18nContent = this.props.i18nStore.content.balanceView;
         return (
-            <BalanceModal
+            <Modal
                 show={this.props.show}
                 onClear={() => {
                     this.state.hideForm();
@@ -119,21 +110,18 @@ class BalanceView extends Component {
                 }}
             >
                 <Content>
-                    <BalanceInfoArea pose={formShown ? 'show' : 'normal'}>
+                    <BalanceInfoArea pose={'show'}>
                         <Title>{i18nContent.sectionTitle}</Title>
                         <span>{balance} €</span>
                         {!formShown && (
-                            <Button bold onClick={this.state.showForm}>
+                            <Button onClick={this.state.showForm}>
                                 {i18nContent.topUp}
                             </Button>
                         )}
                     </BalanceInfoArea>
                     <PoseGroup animateOnMount>
                         {formShown && (
-                            <FormWarpper
-                                key="1"
-                                style={{ margin: 0, width: '90%' }}
-                            >
+                            <FormWarpper key="1">
                                 <Form>
                                     <InputField
                                         error={this.state.formIncorrect}
@@ -148,20 +136,20 @@ class BalanceView extends Component {
                                             value={this.state.amount}
                                             onChange={this.setAmount}
                                         />
-                                        <Button
-                                            bold
-                                            onClick={this.onConfirm}
-                                            disabled={this.state.formIncorrect}
-                                        >
-                                            {i18nContent.confirm}!
-                                        </Button>
                                     </InputField>
                                 </Form>
+                                <SubmitButton
+                                    bold
+                                    onClick={this.onConfirm}
+                                    disabled={this.state.formIncorrect}
+                                >
+                                    {i18nContent.confirm}!
+                                </SubmitButton>
                             </FormWarpper>
                         )}
                     </PoseGroup>
                 </Content>
-            </BalanceModal>
+            </Modal>
         );
     }
 }
