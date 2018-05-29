@@ -3,11 +3,13 @@ const crypto = require('crypto');
 const payment_return_url = process.env.PAYMENT_RETURN_URL;
 const payemnt_notify_url = process.env.PAYMENT_NOTIFY_URL;
 
-const secret = process.env.SECRET_KEY;
-const apiKey = process.env.API_KEY;
+const secret = process.env.BAMBORA_SECRET_KEY;
+const apiKey = process.env.BAMBORA_API_KEY;
 
 const bamboraProductID = process.env.BAMBORA_PRODUCT_ID;
 const bamboraProductTitle = process.env.BAMBORA_PRODUCT_TITLE;
+
+const BAMBORA_TAX = process.env.BAMBORA_TAX || 10;
 
 module.exports = {
     createPaymentModel: (paymentModel) => {
@@ -26,10 +28,10 @@ module.exports = {
 
     createBamboraPaymentRequest: (paymentModel) => {
         const amount = paymentModel.amount * 100;
-        const preTaxAmount = Math.round(Number((amount * 10 / 11).toFixed(2)));
-        const taxAmount = Math.round(
-            Number((amount - preTaxAmount).toFixed(2))
+        const preTaxAmount = Math.round(
+            Number((amount * BAMBORA_TAX / (BAMBORA_TAX + 1)).toFixed(2))
         );
+        const taxAmount = BAMBORA_TAX;
         return {
             version: 'w3.1',
             api_key: apiKey,
