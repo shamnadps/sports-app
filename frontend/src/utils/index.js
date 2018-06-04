@@ -62,3 +62,7 @@ export const validateUsername = (username) => {
     // no contrains now for username
     return true;
 };
+
+export const composeFunction = (...funcList) => (args) => {
+    funcList.forEach((func) => func(args));
+};
