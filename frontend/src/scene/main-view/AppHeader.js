@@ -67,7 +67,9 @@ class AppHeader extends React.Component {
                     )}
                     <span>{appName}</span>
                     {isAuthenticated && (
-                        <Button onClick={this.show}>{balance} €</Button>
+                        <Button onClick={this.show}>
+                            {Number(balance).toLocaleString('fi')} €
+                        </Button>
                     )}
                 </LogoBar>
                 <BalanceView show={this.state.show} onClear={this.clear} />

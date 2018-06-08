@@ -25,7 +25,8 @@ const ButtonStyled = styled('button')`
     text-transform: uppercase;
     cursor: pointer;
     transition: box-shadow 0.5s ease, background-color 0.5s ease,
-        border-color 0.5s ease, color 0.7s ease;
+        border-color 0.5s ease, color 0.7s ease, filter 0.7s ease,
+        opacity 0.7s ease;
 
     ${(props) =>
         props.disabled &&

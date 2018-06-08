@@ -5,17 +5,15 @@ import Button from '../../components/button';
 import { Link } from 'react-router-dom';
 
 const SmallModal = styled(Modal)`
-    height: 40%;
-    display: flex;
+    height: auto;
 `;
-
 const ModalAction = styled('div')`
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    align-self: flex-end;
+    margin-top: 3rem;
 `;
 const CustomTitle = styled(Title)`
     font-weight: 400;

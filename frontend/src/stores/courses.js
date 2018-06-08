@@ -41,8 +41,8 @@ const isAvailable = (
             notReserved &&
             hasTickets,
         reasons: [
-            !notReserved && 'reserved',
             !authenticationStatus && 'auth',
+            !notReserved && 'reserved',
             !openedYet && 'openTime',
             closedYet && 'closingTime',
             !hasTickets && 'noTickets',

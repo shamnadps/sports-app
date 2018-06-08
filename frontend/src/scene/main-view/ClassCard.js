@@ -27,13 +27,13 @@ const ItemAnimation = posed.div({
 
 const ErrorMessageAnimation = posed.h4({
     hidden: {
-        scale: 0,
-        y: 0,
+        y: -10,
+        x: 50,
         opacity: 0,
     },
     shown: {
-        scale: 1,
         y: -10,
+        x: 0,
         opacity: 1,
     },
 });
@@ -281,7 +281,10 @@ const Card = class extends React.Component {
                         <span>{course.location}</span>
                         <div>
                             {errorDetail.type !== 'reserved' && (
-                                <PriceTag>{course.price} €</PriceTag>
+                                <PriceTag>
+                                    {Number(course.price).toLocaleString('fi')}{' '}
+                                    €
+                                </PriceTag>
                             )}
                             {!disabled ? (
                                 <BookingButton
@@ -316,43 +319,44 @@ class ClassCard extends React.Component {
         this.props.courseStore.selectCourse(course);
     };
     // WAITING FOR DECISION FROM CLIENT TO HAVE SORTING OR NOT
-    // sortCourseByPurchasedStatusAndTime = (courses) => {
-    //     // sorters
-    //     const sortByReserved = (A, B) => {
-    //         // we want user to see all of their reservation first
-    //         const checkReservedStatus = (item) =>
-    //             item.reasons && item.reasons[0] === 'reserved';
-    //         const isABdifferent =
-    //             checkReservedStatus(A) !== checkReservedStatus(B);
-    //         if (!isABdifferent) {
-    //             return 0;
-    //         }
-    //         if (checkReservedStatus(A) && !checkReservedStatus(B)) return 1;
-    //         return -1;
-    //     };
-    //     const sortByAvailability = (A, B) => {
-    //         // items that is available comes first
-    //         if (A.isAvailable === B.isAvailable) return 0;
-    //         if (A.isAvailable && !B.isAvailable) return 1;
-    //         return -1;
-    //     };
-    //     const sortByDateTime = (A, B) => {
-    //         // should be listed in a chronological order
-    //         return dateFns.compareAsc(A.startDate, B.startDate);
-    //     };
-    //     const sortCombiner = (...sorterFuncs) => (A, B) =>
-    //         sorterFuncs.reduce((accumulator, currentFunc) => {
-    //             // first sorter takes precedence.
-    //             if (accumulator === 0 && currentFunc(A, B) !== 0) {
-    //                 accumulator = currentFunc(A, B);
-    //             }
-    //             return accumulator;
-    //         }, 0);
+    // SORT BY TIME ONLY FOR NOW
+    sortCourseByPurchasedStatusAndTime = (courses) => {
+        //     // sorters
+        //     const sortByReserved = (A, B) => {
+        //         // we want user to see all of their reservation first
+        //         const checkReservedStatus = (item) =>
+        //             item.reasons && item.reasons[0] === 'reserved';
+        //         const isABdifferent =
+        //             checkReservedStatus(A) !== checkReservedStatus(B);
+        //         if (!isABdifferent) {
+        //             return 0;
+        //         }
+        //         if (checkReservedStatus(A) && !checkReservedStatus(B)) return 1;
+        //         return -1;
+        //     };
+        //     const sortByAvailability = (A, B) => {
+        //         // items that is available comes first
+        //         if (A.isAvailable === B.isAvailable) return 0;
+        //         if (A.isAvailable && !B.isAvailable) return 1;
+        //         return -1;
+        //     };
+        const sortByDateTime = (A, B) => {
+            // should be listed in a chronological order
+            return dateFns.compareAsc(A.startDate, B.startDate);
+        };
+        const sortCombiner = (...sorterFuncs) => (A, B) =>
+            sorterFuncs.reduce((accumulator, currentFunc) => {
+                // first sorter takes precedence.
+                if (accumulator === 0 && currentFunc(A, B) !== 0) {
+                    accumulator = currentFunc(A, B);
+                }
+                return accumulator;
+            }, 0);
 
-    //     return courses.sort(
-    //         sortCombiner(sortByReserved, sortByAvailability, sortByDateTime)
-    //     );
-    // };
+        return courses.sort(
+            sortCombiner(/*sortByReserved, sortByAvailability,*/ sortByDateTime)
+        );
+    };
 
     render() {
         // const courses = this.sortCourseByPurchasedStatusAndTime(

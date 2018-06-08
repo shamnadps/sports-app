@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'react-emotion';
-import { connect, getLocale } from 'utils';
+import { connect, getLocale, composeFunction } from 'utils';
 import Modal, { Content, Title } from '../../components/modal';
 import LocationIcon from '../../common/LocationIcon';
 import DateLogo from '../../common/DateLogo';
@@ -152,7 +152,9 @@ const MainModal = ({ course, seletectedDate, onConfirm, clear }) => (
                                 vapaana
                             </span>
                         </div>
-                        <span>{course.price} €</span>
+                        <span>
+                            {Number(course.price).toLocaleString('fi')} €
+                        </span>
                     </div>
                     <Button alternative bold onClick={onConfirm}>
                         Varaa
@@ -191,7 +193,9 @@ const ConfirmationModal = ({ course, seletectedDate, reserve, clear }) => (
                         </li>
                         <li>
                             <EuroLogo />
-                            <strong>{course.price}</strong>
+                            <strong>
+                                {Number(course.price).toLocaleString('fi')}
+                            </strong>
                         </li>
                     </ul>
                     <p>{course.description}</p>
@@ -216,7 +220,7 @@ const ReservationModal = ({ course, seletectedDate, clear }) => (
                 <ReservationContent>
                     <Title>Varaus Onnistui</Title>
                     <strong>Varasit tunnin hintaan</strong>
-                    <span>{course.price} €</span>
+                    <span>{Number(course.price).toLocaleString('fi')} €</span>
                     <div>
                         Saat varauksesta tekstiviestivahvistuksen puhelimeesi
                     </div>
@@ -264,6 +268,10 @@ class CourseModal extends React.Component {
         });
     };
 
+    removeFocusesCourse = () => {
+        this.props.courseStore.reserveCourse(null);
+    };
+
     render() {
         const seletectedDate = this.props.courseStore.filters.date;
         const course = this.props.courseStore.courseInFocus;
@@ -290,7 +298,10 @@ class CourseModal extends React.Component {
                     <ReservationModal
                         course={this.state.reservedCourse}
                         seletectedDate={seletectedDate}
-                        clear={this.clear}
+                        clear={composeFunction(
+                            this.clear,
+                            this.removeFocusesCourse
+                        )}
                     />
                 )}
             </div>

@@ -8,7 +8,7 @@ class BalanceViewState {
     get formIncorrect() {
         return (
             this.askValidate &&
-            (this.amount < 0 || this.amount > 50) &&
+            (this.amount <= 0 || this.amount > 50) &&
             this.showForm
         );
     }

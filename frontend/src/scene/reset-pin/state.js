@@ -26,6 +26,8 @@ class ResetPinFormState {
             this.submitError = false;
             this.submitting = false;
             this.userStore.authenticationFailed = false;
+            // for quality of life
+            this.userStore.setPhoneNumber(this.phoneNumber);
         } catch (error) {
             console.error(error);
             this.submitError = true;
