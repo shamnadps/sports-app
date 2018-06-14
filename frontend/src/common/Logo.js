@@ -31,8 +31,8 @@ const SvgComponent = (props) => (
                         {props.noText || (
                             <text
                                 transform="translate(23.19 69.15)"
-                                fontSize={24}
-                                fontFamily="Calibri-Bold,Calibri"
+                                fontSize="2.3rem"
+                                fontFamily="GT-Walsheim"
                                 fontWeight={500}
                                 letterSpacing="-.01em"
                                 id="Vantaa"
