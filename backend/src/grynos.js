@@ -39,6 +39,7 @@ const mapCourseDetailsFromGrynos = async (course) => {
         course_type_id: courseDetails.data.courseTypeID,
         course_type_name: courseDetails.data.courseTypeName,
         teacher: courseDetails.data.teacher,
+        location: courseDetails.data.location
     };
 };
 
@@ -64,9 +65,11 @@ const updateCoursesToDb = async () => {
         if (courses) {
             return await Promise.all(
                 courses.map((course) => {
+                    delete course.location[0].id;
                     return models.courses.create(course, {
                         include: [
                             { model: models.events, as: 'teachingSession' },
+                            { model: models.locations, as: 'location' },
                         ],
                     });
                 })
