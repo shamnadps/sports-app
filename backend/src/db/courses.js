@@ -33,7 +33,8 @@ const getCourses = (startDate, endDate) => {
             {
                 model: models.locations,
                 as: 'location',
-                attributes: [['path', 'location']],
+                attributes: [['path', 'location'],
+                    'address'],
             },
             {
                 model: models.events,
@@ -42,6 +43,7 @@ const getCourses = (startDate, endDate) => {
                     ['id', 'eventId'],
                     ['start', 'startDate'],
                     ['end', 'endDate'],
+                    'teachingplace',
                 ],
                 where: {
                     start: { [Op.between]: [startDate, endDate] },
@@ -81,7 +83,8 @@ const getAllCourses = () => {
             {
                 model: models.locations,
                 as: 'location',
-                attributes: [['path', 'location']],
+                attributes: [['path', 'location'],
+                    'address'],
             },
             {
                 model: models.events,
@@ -90,6 +93,7 @@ const getAllCourses = () => {
                     ['id', 'eventId'],
                     ['start', 'startDate'],
                     ['end', 'endDate'],
+                    'teachingplace',
                 ],
             },
         ],
@@ -125,7 +129,8 @@ const getCourseById = (id) => {
             {
                 model: models.locations,
                 as: 'location',
-                attributes: [['path', 'location']],
+                attributes: [['path', 'location'],
+                    'address'],
             },
             {
                 model: models.events,
@@ -134,6 +139,7 @@ const getCourseById = (id) => {
                     ['id', 'eventId'],
                     ['start', 'startDate'],
                     ['end', 'endDate'],
+                    'teachingplace',
                 ],
             },
         ],
@@ -156,7 +162,6 @@ const reduceCoursesByDate = async (courses) => {
                     course.course_type_id,
                     course.teachingSession[0].dataValues.startDate
                 );
-
                 return await {
                     id: course.id,
                     name: course.name,
@@ -177,7 +182,8 @@ const reduceCoursesByDate = async (courses) => {
                     course_type_id: course.course_type_id,
                     course_type_name: course.course_type_name,
                     teacher: course.teacher,
-                    location: course.teachingSession[0].dataValues.location,
+                    location: course.location[0].dataValues.location,
+                    address: course.location[0].dataValues.address,
                     eventId: course.teachingSession[0].dataValues.eventId,
                     startDate: course.teachingSession[0].dataValues.startDate,
                     endDate: course.teachingSession[0].dataValues.endDate,
