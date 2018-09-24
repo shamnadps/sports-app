@@ -205,7 +205,10 @@ const Card = class extends React.Component {
         if (type === 'openTime')
             return {
                 longMessage: stringInterpolator(openTime.longMessage, {
-                    date: dateFns.format(course.startDate, 'DD.MM'),
+                    date: dateFns.format(
+                        dateFns.subDays(course.startDate, 3),
+                        'DD.MM'
+                    ),
                     time: dateFns.format(course.startDate, 'HH:mm'),
                 }),
                 shortMessage: openTime.shortMessage,
