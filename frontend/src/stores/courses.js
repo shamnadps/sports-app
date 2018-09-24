@@ -7,9 +7,11 @@ const isOpenYet = (courseItem) =>
     // within 3 days from now
     dateFns.differenceInDays(courseItem.startDate, new Date()) < 3;
 
-const isClosedYet = (courseItem) =>
+const isClosedYet = (courseItem) => {
     // and must not be 1 hours before starting time
-    dateFns.differenceInHours(courseItem.startDate, new Date()) > 1;
+    const diff = dateFns.differenceInHours(courseItem.startDate, new Date());
+    return diff < 1;
+};
 
 const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
 
