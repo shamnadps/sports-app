@@ -89,7 +89,6 @@ class Button extends React.Component {
                 pose={pose}
                 disabled={disabled}
                 onClick={disabled ? () => {} : onClick}
-                onTouchStart={disabled ? () => {} : onClick}
             >
                 {children}
             </ButtonStyled>
