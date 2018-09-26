@@ -11,7 +11,7 @@ if (process.env.DATABASE_URL) {
     const { USERNAME, PASSWORD, HOST, DATABASE } = process.env;
     connectionString = `postgres://${USERNAME}:${PASSWORD}@${HOST}:5432/${DATABASE}`;
 } else {
-    connectionString = `postgres://postgres:password@localhost:5432/vantaa_pwa`;
+    connectionString = `postgres://postgres:password@localhost:5432/postgres`;
 }
 const Op = Sequelize.Op;
 const sequelize = new Sequelize(connectionString, {

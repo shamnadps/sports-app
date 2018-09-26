@@ -158,10 +158,7 @@ const reduceCoursesByDate = async (courses) => {
                 const reservedCount = await reservations.getReservationCount(
                     course.teachingSession[0].dataValues.eventId
                 );
-                const price = utils.courses.getCoursePrice(
-                    course.course_type_id,
-                    course.teachingSession[0].dataValues.startDate
-                );
+
                 return await {
                     id: course.id,
                     name: course.name,
@@ -182,20 +179,30 @@ const reduceCoursesByDate = async (courses) => {
                     course_type_id: course.course_type_id,
                     course_type_name: course.course_type_name,
                     teacher: course.teacher,
-                    location: course.location[0].dataValues.location,
-                    address: course.location[0].dataValues.address,
-                    eventId: course.teachingSession[0].dataValues.eventId,
-                    startDate: course.teachingSession[0].dataValues.startDate,
-                    endDate: course.teachingSession[0].dataValues.endDate,
-                    price: price,
+                    location: course.location[0] ? course.location[0].dataValues.location : null,
+                    address: course.location[0] ? course.location[0].dataValues.address : null,
+                    teachingSession: course.teachingSession,
                     reservedCount: reservedCount.count,
                 };
             })
     );
     return await mappedCourses.reduce((obj, course) => {
-        const date = datefns.format(course.startDate, 'MM-DD-YYYY');
-        obj[date] = obj[date] || [];
-        obj[date].push(course);
+        for (let teachingSession of course.teachingSession) {
+            if (teachingSession) {
+                const price = utils.courses.getCoursePrice(
+                    course.course_type_id,
+                    teachingSession.dataValues.startDate
+                );
+                const date = datefns.format(teachingSession.dataValues.startDate, 'MM-DD-YYYY');
+                obj[date] = obj[date] || [];
+                delete course.teachingSession;
+                course.eventId = teachingSession.dataValues.eventId;
+                course.startDate = teachingSession.dataValues.startDate;
+                course.endDate = teachingSession.dataValues.endDate;
+                course.price = price;
+                obj[date].push(course);
+            }
+        }
         return obj;
     }, {});
 };
