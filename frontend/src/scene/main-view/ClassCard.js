@@ -217,7 +217,10 @@ const Card = class extends React.Component {
             };
         if (type === 'closingTime')
             return {
-                longMessage: closeTime.longMessage,
+                longMessage: stringInterpolator(closeTime.longMessage, {
+                    numberOfFreeSeats:
+                        course.single_payment_count - course.reservedCount,
+                }),
                 shortMessage: closeTime.shortMessage,
                 colorCode: 'errorReservationTime',
                 type,
@@ -261,9 +264,9 @@ const Card = class extends React.Component {
                 blur={blurAndShowMessage}
                 errorColorCode={errorDetail.colorCode || ''}
                 onMouseEnter={() => this.setState({ showMessage: true })}
-                onTouchStart={() => this.setState({ showMessage: true })}
                 onMouseLeave={() => this.setState({ showMessage: false })}
                 onTouchEnd={() => {
+                    this.setState({ showMessage: true });
                     window.clearTimeout(this.longMessageTick);
                     this.longMessageTick = window.setTimeout(
                         () => this.setState({ showMessage: false }),
