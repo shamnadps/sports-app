@@ -48,7 +48,8 @@
                     "shortMessage": "Avautuu myöhemmin"
                 },
                 "closeTime": {
-                    "longMessage": "Ilmoittautuminen on päättynyt",
+                    "longMessage":
+                        "Ilmoittautuminen on päättynyt. Vapaita paikkoja {numberOfFreeSeats}",
                     "shortMessage": "Suljettu"
                 },
                 "noTickets": {
