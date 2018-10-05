@@ -54,6 +54,10 @@ const fetchCoursesFromGrynos = async () => {
     }
 };
 
+const clearDatabase = async () => {
+    await sequelize.sync({ force: true });
+};
+
 const updateCoursesToDb = async () => {
     try {
         await sequelize.sync();
@@ -86,4 +90,5 @@ module.exports = {
     mapCourseFromGrynos,
     fetchCoursesFromGrynos,
     updateCoursesToDb,
+    clearDatabase
 };
