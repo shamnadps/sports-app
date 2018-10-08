@@ -169,11 +169,11 @@ const reduceCoursesByDate = async (courses) => {
                     maxStudentCount: course.maxStudentCount,
                     acceptedCount: course.acceptedCount,
                     internetEnrollment: course.internetEnrollment,
-                    firstEnrollmentDate: course.firstEnrollmentDate,
-                    lastEnrollmentDate: course.lastEnrollmentDate,
+                    firstEnrollmentDate: course.firstEnrollmentDate.toString(),
+                    lastEnrollmentDate: course.lastEnrollmentDate.toString(),
                     firstSessionWeekDay: course.firstSessionWeekDay,
-                    firstSessionDate: course.firstSessionDate,
-                    lastSessionDate: course.lastSessionDate,
+                    firstSessionDate: course.firstSessionDate.toString(),
+                    lastSessionDate: course.lastSessionDate.toString(),
                     single_payment_count: course.single_payment_count,
                     company_name: course.company_name,
                     course_type_id: course.course_type_id,
@@ -197,8 +197,8 @@ const reduceCoursesByDate = async (courses) => {
                 obj[date] = obj[date] || [];
                 delete course.teachingSession;
                 course.eventId = teachingSession.dataValues.eventId;
-                course.startDate = teachingSession.dataValues.startDate;
-                course.endDate = teachingSession.dataValues.endDate;
+                course.startDate = teachingSession.dataValues.startDate.toString();
+                course.endDate = teachingSession.dataValues.endDate.toString();
                 course.price = price;
                 obj[date].push(course);
             }
