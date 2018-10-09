@@ -31,7 +31,7 @@ const isAvailable = (
     reservedCourseList
 ) => {
     const openedYet = isOpenYet(courseItem);
-    const closedYet = !isClosedYet(courseItem);
+    const closedYet = isClosedYet(courseItem);
     const enoughFund = hasSufficientFund(balance, courseItem);
     const notReserved = !hasBeenReserved(reservedCourseList || [], courseItem);
     const hasTickets = hasEnoughTickets(courseItem);
