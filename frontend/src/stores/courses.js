@@ -3,14 +3,16 @@ import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
 import { fetchCourses, reserveTicket } from '../apis';
 
-const isOpenYet = (courseItem) =>
+export const isOpenYet = (courseItem) => {
     // within 3 days from now
-    dateFns.differenceInDays(courseItem.startDate, new Date()) < 3;
+    const diff = dateFns.differenceInDays(courseItem.startDate, new Date());
+    return diff >= 0 && diff <= 3;
+};
 
-const isClosedYet = (courseItem) => {
+export const isClosedYet = (courseItem) => {
     // and must not be 1 hours before starting time
     const diff = dateFns.differenceInHours(courseItem.startDate, new Date());
-    return diff < 1;
+    return diff <= 1;
 };
 
 const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
