@@ -187,11 +187,12 @@ const reduceCoursesByDate = async (courses) => {
             })
     );
     return await mappedCourses.reduce((obj, course) => {
-        for (let teachingSession of course.teachingSession) {
+        const teachingSessions = course.teachingSession.sort((a, b) => datefns.compareDesc(a.startDate, b.startDate));
+        for (let teachingSession of teachingSessions) {
             if (teachingSession) {
                 const price = utils.courses.getCoursePrice(
                     course.course_type_id,
-                    teachingSession.dataValues.startDate
+                    teachingSession.dataValues.startDate.toString()
                 );
                 const date = datefns.format(teachingSession.dataValues.startDate, 'MM-DD-YYYY');
                 obj[date] = obj[date] || [];
