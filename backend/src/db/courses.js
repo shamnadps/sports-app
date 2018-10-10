@@ -208,7 +208,7 @@ const reduceCoursesByDate = async (courses) => {
     }, {});
     for (let date in reducedCourses) {
         let courses = reducedCourses[date];
-        courses = courses.sort((a, b) => new Date(ba.startDate) - new Date(b.startDate));
+        courses = courses.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
         reducedCourses[date] = courses;
     }
     return reducedCourses;
