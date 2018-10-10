@@ -186,7 +186,7 @@ const reduceCoursesByDate = async (courses) => {
                 };
             })
     );
-    return await mappedCourses.reduce((obj, course) => {
+    const reducedCourses = await mappedCourses.reduce((obj, course) => {
         const teachingSessions = course.teachingSession.sort((a, b) => datefns.compareDesc(a.startDate, b.startDate));
         for (let teachingSession of teachingSessions) {
             if (teachingSession) {
@@ -206,6 +206,12 @@ const reduceCoursesByDate = async (courses) => {
         }
         return obj;
     }, {});
+    for (let date in reducedCourses) {
+        let courses = reducedCourses[date];
+        courses = courses.sort((a, b) => new Date(ba.startDate) - new Date(b.startDate));
+        reducedCourses[date] = courses;
+    }
+    return reducedCourses;
 };
 
 module.exports = {
