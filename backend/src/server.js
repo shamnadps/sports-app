@@ -6,7 +6,7 @@ const db = require('./sequalize_pg');
 require('dotenv').config();
 const loadMockCoursesToDatabase = require('./seed/db-seed')
     .loadMockCoursesToDatabase;
-const updateCoursesToDb = require('./grynos').updateCoursesToDb;
+const fetchAndSaveCoursesToDb = require('./grynos').fetchAndSaveCoursesToDb;
 const clearDatabase = require('./grynos').clearDatabase;
 const auth = require('./auth');
 
@@ -15,7 +15,7 @@ const grynosUpdateInterval =
     process.env.GRYNOS_COURSES_UPDATE_INTERVAL || 3600000;
 const populateSeedData = process.env.POPULATE_SEED_DATA === '1';
 const resetDatabase = process.env.DROP_DATABASE_SCHEMA === 'true';
-setInterval(updateCoursesToDb, grynosUpdateInterval);
+setInterval(fetchAndSaveCoursesToDb, grynosUpdateInterval);
 
 const server = express();
 
@@ -39,7 +39,7 @@ server.get('/app/**', (req, res) => {
 });
 
 const startServer = () => {
-    const dbPopulation = populateSeedData ? loadMockCoursesToDatabase() : updateCoursesToDb();
+    const dbPopulation = populateSeedData ? loadMockCoursesToDatabase() : fetchAndSaveCoursesToDb();
     dbPopulation.then(() => {
         server.listen(port, () =>
             console.log(`Server deployed at ${new Date()} and running on ${port}`)

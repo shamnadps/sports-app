@@ -58,24 +58,40 @@ const clearDatabase = async () => {
     await sequelize.sync({ force: true });
 };
 
-const updateCoursesToDb = async () => {
+const fetchAndSaveCoursesToDb = async () => {
+    const courses = await fetchCoursesFromGrynos();
+    return await this.updateCoursesToDb(courses);
+}
+const updateCoursesToDb = async (courses) => {
     try {
         await sequelize.sync();
-        let courses = await fetchCoursesFromGrynos();
         const dbCourses = await db.courses.getAllCourses();
-        courses = courses.filter(
-            (course) => !dbCourses.find((dbCourse) => course.id === dbCourse.id)
-        );
+        const dbCourseIds = dbCourses.map(course => course.id);
         if (courses) {
             return await Promise.all(
                 courses.map((course) => {
-                    delete course.location[0].id;
-                    return models.courses.create(course, {
-                        include: [
-                            { model: models.events, as: 'teachingSession' },
-                            { model: models.locations, as: 'location' },
-                        ],
-                    });
+                    if (dbCourseIds.includes(course.id)) {
+                        const dbCourse = dbCourses.find(item => item.id === course.id);
+                        if (dbCourse && dbCourse.single_payment_count < course.single_payment_count) {
+                            dbCourse.single_payment_count = course.single_payment_count;
+                            return models.courses.update(
+                                { single_payment_count: course.single_payment_count },
+                                { returning: true, where: { id: course.id } }
+                            ).then(function ([rowsUpdate, [updatedCourse]]) {
+                                return updatedCourse;
+                            })
+                        } else {
+                            return dbCourse;
+                        }
+                    } else {
+                        delete course.location[0].id;
+                        return models.courses.create(course, {
+                            include: [
+                                { model: models.events, as: 'teachingSession' },
+                                { model: models.locations, as: 'location' },
+                            ],
+                        });
+                    }
                 })
             );
         } else {
@@ -89,6 +105,7 @@ const updateCoursesToDb = async () => {
 module.exports = {
     mapCourseFromGrynos,
     fetchCoursesFromGrynos,
+    fetchAndSaveCoursesToDb,
     updateCoursesToDb,
     clearDatabase
 };
