@@ -158,7 +158,6 @@ const reduceCoursesByDate = async (courses) => {
                 const reservedCount = await reservations.getReservationCount(
                     course.teachingSession[0].dataValues.eventId
                 );
-
                 return await {
                     id: course.id,
                     name: course.name,
@@ -169,11 +168,11 @@ const reduceCoursesByDate = async (courses) => {
                     maxStudentCount: course.maxStudentCount,
                     acceptedCount: course.acceptedCount,
                     internetEnrollment: course.internetEnrollment,
-                    firstEnrollmentDate: course.firstEnrollmentDate.toString(),
-                    lastEnrollmentDate: course.lastEnrollmentDate.toString(),
+                    firstEnrollmentDate: course.firstEnrollmentDate ? course.firstEnrollmentDate.toString() : null,
+                    lastEnrollmentDate: course.lastEnrollmentDate ? course.lastEnrollmentDate.toString() : null,
                     firstSessionWeekDay: course.firstSessionWeekDay,
-                    firstSessionDate: course.firstSessionDate.toString(),
-                    lastSessionDate: course.lastSessionDate.toString(),
+                    firstSessionDate: course.firstSessionDate ? course.firstSessionDate.toString() : null,
+                    lastSessionDate: course.lastSessionDate ? course.lastSessionDate.toString() : null,
                     single_payment_count: course.single_payment_count,
                     company_name: course.company_name,
                     course_type_id: course.course_type_id,

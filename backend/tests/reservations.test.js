@@ -17,7 +17,7 @@ describe('Reservation Testing', () => {
     };
 
     let reservationId = 1;
-    const defaultBalance = 100;
+    const defaultBalance = 0;
 
     test('Should be able to create a reservations', async () => {
         await db.users.createUser(user).then((createdUser) => {

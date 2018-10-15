@@ -74,7 +74,7 @@ describe('Users API testing.', () => {
     test('check saldo update is working properly', async () => {
         await db.users.createUser(user);
         let dbuser = await db.users.getUserByToken(token);
-        expect(dbuser.balance).toEqual(100);
+        expect(dbuser.balance).toEqual(0);
         await db.reservations.updateUserBalance(dbuser.id, 1.5);
         dbuser = await db.users.getUserByToken(token);
         expect(dbuser.balance).toEqual(1.5);
