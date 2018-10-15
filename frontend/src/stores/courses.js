@@ -3,13 +3,17 @@ import mockCourse from './course-mock.json';
 import dateFns from 'date-fns';
 import { fetchCourses, reserveTicket } from '../apis';
 
-const isOpenYet = (courseItem) =>
+export const isOpenYet = (courseItem) => {
     // within 3 days from now
-    dateFns.differenceInDays(courseItem.startDate, new Date()) < 3;
+    const diff = dateFns.differenceInDays(courseItem.startDate, new Date());
+    return diff >= 0 && diff <= 3;
+};
 
-const isClosedYet = (courseItem) =>
+export const isClosedYet = (courseItem) => {
     // and must not be 1 hours before starting time
-    dateFns.differenceInHours(courseItem.startDate, new Date()) > 1;
+    const diff = dateFns.differenceInHours(courseItem.startDate, new Date());
+    return diff <= 1;
+};
 
 const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
 
@@ -27,7 +31,7 @@ const isAvailable = (
     reservedCourseList
 ) => {
     const openedYet = isOpenYet(courseItem);
-    const closedYet = !isClosedYet(courseItem);
+    const closedYet = isClosedYet(courseItem);
     const enoughFund = hasSufficientFund(balance, courseItem);
     const notReserved = !hasBeenReserved(reservedCourseList || [], courseItem);
     const hasTickets = hasEnoughTickets(courseItem);
@@ -41,8 +45,8 @@ const isAvailable = (
             notReserved &&
             hasTickets,
         reasons: [
-            !notReserved && 'reserved',
             !authenticationStatus && 'auth',
+            !notReserved && 'reserved',
             !openedYet && 'openTime',
             closedYet && 'closingTime',
             !hasTickets && 'noTickets',

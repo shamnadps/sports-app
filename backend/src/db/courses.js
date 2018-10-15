@@ -33,7 +33,8 @@ const getCourses = (startDate, endDate) => {
             {
                 model: models.locations,
                 as: 'location',
-                attributes: [['path', 'location']],
+                attributes: [['path', 'location'],
+                    'address'],
             },
             {
                 model: models.events,
@@ -42,6 +43,7 @@ const getCourses = (startDate, endDate) => {
                     ['id', 'eventId'],
                     ['start', 'startDate'],
                     ['end', 'endDate'],
+                    'teachingplace',
                 ],
                 where: {
                     start: { [Op.between]: [startDate, endDate] },
@@ -81,7 +83,8 @@ const getAllCourses = () => {
             {
                 model: models.locations,
                 as: 'location',
-                attributes: [['path', 'location']],
+                attributes: [['path', 'location'],
+                    'address'],
             },
             {
                 model: models.events,
@@ -90,6 +93,7 @@ const getAllCourses = () => {
                     ['id', 'eventId'],
                     ['start', 'startDate'],
                     ['end', 'endDate'],
+                    'teachingplace',
                 ],
             },
         ],
@@ -125,7 +129,8 @@ const getCourseById = (id) => {
             {
                 model: models.locations,
                 as: 'location',
-                attributes: [['path', 'location']],
+                attributes: [['path', 'location'],
+                    'address'],
             },
             {
                 model: models.events,
@@ -134,6 +139,7 @@ const getCourseById = (id) => {
                     ['id', 'eventId'],
                     ['start', 'startDate'],
                     ['end', 'endDate'],
+                    'teachingplace',
                 ],
             },
         ],
@@ -147,15 +153,10 @@ const getCourseById = (id) => {
 const reduceCoursesByDate = async (courses) => {
     const mappedCourses = await Promise.all(
         courses
-            .filter((course) => course.location[0]) // Removes courses that doesn't have any locations
             .filter((course) => course.teachingSession[0]) // Removes courses that doesn't have any teaching sessions
             .map(async (course) => {
                 const reservedCount = await reservations.getReservationCount(
                     course.teachingSession[0].dataValues.eventId
-                );
-                const price = utils.courses.getCoursePrice(
-                    course.course_type_id,
-                    course.teachingSession[0].dataValues.startDate
                 );
 
                 return await {
@@ -168,31 +169,49 @@ const reduceCoursesByDate = async (courses) => {
                     maxStudentCount: course.maxStudentCount,
                     acceptedCount: course.acceptedCount,
                     internetEnrollment: course.internetEnrollment,
-                    firstEnrollmentDate: course.firstEnrollmentDate,
-                    lastEnrollmentDate: course.lastEnrollmentDate,
+                    firstEnrollmentDate: course.firstEnrollmentDate.toString(),
+                    lastEnrollmentDate: course.lastEnrollmentDate.toString(),
                     firstSessionWeekDay: course.firstSessionWeekDay,
-                    firstSessionDate: course.firstSessionDate,
-                    lastSessionDate: course.lastSessionDate,
+                    firstSessionDate: course.firstSessionDate.toString(),
+                    lastSessionDate: course.lastSessionDate.toString(),
                     single_payment_count: course.single_payment_count,
                     company_name: course.company_name,
                     course_type_id: course.course_type_id,
                     course_type_name: course.course_type_name,
                     teacher: course.teacher,
-                    location: course.location[0].dataValues.location,
-                    eventId: course.teachingSession[0].dataValues.eventId,
-                    startDate: course.teachingSession[0].dataValues.startDate,
-                    endDate: course.teachingSession[0].dataValues.endDate,
-                    price: price,
+                    location: course.location[0] ? course.location[0].dataValues.location : null,
+                    address: course.location[0] ? course.location[0].dataValues.address : null,
+                    teachingSession: course.teachingSession,
                     reservedCount: reservedCount.count,
                 };
             })
     );
-    return await mappedCourses.reduce((obj, course) => {
-        const date = datefns.format(course.startDate, 'MM-DD-YYYY');
-        obj[date] = obj[date] || [];
-        obj[date].push(course);
+    const reducedCourses = await mappedCourses.reduce((obj, course) => {
+        const teachingSessions = course.teachingSession.sort((a, b) => datefns.compareDesc(a.startDate, b.startDate));
+        for (let teachingSession of teachingSessions) {
+            if (teachingSession) {
+                const price = utils.courses.getCoursePrice(
+                    course.course_type_id,
+                    teachingSession.dataValues.startDate.toString()
+                );
+                const date = datefns.format(teachingSession.dataValues.startDate, 'MM-DD-YYYY');
+                obj[date] = obj[date] || [];
+                delete course.teachingSession;
+                course.eventId = teachingSession.dataValues.eventId;
+                course.startDate = teachingSession.dataValues.startDate.toString();
+                course.endDate = teachingSession.dataValues.endDate.toString();
+                course.price = price;
+                obj[date].push(course);
+            }
+        }
         return obj;
     }, {});
+    for (let date in reducedCourses) {
+        let courses = reducedCourses[date];
+        courses = courses.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+        reducedCourses[date] = courses;
+    }
+    return reducedCourses;
 };
 
 module.exports = {

@@ -38,7 +38,7 @@ export const persistToStorage = (name, data) => {
     try {
         window.localStorage.setItem(name, serialize(data));
     } catch (error) {
-        console.err(error, 'Cannot persist to storage');
+        console.error(error, 'Cannot persist to storage');
     }
 };
 
@@ -61,4 +61,8 @@ export const validatePhoneNumber = (phoneNumberString) =>
 export const validateUsername = (username) => {
     // no contrains now for username
     return true;
+};
+
+export const composeFunction = (...funcList) => (args) => {
+    funcList.forEach((func) => func(args));
 };

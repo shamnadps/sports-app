@@ -58,9 +58,12 @@ class ResetPin extends React.Component {
                         <Button
                             color="white"
                             hoveredTextColor="rgba(0,0,0, .8)"
-                            disabled={!this.state.formIsValid}
+                            disabled={
+                                !this.state.formIsValid || this.state.submitting
+                            }
                             onClick={(e) => {
                                 e.preventDefault();
+                                if (this.state.submitting) return;
                                 this.state.resetPin();
                             }}
                         >

@@ -33,12 +33,13 @@ const mapCourseDetailsFromGrynos = async (course) => {
     const courseDetails = await axios(courseDetailUrl + course.code);
     return {
         ...course,
-        description: courseDetails.data.description,
+        description: courseDetails.data.descriptionInternet,
         single_payment_count: courseDetails.data.singlePaymentCount,
         company_name: courseDetails.data.companyName,
         course_type_id: courseDetails.data.courseTypeID,
         course_type_name: courseDetails.data.courseTypeName,
         teacher: courseDetails.data.teacher,
+        location: courseDetails.data.location
     };
 };
 
@@ -53,23 +54,26 @@ const fetchCoursesFromGrynos = async () => {
     }
 };
 
+const clearDatabase = async () => {
+    await sequelize.sync({ force: true });
+};
+
 const updateCoursesToDb = async () => {
     try {
         await sequelize.sync();
         let courses = await fetchCoursesFromGrynos();
         const dbCourses = await db.courses.getAllCourses();
-
         courses = courses.filter(
             (course) => !dbCourses.find((dbCourse) => course.id === dbCourse.id)
         );
-
         if (courses) {
             return await Promise.all(
                 courses.map((course) => {
+                    delete course.location[0].id;
                     return models.courses.create(course, {
                         include: [
-                            { model: models.locations, as: 'location' },
                             { model: models.events, as: 'teachingSession' },
+                            { model: models.locations, as: 'location' },
                         ],
                     });
                 })
@@ -78,7 +82,7 @@ const updateCoursesToDb = async () => {
             console.error(`No courses available from Grynos.`);
         }
     } catch (error) {
-        console.error(`Failed to fetch course from Gryros: ${error.message}`);
+        console.error(`Failed to fetch course from Gryros: ${error}`);
     }
 };
 
@@ -86,4 +90,5 @@ module.exports = {
     mapCourseFromGrynos,
     fetchCoursesFromGrynos,
     updateCoursesToDb,
+    clearDatabase
 };

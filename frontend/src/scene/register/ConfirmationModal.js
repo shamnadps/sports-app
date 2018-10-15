@@ -6,13 +6,11 @@ import { Link } from 'react-router-dom';
 import stringInterpolator from 'interpolate';
 
 const SmallModal = styled(Modal)`
-    height: 40%;
-    display: flex;
+    height: auto;
 `;
-
 const ModalAction = styled('div')`
-    align-self: center;
-    margin-bottom: 5rem;
+    align-self: flex-end;
+    margin-top: 3rem;
 `;
 const CustomTitle = styled(Title)`
     font-weight: 400;

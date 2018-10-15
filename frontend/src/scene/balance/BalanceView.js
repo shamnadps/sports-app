@@ -11,7 +11,7 @@ import {
     InputField as DefaultInputField,
 } from '../../components/form';
 import posed, { PoseGroup } from 'react-pose';
-import { connect } from 'utils';
+import { connect, composeFunction } from 'utils';
 import BalanceViewState from './state';
 
 const Modal = styled(BaseModal)`
@@ -59,7 +59,7 @@ const FormWarpper = posed.div({
         opacity: 1,
     },
     exit: {
-        y: 300,
+        y: 280,
         opacity: 0,
     },
 });
@@ -112,7 +112,7 @@ class BalanceView extends Component {
                 <Content>
                     <BalanceInfoArea pose={'show'}>
                         <Title>{i18nContent.sectionTitle}</Title>
-                        <span>{balance} €</span>
+                        <span>{Number(balance).toLocaleString('fi')} €</span>
                         {!formShown && (
                             <Button onClick={this.state.showForm}>
                                 {i18nContent.topUp}
@@ -131,19 +131,24 @@ class BalanceView extends Component {
                                         </label>
                                         <Input
                                             name="amount"
-                                            onFocus={this.state.startValidate}
                                             type="number"
                                             value={this.state.amount}
-                                            onChange={this.setAmount}
+                                            onChange={composeFunction(
+                                                this.state.startValidate,
+                                                this.setAmount
+                                            )}
                                         />
                                     </InputField>
                                 </Form>
                                 <SubmitButton
                                     bold
                                     onClick={this.onConfirm}
-                                    disabled={this.state.formIncorrect}
+                                    disabled={
+                                        this.state.formIncorrect ||
+                                        !this.state.amount
+                                    }
                                 >
-                                    {i18nContent.confirm}!
+                                    {i18nContent.confirm}
                                 </SubmitButton>
                             </FormWarpper>
                         )}

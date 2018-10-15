@@ -30,8 +30,8 @@ const SvgComponent = (props) => (
                         </g>
                         {props.noText || (
                             <text
-                                transform="translate(20 69.15)"
-                                fontSize={20}
+                                transform="translate(23.19 69.15)"
+                                fontSize="2.3rem"
                                 fontFamily="GT-Walsheim"
                                 fontWeight={500}
                                 letterSpacing="-.01em"
