@@ -60,7 +60,7 @@ const clearDatabase = async () => {
 
 const fetchAndSaveCoursesToDb = async () => {
     const courses = await fetchCoursesFromGrynos();
-    return await this.updateCoursesToDb(courses);
+    return await updateCoursesToDb(courses);
 }
 const updateCoursesToDb = async (courses) => {
     try {
