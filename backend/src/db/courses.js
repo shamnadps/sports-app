@@ -189,18 +189,21 @@ const reduceCoursesByDate = async (courses) => {
         const teachingSessions = course.teachingSession.sort((a, b) => datefns.compareDesc(a.startDate, b.startDate));
         for (let teachingSession of teachingSessions) {
             if (teachingSession) {
+                const courseToAdd = {
+                    ...course
+                }
                 const price = utils.courses.getCoursePrice(
-                    course.course_type_id,
+                    courseToAdd.course_type_id,
                     teachingSession.dataValues.startDate.toString()
                 );
-                const date = datefns.format(teachingSession.dataValues.startDate, 'MM-DD-YYYY');
+                const date = datefns.format(teachingSession.dataValues.startDate.toString(), 'MM-DD-YYYY');
                 obj[date] = obj[date] || [];
-                delete course.teachingSession;
-                course.eventId = teachingSession.dataValues.eventId;
-                course.startDate = teachingSession.dataValues.startDate.toString();
-                course.endDate = teachingSession.dataValues.endDate.toString();
-                course.price = price;
-                obj[date].push(course);
+                delete courseToAdd.teachingSession;
+                courseToAdd.eventId = teachingSession.dataValues.eventId;
+                courseToAdd.startDate = teachingSession.dataValues.startDate.toString();
+                courseToAdd.endDate = teachingSession.dataValues.endDate.toString();
+                courseToAdd.price = price;
+                obj[date].push(courseToAdd);
             }
         }
         return obj;
