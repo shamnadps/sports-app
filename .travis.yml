@@ -3,7 +3,7 @@ sudo: required
 services:
 - docker
 script:
-- docker login -u _ -p "$HEROKU_API_KEY" registry.heroku.com
-- heroku update
-- heroku container:push web --app vantaa-silverfox
-- heroku container:release web --app vantaa-silverfox
+- cd backend
+- npm install
+- npm test
+- cd ..
