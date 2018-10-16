@@ -1,6 +1,8 @@
 const seed = require('../src/seed/db-seed');
 const db = require('../src/db');
 const mockData = require('./testdata');
+const coursesToUpdate = require('../src/seed/mockDataForUpdate').updateCourses;
+const updateCoursesToDb = require('../src/grynos').updateCoursesToDb;
 const datefns = require('date-fns');
 describe('getCourses API call', () => {
     beforeAll(async () => {
@@ -53,5 +55,13 @@ describe('getCourses API call', () => {
         expect(event.teachingplace).toEqual(
             'Tikkurila, Vantaan opistotalo, 170 Luokka'
         );
+    });
+
+    test('should update seats when single payment seats is greater than current number', async () => {
+        const updatedCourses = await updateCoursesToDb(coursesToUpdate);
+        expect(updatedCourses[0].dataValues.single_payment_count).toEqual(10);
+        expect(updatedCourses[1].dataValues.single_payment_count).toEqual(5);
+        expect(updatedCourses[2].dataValues.single_payment_count).toEqual(11);
+        expect(updatedCourses[3].dataValues.single_payment_count).toEqual(5);
     });
 });
