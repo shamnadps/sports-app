@@ -129,6 +129,7 @@ const createReservation = async (req, res) => {
 
 const cancelReservation = async (req, res) => {
     try {
+        const user = req.user;
         const reservationId = Number(req.params.id);
         const validationErrors = utils.reservations.validateReservationId(
             reservationId
@@ -137,6 +138,13 @@ const cancelReservation = async (req, res) => {
             res.status(422).json(validationErrors);
         } else {
             await db.reservations.cancelReservation(reservationId);
+            const reservation = await db.reservations.getReservationById(reservationId);
+            const message = services.sms.buildCancellationMessages(reservation);
+            const dbUser = await db.users.getUser(user.phoneNumber);
+            const response = await services.sms.sendMessageToUser(
+                dbUser,
+                message
+            );
             res.status(200).json('Reservation cancelled successfully');
         }
     } catch (err) {

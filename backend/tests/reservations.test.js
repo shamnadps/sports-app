@@ -1,7 +1,12 @@
 const db = require('../src/db');
 const utils = require('../src/utils');
+const sequelize = require('../src/sequalize_pg');
 
 describe('Reservation Testing', () => {
+
+    beforeAll(async () => {
+        return await sequelize.sync();
+    });
     let reservation = {
         courseId: 1,
         eventId: 1,
@@ -12,7 +17,7 @@ describe('Reservation Testing', () => {
 
     const user = {
         username: 'test user',
-        phoneNumber: '+3581234535',
+        phoneNumber: '+358503085690',
         pin: 1234,
     };
 
@@ -20,9 +25,11 @@ describe('Reservation Testing', () => {
     const defaultBalance = 0;
 
     test('Should be able to create a reservations', async () => {
+        await db.users.deleteUser(user.phoneNumber);
         await db.users.createUser(user).then((createdUser) => {
             reservation.userId = createdUser.id;
         });
+        await db.reservations.deleteReservationById(reservationId);
         const dbReservation = await db.reservations.createReservation(
             reservation
         );
