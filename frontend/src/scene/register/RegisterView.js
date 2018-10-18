@@ -6,12 +6,14 @@ import { connect } from 'utils';
 import { Link } from 'react-router-dom';
 import FormState from './state';
 import ConfirmationModal from './ConfirmationModal';
+import TermsOfServiceView from './TermsOfService';
 
 const FormAction = styled('div')`
     align-self: stretch;
     display: flex;
     justify-content: flex-end;
     margin: 2rem;
+    flex-direction: column;
 `;
 const Title = styled('h1')`
     margin: 0;
@@ -26,6 +28,41 @@ const ErrorMessage = styled('span')`
     color: ${(props) => props.theme.error};
     font-weight: bold;
     display: ${(props) => (props.show ? 'flex' : 'none')};
+`;
+const TermsAndConditionBox = styled('div')`
+    margin: 2rem 0;
+    font-size: 2.5rem;
+    color: white;
+
+    & > div {
+        display: inline-block;
+        min-height: 3rem;
+        min-width: 4rem;
+        border: 1px solid white;
+        margin-right: 1.5rem;
+        border-radius: 2px;
+        transition: all 0.5s ease;
+        cursor: pointer;
+        padding: 0 4px;
+        transform: translateY(${(props) => (props.checked ? 0 : 0.7)}rem);
+        ${(props) =>
+            props.checked &&
+            `text-shadow: 0 0 12px ${
+                props.theme.complementary
+            }; border-color: transparent;`} &:hover {
+            border-color: ${(props) => props.theme.complementary};
+        }
+    }
+
+    strong {
+        color: ${(props) => props.theme.complementary};
+        cursor: pointer;
+        border-bottom: 1px solid transparent;
+        transition: all 0.5s ease;
+        &:hover {
+            border-color: ${(props) => props.theme.complementary};
+        }
+    }
 `;
 
 class RegisterForm extends React.Component {
@@ -72,10 +109,40 @@ class RegisterForm extends React.Component {
 
                     {this.state.submitError !== 'alreadyExist' && (
                         <FormAction>
+                            <TermsAndConditionBox
+                                checked={this.state.agreedToTermsOfService}
+                            >
+                                <div
+                                    onClick={
+                                        this.state.checkAgreeToTermAndService
+                                    }
+                                    onTouchStart={
+                                        this.state.checkAgreeToTermAndService
+                                    }
+                                >
+                                    {this.state.agreedToTermsOfService
+                                        ? '👌'
+                                        : null}
+                                </div>
+                                <span>
+                                    Hyväksyn{' '}
+                                    <strong
+                                        onTouchStart={
+                                            this.state.showTermsOfService
+                                        }
+                                        onClick={this.state.showTermsOfService}
+                                    >
+                                        Käyttöehdot
+                                    </strong>
+                                </span>
+                            </TermsAndConditionBox>
                             <Button
                                 color="white"
                                 hoveredTextColor="rgba(0,0,0, .8)"
-                                disabled={!this.state.formIsValid}
+                                disabled={
+                                    !this.state.formIsValid ||
+                                    !this.state.agreedToTermsOfService
+                                }
                                 onClick={(e) => {
                                     e.preventDefault();
                                     this.state.submitData();
@@ -101,6 +168,10 @@ class RegisterForm extends React.Component {
                     username={this.state.username}
                     i18nContent={i18nContent}
                     phoneNumber={this.state.phoneNumber}
+                />
+                <TermsOfServiceView
+                    show={this.state.termsOfServiceShown}
+                    requestDismiss={this.state.hideTermsOfService}
                 />
             </React.Fragment>
         );
