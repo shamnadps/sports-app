@@ -112,7 +112,7 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
     try {
         for (let existingSession of existingTeachingSessions) {
             const newSession = newTeachingSessions.find(item => item.id === existingSession.dataValues.eventId);
-            if (newSession && newSession.status === 1 && existingSession.status !== newSession.status) {
+            if (newSession && newSession.status === 2 && existingSession.status !== newSession.status) {
                 const reservations = await db.reservations.getReservationsByEventId(existingSession.dataValues.eventId);
                 if (reservations) {
                     for (let reservation of reservations) {
@@ -126,7 +126,7 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
                     }
                 }
                 return models.events.update(
-                    { status: 1 },
+                    { status: 2 },
                     { returning: true, where: { id: newSession.id } });
             }
         }

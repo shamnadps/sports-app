@@ -143,6 +143,9 @@ const getCourseById = (id) => {
                     'teachingplace',
                     'status'
                 ],
+                where: {
+                    status: 0
+                }
             },
         ],
         where: {

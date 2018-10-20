@@ -36,7 +36,7 @@ const updateCourses = [
                 teachingplace: 'Tikkurila, Vantaan opistotalo, 170 Luokka',
                 address: null,
                 description: null,
-                status: 1,
+                status: 2,
             },
         ],
     },
