@@ -38,6 +38,15 @@ const updateCourses = [
                 description: null,
                 status: 2,
             },
+            {
+                id: 2,
+                start: +datefns.setHours(new Date(), 15),
+                end: +datefns.setHours(new Date(), 17),
+                teachingplace: 'Tikkurila, Vantaan opistotalo, 170 Luokka',
+                address: null,
+                description: null,
+                status: 0,
+            },
         ],
     },
     {

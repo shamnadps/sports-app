@@ -20,7 +20,7 @@ describe('getCourses API call', () => {
         expect(courseObj.name).toEqual('English Course');
         expect(courseObj.price).toEqual(86);
         expect(courseObj.location).toHaveLength(1);
-        expect(courseObj.teachingSession).toHaveLength(1);
+        expect(courseObj.teachingSession).toHaveLength(2);
     });
 
     test('should load course by Id', async () => {
@@ -46,7 +46,7 @@ describe('getCourses API call', () => {
     test('should load all events', async () => {
         const events = await db.events.getEvents();
         expect(events).not.toBeNull();
-        expect(events).toHaveLength(24);
+        expect(events).toHaveLength(25);
     });
 
     test('should load event by Id', async () => {
@@ -87,6 +87,7 @@ describe('getCourses API call', () => {
         const activeCourse = await db.courses.getCourseById(coursesToUpdate[0].id);
         const activeSession = activeCourse.dataValues.teachingSession;
         expect(activeSession[0].dataValues.status).toEqual(0);
+        expect(activeSession[1].dataValues.status).toEqual(0);
 
         const updatedCourses = await updateCoursesToDb(coursesToUpdate);
 
@@ -97,7 +98,8 @@ describe('getCourses API call', () => {
 
         const cancelledCourse = await db.courses.getCourseById(updatedCourses[0].dataValues.id);
         const cancelledSession = cancelledCourse.dataValues.teachingSession;
-        expect(cancelledSession[0].dataValues.status).toEqual(1);
+        expect(cancelledSession[0].dataValues.status).toEqual(0);
+        expect(cancelledSession[1]).toBeUndefined();
 
         const anotherActiveCourse = await db.courses.getCourseById(coursesToUpdate[1].id);
         const anotherActiveSession = anotherActiveCourse.dataValues.teachingSession;
