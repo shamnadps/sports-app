@@ -11,7 +11,7 @@ describe('Users API testing.', async () => {
     let token = randtoken.generate(16);
     let user = {
         username: 'test user',
-        phoneNumber: '+358503085690',
+        phoneNumber: '+358123412345',
         pin: '1234',
         token: token,
     };
@@ -54,7 +54,7 @@ describe('Users API testing.', async () => {
     });
 
     test('delete user by phone', async () => {
-        const phoneNumber = '+358503085690';
+        const phoneNumber = '+358123412345';
         await db.users.deleteUser(phoneNumber);
         const dbuser = await db.users.getUser(phoneNumber);
         expect(dbuser).toBeNull();

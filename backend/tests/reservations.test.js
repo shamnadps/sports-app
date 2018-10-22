@@ -17,7 +17,7 @@ describe('Reservation Testing', () => {
 
     const user = {
         username: 'test user',
-        phoneNumber: '+358503085690',
+        phoneNumber: '+358123412345',
         pin: 1234,
     };
 
