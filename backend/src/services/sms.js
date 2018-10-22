@@ -12,8 +12,8 @@ const teliaPassword = process.env.TELIA_PASSWORD;
 const teliaUser = process.env.TELIA_USER;
 
 const formatDate = (date) => {
-    date = formatToTimeZone(date, format, { timeZone: 'Europe/Helsinki' });
-    return datefns.format(date, i18n.reservations.dateFormat);
+    const formattedDate = formatToTimeZone(date, format, { timeZone: 'Europe/Helsinki' });
+    return datefns.format(formattedDate, i18n.reservations.dateFormat);
 };
 
 const sendMessageToUser = async (user, message) => {
@@ -43,11 +43,8 @@ const generateTeliaMessageRequest = (phoneNumber, message) => {
 };
 
 const buildCancellationMessage = async (reservation) => {
-    const event = await db.events.getEventById(reservation.eventId);
+    const [event, course] = await Promise.all([db.events.getEventById(reservation.eventId), db.courses.getCourseById(reservation.courseId)]);
     const time = formatDate(event.dataValues.startDate);
-
-    const course = await db.courses.getCourseById(reservation.courseId);
-
     const place = event.dataValues.teachingplace;
     const name = course.name;
     const message = stringInterpolator(

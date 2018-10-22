@@ -78,7 +78,6 @@ const updateCoursesToDb = async (courses) => {
                         } else {
                             return dbCourse;
                         }
-
                     } else {
                         delete course.location[0].id;
                         return models.courses.create(course, {
@@ -115,25 +114,33 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
             if (newSession && newSession.status === 2 && existingSession.status !== newSession.status) {
                 const reservations = await db.reservations.getReservationsByEventId(existingSession.dataValues.eventId);
                 if (reservations) {
-                    for (let reservation of reservations) {
-                        await db.reservations.cancelReservation(reservation.dataValues.id);
-                        const message = await services.sms.buildCancellationMessage(reservation.dataValues);
-                        const dbUser = await db.users.getUserById(reservation.dataValues.userId);
-                        const response = await services.sms.sendMessageToUser(
-                            dbUser,
-                            message
-                        );
-                    }
+                    await cancelReservations(reservations);
+                    return models.events.update(
+                        { status: 2 },
+                        { returning: true, where: { id: newSession.id } });
                 }
-                return models.events.update(
-                    { status: 2 },
-                    { returning: true, where: { id: newSession.id } });
+
             }
         }
     } catch (error) {
-        console.log(error);
+        console.log('Failed to handleCancellations', error);
     }
 };
+
+const cancelReservations = async (reservations) => {
+    try {
+        for (let reservation of reservations) {
+            await db.reservations.cancelReservation(reservation.dataValues.id);
+            const [message, dbUser] = await Promise.all([services.sms.buildCancellationMessage(reservation.dataValues), db.users.getUserById(reservation.dataValues.userId)]);
+            const response = await services.sms.sendMessageToUser(
+                dbUser,
+                message
+            );
+        }
+    } catch (error) {
+        console.log('cancelling reservation failed', error);
+    }
+}
 
 module.exports = {
     mapCourseFromGrynos,
