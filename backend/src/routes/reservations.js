@@ -137,10 +137,12 @@ const cancelReservation = async (req, res) => {
         if (validationErrors) {
             res.status(422).json(validationErrors);
         } else {
-            await db.reservations.cancelReservation(reservationId);
-            const reservation = await db.reservations.getReservationById(reservationId);
+            const [cancelled, reservation, dbUser] = await Promise.all([
+                db.reservations.cancelReservation(reservationId),
+                db.reservations.getReservationById(reservationId),
+                db.users.getUser(user.phoneNumber)]);
+
             const message = services.sms.buildCancellationMessages(reservation);
-            const dbUser = await db.users.getUser(user.phoneNumber);
             const response = await services.sms.sendMessageToUser(
                 dbUser,
                 message
