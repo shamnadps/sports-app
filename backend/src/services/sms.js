@@ -43,7 +43,10 @@ const generateTeliaMessageRequest = (phoneNumber, message) => {
 };
 
 const buildCancellationMessage = async (reservation) => {
-    const [event, course] = await Promise.all([db.events.getEventById(reservation.eventId), db.courses.getCourseById(reservation.courseId)]);
+    const [event, course] = await Promise.all([
+        db.events.getEventById(reservation.eventId),
+        db.courses.getCourseById(reservation.courseId)]);
+
     const time = formatDate(event.dataValues.startDate);
     const place = event.dataValues.teachingplace;
     const name = course.name;

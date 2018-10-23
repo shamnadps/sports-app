@@ -104,6 +104,9 @@ const updateSinglePaymentTickets = async (dbCourse, course) => {
         { returning: true, where: { id: course.id } }
     ).then(function ([rowsUpdate, [updatedCourse]]) {
         return updatedCourse;
+    }).catch(error => {
+        console.log('failed to update single payment tickets', error);
+        throw error;
     });
 }
 
@@ -139,6 +142,7 @@ const cancelReservations = async (reservations) => {
         }
     } catch (error) {
         console.log('cancelling reservation failed', error);
+        throw error;
     }
 }
 
