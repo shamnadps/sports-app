@@ -94,6 +94,7 @@ const getAllCourses = () => {
                     ['start', 'startDate'],
                     ['end', 'endDate'],
                     'teachingplace',
+                    'status'
                 ],
             },
         ],
@@ -140,7 +141,11 @@ const getCourseById = (id) => {
                     ['start', 'startDate'],
                     ['end', 'endDate'],
                     'teachingplace',
+                    'status'
                 ],
+                where: {
+                    status: 0
+                }
             },
         ],
         where: {
@@ -150,15 +155,12 @@ const getCourseById = (id) => {
     });
 };
 
-const reduceCoursesByDate = async (courses) => {
-    const mappedCourses = await Promise.all(
+const reduceCoursesByDate = async courses => {
+    const mappedCourses =
         courses
-            .filter((course) => course.teachingSession[0]) // Removes courses that doesn't have any teaching sessions
-            .map(async (course) => {
-                const reservedCount = await reservations.getReservationCount(
-                    course.teachingSession[0].dataValues.eventId
-                );
-                return await {
+            .filter(course => course.teachingSession[0]) // Removes courses that doesn't have any teaching sessions
+            .map((course) => {
+                return {
                     id: course.id,
                     name: course.name,
                     code: course.code,
@@ -181,11 +183,23 @@ const reduceCoursesByDate = async (courses) => {
                     location: course.location[0] ? course.location[0].dataValues.location : null,
                     address: course.location[0] ? course.location[0].dataValues.address : null,
                     teachingSession: course.teachingSession,
-                    reservedCount: reservedCount.count,
-                };
-            })
-    );
-    const reducedCourses = await mappedCourses.reduce((obj, course) => {
+                }
+            });
+    const updatedCourses = await Promise.all(mappedCourses.map(async course => {
+        const teachingSession = await Promise.all(course.teachingSession.map(async session => {
+            const reservedCount = await reservations.getReservationCount(
+                session.dataValues.eventId
+            );
+            session.dataValues.reservedCount = reservedCount.count;
+            return session.dataValues;
+        }));
+        return {
+            ...course,
+            teachingSession
+        }
+    }));
+
+    const reducedCourses = updatedCourses.reduce((obj, course) => {
         const teachingSessions = course.teachingSession.sort((a, b) => datefns.compareDesc(a.startDate, b.startDate));
         for (let teachingSession of teachingSessions) {
             if (teachingSession) {
@@ -194,15 +208,17 @@ const reduceCoursesByDate = async (courses) => {
                 }
                 const price = utils.courses.getCoursePrice(
                     courseToAdd.course_type_id,
-                    teachingSession.dataValues.startDate.toString()
+                    teachingSession.startDate.toString()
                 );
-                const date = datefns.format(teachingSession.dataValues.startDate.toString(), 'MM-DD-YYYY');
+                const date = datefns.format(teachingSession.startDate.toString(), 'MM-DD-YYYY');
                 obj[date] = obj[date] || [];
                 delete courseToAdd.teachingSession;
-                courseToAdd.eventId = teachingSession.dataValues.eventId;
-                courseToAdd.startDate = teachingSession.dataValues.startDate.toString();
-                courseToAdd.endDate = teachingSession.dataValues.endDate.toString();
+                courseToAdd.eventId = teachingSession.eventId;
+                courseToAdd.startDate = teachingSession.startDate.toString();
+                courseToAdd.endDate = teachingSession.endDate.toString();
                 courseToAdd.price = price;
+                courseToAdd.reservedCount = teachingSession.reservedCount;
+                courseToAdd.status = teachingSession.status;
                 obj[date].push(courseToAdd);
             }
         }

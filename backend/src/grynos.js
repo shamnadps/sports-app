@@ -2,7 +2,7 @@ const sequelize = require('./sequalize_pg');
 const axios = require('axios');
 const models = require('./models');
 const db = require('./db');
-
+const services = require('./services');
 const url = process.env.GRYNOS_COURSE_API_URL;
 const courseDetailUrl = process.env.GRYNOS_COURSE_DETAILS_API_URL;
 
@@ -69,17 +69,12 @@ const updateCoursesToDb = async (courses) => {
         const dbCourseIds = dbCourses.map(course => course.id);
         if (courses) {
             return await Promise.all(
-                courses.map((course) => {
+                courses.map(async (course) => {
                     if (dbCourseIds.includes(course.id)) {
                         const dbCourse = dbCourses.find(item => item.id === course.id);
-                        if (dbCourse && dbCourse.single_payment_count < course.single_payment_count) {
-                            dbCourse.single_payment_count = course.single_payment_count;
-                            return models.courses.update(
-                                { single_payment_count: course.single_payment_count },
-                                { returning: true, where: { id: course.id } }
-                            ).then(function ([rowsUpdate, [updatedCourse]]) {
-                                return updatedCourse;
-                            })
+                        await handleCancellations(dbCourse, dbCourse.teachingSession, course.teachingSession);
+                        if (dbCourse.single_payment_count < course.single_payment_count) {
+                            return await updateSinglePaymentTickets(dbCourse, course);
                         } else {
                             return dbCourse;
                         }
@@ -100,12 +95,62 @@ const updateCoursesToDb = async (courses) => {
     } catch (error) {
         console.error(`Failed to fetch course from Gryros: ${error}`);
     }
+}
+
+const updateSinglePaymentTickets = async (dbCourse, course) => {
+    dbCourse.single_payment_count = course.single_payment_count;
+    return models.courses.update(
+        { single_payment_count: course.single_payment_count },
+        { returning: true, where: { id: course.id } }
+    ).then(function ([rowsUpdate, [updatedCourse]]) {
+        return updatedCourse;
+    }).catch(error => {
+        console.log('failed to update single payment tickets', error);
+        throw error;
+    });
+}
+
+const handleCancellations = async (course, existingTeachingSessions, newTeachingSessions) => {
+    try {
+        for (let existingSession of existingTeachingSessions) {
+            const newSession = newTeachingSessions.find(item => item.id === existingSession.dataValues.eventId);
+            if (newSession && newSession.status === 2 && existingSession.status !== newSession.status) {
+                const reservations = await db.reservations.getReservationsByEventId(existingSession.dataValues.eventId);
+                if (reservations) {
+                    await cancelReservations(reservations);
+                    return models.events.update(
+                        { status: 2 },
+                        { returning: true, where: { id: newSession.id } });
+                }
+
+            }
+        }
+    } catch (error) {
+        console.log('Failed to handleCancellations', error);
+    }
 };
+
+const cancelReservations = async (reservations) => {
+    try {
+        for (let reservation of reservations) {
+            await db.reservations.cancelReservation(reservation.dataValues.id);
+            const [message, dbUser] = await Promise.all([services.sms.buildCancellationMessage(reservation.dataValues), db.users.getUserById(reservation.dataValues.userId)]);
+            const response = await services.sms.sendMessageToUser(
+                dbUser,
+                message
+            );
+        }
+    } catch (error) {
+        console.log('cancelling reservation failed', error);
+        throw error;
+    }
+}
 
 module.exports = {
     mapCourseFromGrynos,
     fetchCoursesFromGrynos,
     fetchAndSaveCoursesToDb,
     updateCoursesToDb,
+    handleCancellations,
     clearDatabase
 };

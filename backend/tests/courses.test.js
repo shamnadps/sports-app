@@ -1,12 +1,16 @@
 const utils = require('../src/utils');
 describe('Grynos Price Calculation', () => {
     test('Validate Prices', () => { });
-    let price = utils.courses.getCoursePrice(82, new Date(2018, 10, 14, 16, 0));
-    expect(price).toEqual(2.5);
-    price = utils.courses.getCoursePrice(82, new Date(2018, 10, 15, 17, 0));
+    let date = new Date('2018-10-21 16:00:00.000 GMT+03:00 (EEST)').toString();
+    let price = utils.courses.getCoursePrice(82, date);
     expect(price).toEqual(4);
-    price = utils.courses.getCoursePrice(488, new Date(2018, 5, 10, 16, 0));
-    expect(price).toEqual(2.5);
-    price = utils.courses.getCoursePrice(488, new Date(2018, 5, 10, 17, 0));
+    date = new Date('2018-10-15 17:00:00.000 GMT+03:00 (EEST)').toString();
+    price = utils.courses.getCoursePrice(82, date);
+    expect(price).toEqual(4);
+    date = new Date('2018-05-10 16:00:00.000 GMT+03:00 (EEST)').toString();
+    price = utils.courses.getCoursePrice(488, date);
+    expect(price).toEqual(1.5);
+    date = new Date('2018-05-10 17:00:00.000 GMT+03:00 (EEST)').toString();
+    price = utils.courses.getCoursePrice(488, date);
     expect(price).toEqual(2.5);
 });

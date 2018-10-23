@@ -2,16 +2,21 @@ const randtoken = require('rand-token');
 const db = require('../src/db');
 const Sequelize = require('sequelize');
 const utils = require('../src/utils');
+const sequelize = require('../src/sequalize_pg');
 
-describe('Users API testing.', () => {
+describe('Users API testing.', async () => {
+    beforeAll(async () => {
+        return await sequelize.sync();
+    });
     let token = randtoken.generate(16);
     let user = {
         username: 'test user',
-        phoneNumber: '+358 1234535',
+        phoneNumber: '+358123412345',
         pin: '1234',
         token: token,
     };
     test('should create user and get usr by token', async () => {
+        await db.users.deleteUser(user.phoneNumber);
         await db.users.createUser(user);
         const dbuser = await db.users.getUserByToken(token);
         expect(dbuser).not.toBeNull();
@@ -49,7 +54,7 @@ describe('Users API testing.', () => {
     });
 
     test('delete user by phone', async () => {
-        const phoneNumber = '+358 1234535';
+        const phoneNumber = '+358123412345';
         await db.users.deleteUser(phoneNumber);
         const dbuser = await db.users.getUser(phoneNumber);
         expect(dbuser).toBeNull();

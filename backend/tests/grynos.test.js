@@ -20,7 +20,7 @@ describe('getCourses API call', () => {
         expect(courseObj.name).toEqual('English Course');
         expect(courseObj.price).toEqual(86);
         expect(courseObj.location).toHaveLength(1);
-        expect(courseObj.teachingSession).toHaveLength(1);
+        expect(courseObj.teachingSession).toHaveLength(2);
     });
 
     test('should load course by Id', async () => {
@@ -46,7 +46,7 @@ describe('getCourses API call', () => {
     test('should load all events', async () => {
         const events = await db.events.getEvents();
         expect(events).not.toBeNull();
-        expect(events).toHaveLength(24);
+        expect(events).toHaveLength(25);
     });
 
     test('should load event by Id', async () => {
@@ -58,10 +58,51 @@ describe('getCourses API call', () => {
     });
 
     test('should update seats when single payment seats is greater than current number', async () => {
+        let reservation = {
+            id: 100,
+            courseId: 1,
+            eventId: 1,
+            ticketType: 'Single_Ticket',
+            ticketPrice: 90.5,
+            bookingStatus: 1,
+        };
+
+        const user = {
+            id: 100,
+            username: 'test user',
+            phoneNumber: '+358123412345',
+            pin: 1234,
+        };
+
+        let reservationId = 2;
+        const defaultBalance = 0;
+
+        await db.users.createUser(user).then((createdUser) => {
+            reservation.userId = createdUser.id;
+        });
+        const dbReservation = await db.reservations.createReservation(
+            reservation
+        );
+
+        const activeCourse = await db.courses.getCourseById(coursesToUpdate[0].id);
+        const activeSession = activeCourse.dataValues.teachingSession;
+        expect(activeSession[0].dataValues.status).toEqual(0);
+        expect(activeSession[1].dataValues.status).toEqual(0);
+
         const updatedCourses = await updateCoursesToDb(coursesToUpdate);
+
         expect(updatedCourses[0].dataValues.single_payment_count).toEqual(10);
         expect(updatedCourses[1].dataValues.single_payment_count).toEqual(5);
         expect(updatedCourses[2].dataValues.single_payment_count).toEqual(11);
         expect(updatedCourses[3].dataValues.single_payment_count).toEqual(5);
+
+        const cancelledCourse = await db.courses.getCourseById(updatedCourses[0].dataValues.id);
+        const cancelledSession = cancelledCourse.dataValues.teachingSession;
+        expect(cancelledSession[0].dataValues.status).toEqual(0);
+        expect(cancelledSession[1]).toBeUndefined();
+
+        const anotherActiveCourse = await db.courses.getCourseById(coursesToUpdate[1].id);
+        const anotherActiveSession = anotherActiveCourse.dataValues.teachingSession;
+        expect(anotherActiveSession[0].dataValues.status).toEqual(0);
     });
 });

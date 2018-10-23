@@ -25,6 +25,12 @@ const getReservationsByUser = async (userId) => {
     });
 };
 
+const deleteReservationById = async (reservationId) => {
+    return await models.reservations.destroy({
+        where: { id: reservationId },
+    });
+};
+
 const getAllReservations = async () => {
     return await models.reservations.findAll({
         include: [
@@ -92,6 +98,12 @@ const getReservationCount = (eventId) => {
 const getReservationForEvent = (eventId, userId) => {
     return models.reservations.find({
         where: { eventId, userId },
+    });
+};
+
+const getReservationsByEventId = (eventId) => {
+    return models.reservations.findAll({
+        where: { eventId },
     });
 };
 
@@ -179,9 +191,11 @@ module.exports = {
     getReservationById,
     getReservationCount,
     getReservationForEvent,
+    getReservationsByEventId,
     createReservation,
     cancelReservation,
     getUserBalance,
     updateUserBalance,
     getReservationCountForEvents,
+    deleteReservationById
 };
