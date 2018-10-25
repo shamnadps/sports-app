@@ -142,7 +142,7 @@ const cancelReservation = async (req, res) => {
                 db.reservations.getReservationById(reservationId),
                 db.users.getUser(user.phoneNumber)]);
 
-            const message = services.sms.buildCancellationMessage(reservation);
+            const message = await services.sms.buildCancellationMessage(reservation);
             const response = await services.sms.sendMessageToUser(
                 dbUser,
                 message

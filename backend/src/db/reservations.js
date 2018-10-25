@@ -77,6 +77,7 @@ const getReservationById = async (id) => {
         id: reservation.id,
         courseId: reservation.course.id,
         userId: reservation.userId,
+        eventId: reservation.event.dataValues.id,
         ticketType: reservation.ticketType,
         ticketPrice: reservation.ticketPrice,
         bookingStatus: reservation.bookingStatus,
@@ -84,7 +85,7 @@ const getReservationById = async (id) => {
         location: reservation.event.teachingplace,
         startDate: reservation.event.dataValues.startDate,
         endDate: reservation.event.dataValues.endDate,
-        teachingPlace: reservation.event.teachingplace,
+        teachingPlace: reservation.event.dataValues.teachingplace,
     };
     return response;
 };
