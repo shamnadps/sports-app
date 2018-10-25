@@ -18,8 +18,9 @@ export const isClosedYet = (courseItem) => {
 const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
 
 const hasBeenReserved = (reservedCourseList, courseItem) => {
-    const list = reservedCourseList.map((item) => item.courseId);
-    return list.includes(courseItem.id);
+    return reservedCourseList.find(
+        (item) => item.courseId === courseItem.id && item.bookingStatus === 1
+    );
 };
 const hasEnoughTickets = (courseItem) => {
     return courseItem.reservedCount < courseItem.single_payment_count;
