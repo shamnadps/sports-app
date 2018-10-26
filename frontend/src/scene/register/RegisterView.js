@@ -121,7 +121,7 @@ class RegisterForm extends React.Component {
                                     }
                                 >
                                     {this.state.agreedToTermsOfService
-                                        ? '👌'
+                                        ? '✓'
                                         : null}
                                 </div>
                                 <span>
