@@ -18,7 +18,7 @@ const theme = {
     errorReservationTime: 'rgb(117, 59, 189)',
     errorReservationResource: 'rgb(255, 143, 28)',
     errorReservationAuth: '#616161',
-    errorReservationNoTicket: '#795548',
+    errorReservationNoTicket: '#FA423B',
 };
 const { i18nStore, userStore, courseStore } = stores;
 const Root = () => (
