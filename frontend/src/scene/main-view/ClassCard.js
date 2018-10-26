@@ -279,8 +279,8 @@ const Card = class extends React.Component {
                 </ErrorMessage>
                 <div>
                     <TimeArea>
-                        <span>{dateFns.format(course.startDate, 'HH:mm')}</span>
-                        <span>{dateFns.format(course.endDate, 'HH:mm')}</span>
+                        <span>{dateFns.format(course.startDate, 'HH.mm')}</span>
+                        <span>{dateFns.format(course.endDate, 'HH.mm')}</span>
                     </TimeArea>
                     <CourseArea>
                         <strong>{course.name}</strong>
@@ -288,8 +288,10 @@ const Card = class extends React.Component {
                         <div>
                             {errorDetail.type !== 'reserved' && (
                                 <PriceTag>
-                                    {Number(course.price).toLocaleString('fi')}{' '}
-                                    €
+                                    {Number(course.price)
+                                        .toFixed(2)
+                                        .toString()
+                                        .replace('.', ',') + ' €'}
                                 </PriceTag>
                             )}
                             {!disabled ? (
