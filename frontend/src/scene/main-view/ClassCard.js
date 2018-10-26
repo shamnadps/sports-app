@@ -209,7 +209,6 @@ const Card = class extends React.Component {
                         dateFns.subDays(course.startDate, 3),
                         'DD.MM'
                     ),
-                    time: dateFns.format(course.startDate, 'HH:mm'),
                 }),
                 shortMessage: openTime.shortMessage,
                 colorCode: 'errorReservationTime',
