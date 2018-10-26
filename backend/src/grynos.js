@@ -121,11 +121,10 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
                 const reservations = await db.reservations.getReservationsByEventId(existingSession.dataValues.eventId);
                 if (reservations) {
                     await cancelReservations(reservations);
-                    return models.events.update(
-                        { status: -2 },
-                        { returning: true, where: { id: newSession.id } });
                 }
-
+                return models.events.update(
+                    { status: -2 },
+                    { returning: true, where: { id: newSession.id } });
             }
         }
     } catch (error) {
