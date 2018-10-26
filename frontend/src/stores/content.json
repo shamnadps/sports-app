@@ -43,7 +43,8 @@
             "noCourse": "Ei löytynyt tunteja tälle päivälle",
             "errorMessages": {
                 "openTime": {
-                    "longMessage": "Ilmoittautuminen aukeaa {date}",
+                    "longMessage":
+                        "Ilmoittautuminen aukeaa {date} kello {time}",
                     "shortMessage": "Avautuu myöhemmin"
                 },
                 "closeTime": {
