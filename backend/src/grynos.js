@@ -116,12 +116,16 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
     try {
         for (let existingSession of existingTeachingSessions) {
             const newSession = newTeachingSessions.find(item => item.id === existingSession.dataValues.eventId);
-            if (newSession && newSession.status === -2 && existingSession.status !== newSession.status) {
+            if (newSession) {
+                console.log('newsessions status', newSession.status);
+            }
+            if (newSession && newSession.status === -2) {
                 console.log('Going to cancel reservation for event', existingSession.dataValues.eventId);
                 const reservations = await db.reservations.getReservationsByEventId(existingSession.dataValues.eventId);
                 if (reservations) {
                     await cancelReservations(reservations);
                 }
+                console.log('Cancelling event', newSession.id);
                 return models.events.update(
                     { status: -2 },
                     { returning: true, where: { id: newSession.id } });

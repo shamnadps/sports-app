@@ -47,6 +47,8 @@ const getCourses = (startDate, endDate) => {
                 ],
                 where: {
                     start: { [Op.between]: [startDate, endDate] },
+                    status: 0
+
                 },
             },
         ],
@@ -96,6 +98,9 @@ const getAllCourses = () => {
                     'teachingplace',
                     'status'
                 ],
+                where: {
+                    status: 0
+                }
             },
         ],
 
