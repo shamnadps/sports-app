@@ -12,7 +12,7 @@ export const isOpenYet = (courseItem) => {
 export const isClosedYet = (courseItem) => {
     // and must not be 1 hours before starting time
     const diff = dateFns.differenceInHours(courseItem.startDate, new Date());
-    return diff <= 1;
+    return diff < 1;
 };
 
 const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
