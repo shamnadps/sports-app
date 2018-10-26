@@ -44,7 +44,7 @@
             "errorMessages": {
                 "openTime": {
                     "longMessage":
-                        "Ilmoittautuminen aukeaa {date} kello {time}",
+                        "Ilmoittautuminen aukeaa {date}. kello {time}",
                     "shortMessage": "Avautuu myöhemmin"
                 },
                 "closeTime": {
