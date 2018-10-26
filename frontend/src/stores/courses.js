@@ -5,8 +5,8 @@ import { fetchCourses, reserveTicket } from '../apis';
 
 export const isOpenYet = (courseItem) => {
     // within 3 days from now
-    const diff = dateFns.differenceInDays(courseItem.startDate, new Date());
-    return diff >= 0 && diff <= 3;
+    const diff = dateFns.differenceInHours(courseItem.startDate, new Date());
+    return diff >= 0 && diff < 72;
 };
 
 export const isClosedYet = (courseItem) => {
