@@ -59,6 +59,7 @@ const clearDatabase = async () => {
 };
 
 const fetchAndSaveCoursesToDb = async () => {
+    console.log('Executing fetchAndSaveCoursesToDb');
     const courses = await fetchCoursesFromGrynos();
     return await updateCoursesToDb(courses);
 }
@@ -74,6 +75,7 @@ const updateCoursesToDb = async (courses) => {
                         const dbCourse = dbCourses.find(item => item.id === course.id);
                         await handleCancellations(dbCourse, dbCourse.teachingSession, course.teachingSession);
                         if (dbCourse.single_payment_count < course.single_payment_count) {
+                            console.log('Updating singlePaymentCount for course', dbCourse.id, 'as', course.single_payment_count);
                             return await updateSinglePaymentTickets(dbCourse, course);
                         } else {
                             return dbCourse;
@@ -115,6 +117,7 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
         for (let existingSession of existingTeachingSessions) {
             const newSession = newTeachingSessions.find(item => item.id === existingSession.dataValues.eventId);
             if (newSession && newSession.status === 2 && existingSession.status !== newSession.status) {
+                console.log('Going to cancel reservation for event', existingSession.dataValues.eventId);
                 const reservations = await db.reservations.getReservationsByEventId(existingSession.dataValues.eventId);
                 if (reservations) {
                     await cancelReservations(reservations);
@@ -133,6 +136,7 @@ const handleCancellations = async (course, existingTeachingSessions, newTeaching
 const cancelReservations = async (reservations) => {
     try {
         for (let reservation of reservations) {
+            console.log('Executing cancel reservation for reservation', reservation.dataValues.id);
             await db.reservations.cancelReservation(reservation.dataValues.id);
             const [message, dbUser] = await Promise.all([services.sms.buildCancellationMessage(reservation.dataValues), db.users.getUserById(reservation.dataValues.userId)]);
             const response = await services.sms.sendMessageToUser(
