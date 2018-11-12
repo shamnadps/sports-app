@@ -23,16 +23,16 @@ module.exports = {
         const startingTime = dateFns.getHours(date);
         const isWeekend = dateFns.isWeekend(date);
         if (courseTypeID === POOL_ID || courseTypeID === WATER_ID) {
-            if (startingTime <= 16 && !isWeekend) {
-                return POOL_WATER_PRICE_BEFORE_4;
-            } else {
+            if (startingTime >= 16 || isWeekend) {
                 return POOL_WATER_PRICE_AFTER_4;
+            } else {
+                return POOL_WATER_PRICE_BEFORE_4;
             }
         } else if (courseTypeID === FLOOR_ID || courseTypeID === GYM_ID) {
-            if (startingTime <= 16 && !isWeekend) {
-                return FLOOR_GYM_PRICE_BEFORE_4;
-            } else {
+            if (startingTime >= 16 || isWeekend) {
                 return FLOOR_GYM_PRICE_AFTER_4;
+            } else {
+                return FLOOR_GYM_PRICE_BEFORE_4;
             }
         } else {
             return DEFAULT_PRICE;
