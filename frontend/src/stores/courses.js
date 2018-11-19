@@ -19,7 +19,8 @@ const hasSufficientFund = (balance, courseItem) => courseItem.price <= balance;
 
 const hasBeenReserved = (reservedCourseList, courseItem) => {
     return reservedCourseList.find(
-        (item) => item.courseId === courseItem.id && item.bookingStatus === 1
+        (item) =>
+            item.eventId === courseItem.eventId && item.bookingStatus === 1
     );
 };
 const hasEnoughTickets = (courseItem) => {
