@@ -15,6 +15,11 @@
             "type": "image/png"
         },
         {
+            "src": "./VEX_icon@2x.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
             "src": "./VEX_icon@3x.png",
             "sizes": "792x685",
             "type": "image/png"
