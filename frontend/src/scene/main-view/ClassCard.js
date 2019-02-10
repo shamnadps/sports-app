@@ -61,16 +61,16 @@ const ScrollContainer = styled('div')`
 const CardWrapper = styled(ItemAnimation)`
     width: 100%;
     background-color: ${(props) =>
-        props.blur ? props.theme[props.errorColorCode] : 'white'};;
+        props.blur ? props.theme[props.errorcolorcode] : 'white'};;
     margin-top: 1px;
     padding: 1.5rem 0;
     color: rgba(0, 0, 0, 0.86);
     transition: background-color 0.7s ease, border 0.5s ease;
     overflow: hidden;
     ${(props) =>
-        props.errorColorCode &&
+        props.errorcolorcode &&
         `border-left: ${props.blur ? 0 : 5}px ${
-            props.theme[props.errorColorCode]
+            props.theme[props.errorcolorcode]
         } solid`}
     }
     & > div {
@@ -193,16 +193,28 @@ const Card = class extends React.Component {
             reserved,
             noTickets,
         } = this.props.errorMessages;
-        const type = types[0];
-
-        if (type === 'reserved')
+        if (types.indexOf('auth') > -1) {
+            return {
+                longMessage: auth.longMessage,
+                shortMessage: auth.shortMessage,
+                colorCode: 'errorReservationAuth',
+                type: 'auth',
+            };
+        } else if (types.indexOf('reserved') > -1) {
             return {
                 longMessage: reserved.longMessage,
                 shortMessage: reserved.shortMessage,
                 colorCode: 'green',
-                type,
+                type: 'reserved',
             };
-        if (type === 'openTime')
+        } else if (types.indexOf('noTickets') > -1) {
+            return {
+                longMessage: noTickets.longMessage,
+                shortMessage: noTickets.shortMessage,
+                colorCode: 'errorReservationNoTicket',
+                type: 'noTickets',
+            };
+        } else if (types.indexOf('openTime') > -1) {
             return {
                 longMessage: stringInterpolator(openTime.longMessage, {
                     date: dateFns.format(
@@ -213,9 +225,9 @@ const Card = class extends React.Component {
                 }),
                 shortMessage: openTime.shortMessage,
                 colorCode: 'errorReservationTime',
-                type,
+                type: 'openTime',
             };
-        if (type === 'closingTime')
+        } else if (types.indexOf('closingTime') > -1) {
             return {
                 longMessage: stringInterpolator(closeTime.longMessage, {
                     numberOfFreeSeats:
@@ -223,29 +235,16 @@ const Card = class extends React.Component {
                 }),
                 shortMessage: closeTime.shortMessage,
                 colorCode: 'errorReservationTime',
-                type,
+                type: 'closingTime',
             };
-        if (type === 'noTickets')
-            return {
-                longMessage: noTickets.longMessage,
-                shortMessage: noTickets.shortMessage,
-                colorCode: 'errorReservationNoTicket',
-                type,
-            };
-        if (type === 'resource')
+        } else if (types.indexOf('resource') > -1) {
             return {
                 longMessage: resource.longMessage,
                 shortMessage: resource.shortMessage,
                 colorCode: 'errorReservationResource',
-                type,
+                type: 'resource',
             };
-        if (type === 'auth')
-            return {
-                longMessage: auth.longMessage,
-                shortMessage: auth.shortMessage,
-                colorCode: 'errorReservationAuth',
-                type,
-            };
+        }
     };
     render() {
         const {
@@ -261,18 +260,18 @@ const Card = class extends React.Component {
         return (
             <CardWrapper
                 {...rest}
-                blur={blurAndShowMessage}
-                errorColorCode={errorDetail.colorCode || ''}
-                onMouseEnter={() => this.setState({ showMessage: true })}
-                onMouseLeave={() => this.setState({ showMessage: false })}
-                onTouchEnd={() => {
-                    this.setState({ showMessage: true });
-                    window.clearTimeout(this.longMessageTick);
-                    this.longMessageTick = window.setTimeout(
-                        () => this.setState({ showMessage: false }),
-                        3000
-                    );
-                }}
+                //blur={blurAndShowMessage}
+                errorcolorcode={errorDetail.colorCode || ''}
+                // onMouseEnter={() => this.setState({ showMessage: true })}
+                // onMouseLeave={() => this.setState({ showMessage: false })}
+                // onTouchEnd={() => {
+                //     this.setState({ showMessage: true });
+                //     window.clearTimeout(this.longMessageTick);
+                //     this.longMessageTick = window.setTimeout(
+                //         () => this.setState({ showMessage: false }),
+                //         3000
+                //     );
+                // }}
             >
                 <ErrorMessage pose={blurAndShowMessage ? 'shown' : 'hidden'}>
                     {errorDetail.longMessage || ''}
@@ -294,24 +293,24 @@ const Card = class extends React.Component {
                                         .replace('.', ',') + ' €'}
                                 </PriceTag>
                             )}
-                            {!disabled ? (
-                                <BookingButton
-                                    key="2"
-                                    onClick={onButtonClick}
-                                    bold
-                                    alternative
-                                >
-                                    {buttonLabel}
-                                </BookingButton>
-                            ) : (
-                                <ErrorMessageTag
-                                    key="3"
-                                    color={errorDetail.colorCode}
-                                >
-                                    {errorDetail.shortMessage}
-                                </ErrorMessageTag>
-                            )}
+
+                            <BookingButton
+                                key="2"
+                                onClick={onButtonClick}
+                                bold
+                                alternative
+                            >
+                                {buttonLabel}
+                            </BookingButton>
                         </div>
+                        {disabled ? (
+                            <ErrorMessageTag
+                                key="3"
+                                color={errorDetail.colorCode}
+                            >
+                                {errorDetail.shortMessage}
+                            </ErrorMessageTag>
+                        ) : null}
                     </CourseArea>
                 </div>
             </CardWrapper>

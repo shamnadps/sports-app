@@ -29,7 +29,7 @@ const courses = [
         teachingSession: [
             {
                 dataValues: {
-                    eventId: 1,
+                    eventId: 2,
                     startDate: '2018-04-18T07:00:00.000Z',
                     endDate: '2018-04-18T08:30:00.000Z',
                     status: 0
@@ -48,7 +48,7 @@ const courses = [
         teachingSession: [
             {
                 dataValues: {
-                    eventId: 1,
+                    eventId: 3,
                     startDate: '2018-04-18T07:00:00.000Z',
                     endDate: '2018-04-18T08:30:00.000Z',
                     status: 0
@@ -67,7 +67,7 @@ const courses = [
         teachingSession: [
             {
                 dataValues: {
-                    eventId: 1,
+                    eventId: 4,
                     startDate: '2018-04-18T07:00:00.000Z',
                     endDate: '2018-04-18T08:30:00.000Z',
                     status: 0

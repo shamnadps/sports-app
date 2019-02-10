@@ -8,6 +8,8 @@ import ClockLogo from '../../common/ClockLogo';
 import EuroLogo from '../../common/EuroLogo';
 import Button from '../../components/button';
 import dateFns from 'date-fns';
+import stringInterpolator from 'interpolate';
+import posed, { PoseGroup } from 'react-pose';
 
 const CourseContent = styled(Content)`
     width: 100%;
@@ -104,7 +106,36 @@ const ReservationContent = styled(Content)`
     }
 `;
 
-const MainModal = ({ course, seletectedDate, onConfirm, clear }) => (
+const ErrorMessageAnimation = posed.h4({
+    hidden: {
+        y: -10,
+        x: 50,
+        opacity: 0,
+    },
+    shown: {
+        y: -10,
+        x: 0,
+        opacity: 1,
+    },
+});
+
+const ErrorMessageTag = styled(Content)`
+    color: ${(props) => props.theme[props.color]};
+    font-size: 2.3rem;
+    font-weight: bold;
+    display: block;
+    padding: 1rem;
+    margin: 0;
+`;
+
+const MainModal = ({
+    course,
+    seletectedDate,
+    onConfirm,
+    disabled,
+    errorDetail,
+    clear,
+}) => (
     <Modal show={course} onClear={clear}>
         {course && (
             <Fragment>
@@ -152,13 +183,32 @@ const MainModal = ({ course, seletectedDate, onConfirm, clear }) => (
                                 vapaana
                             </span>
                         </div>
-                        <span>
-                            {Number(course.price).toLocaleString('fi')} €
-                        </span>
+                        <span>3 €</span>
                     </div>
-                    <Button alternative bold onClick={onConfirm}>
-                        Varaa
-                    </Button>
+                    {!course.isAvailable ? (
+                        <div>
+                            <div>
+                                <ErrorMessageTag
+                                    key="3"
+                                    color={errorDetail.colorCode}
+                                >
+                                    {errorDetail.longMessage}
+                                </ErrorMessageTag>
+                            </div>
+                            <Button alternative disabled bold>
+                                Varaa
+                            </Button>
+                        </div>
+                    ) : (
+                        <Button
+                            style={{ display: 'block' }}
+                            alternative
+                            bold
+                            onClick={onConfirm}
+                        >
+                            Varaa
+                        </Button>
+                    )}
                 </BottomSection>
             </Fragment>
         )}
@@ -272,10 +322,81 @@ class CourseModal extends React.Component {
         this.props.courseStore.reserveCourse(null);
     };
 
+    getErrorDetail = (course) => {
+        if (!course || !course.reasons) return;
+        const types = course.reasons;
+        const errorMessages = this.props.i18nStore.content.courseCard
+            .errorMessages;
+        const {
+            openTime,
+            closeTime,
+            resource,
+            auth,
+            reserved,
+            noTickets,
+        } = errorMessages;
+
+        if (types.indexOf('auth') > -1) {
+            return {
+                longMessage: auth.longMessage,
+                shortMessage: auth.shortMessage,
+                colorCode: 'errorReservationAuth',
+                type: 'auth',
+            };
+        } else if (types.indexOf('reserved') > -1) {
+            return {
+                longMessage: reserved.longMessage,
+                shortMessage: reserved.shortMessage,
+                colorCode: 'green',
+                type: 'reserved',
+            };
+        } else if (types.indexOf('noTickets') > -1) {
+            return {
+                longMessage: noTickets.longMessage,
+                shortMessage: noTickets.shortMessage,
+                colorCode: 'errorReservationNoTicket',
+                type: 'noTickets',
+            };
+        } else if (types.indexOf('openTime') > -1) {
+            return {
+                longMessage: stringInterpolator(openTime.longMessage, {
+                    date: dateFns.format(
+                        dateFns.subDays(course.startDate, 3),
+                        'DD.MM'
+                    ),
+                    time: dateFns.format(course.startDate, 'HH:mm'),
+                }),
+                shortMessage: openTime.shortMessage,
+                colorCode: 'errorReservationTime',
+                type: 'openTime',
+            };
+        } else if (types.indexOf('closingTime') > -1) {
+            return {
+                longMessage: stringInterpolator(closeTime.longMessage, {
+                    numberOfFreeSeats:
+                        course.single_payment_count - course.reservedCount,
+                }),
+                shortMessage: closeTime.shortMessage,
+                colorCode: 'errorReservationTime',
+                type: 'closingTime',
+            };
+        } else if (types.indexOf('resource') > -1) {
+            return {
+                longMessage: resource.longMessage,
+                shortMessage: resource.shortMessage,
+                colorCode: 'errorReservationResource',
+                type: 'resource',
+            };
+        }
+    };
+
     render() {
         const seletectedDate = this.props.courseStore.filters.date;
         const course = this.props.courseStore.courseInFocus;
         const i18nContent = this.props.i18nStore.content;
+        const disabled = !this.props.userStore.isAuthenticated;
+        const errorDetail = this.getErrorDetail(course) || {};
+
         return (
             <div>
                 {this.state.showDetails && (
@@ -283,6 +404,8 @@ class CourseModal extends React.Component {
                         course={course}
                         seletectedDate={seletectedDate}
                         onConfirm={this.onConfirm}
+                        disabled={disabled}
+                        errorDetail={errorDetail}
                         clear={this.clear}
                     />
                 )}
@@ -309,4 +432,4 @@ class CourseModal extends React.Component {
     }
 }
 
-export default connect('i18nStore', 'courseStore')(CourseModal);
+export default connect('i18nStore', 'courseStore', 'userStore')(CourseModal);
