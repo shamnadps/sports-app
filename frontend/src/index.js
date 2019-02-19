@@ -35,4 +35,3 @@ const Root = () => (
     </BrowserRouter>
 );
 ReactDOM.render(<Root />, document.getElementById('root'));
-registerServiceWorker();

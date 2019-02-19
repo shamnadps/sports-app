@@ -70,7 +70,9 @@ class NotificationBanner extends Component {
         window.localStorage.setItem('cookieSetRefreshFlag', 'true');
         let serviceWorkerVar = window['serviceWorkerVar'];
         try {
-            serviceWorkerVar.postMessage({ action: 'skipWaiting' });
+            if (serviceWorkerVar) {
+                serviceWorkerVar.postMessage({ action: 'skipWaiting' });
+            }
         } catch (error) {
             console.log(error);
         }

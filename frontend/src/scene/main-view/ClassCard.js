@@ -258,40 +258,62 @@ const Card = class extends React.Component {
         const blurAndShowMessage = disabled && this.state.showMessage;
         const errorDetail = (disabled && this.getErrorDetail(course)) || {};
         return (
-            <div>
-                <TimeArea>
-                    <span>{dateFns.format(course.startDate, 'HH.mm')}</span>
-                    <span>{dateFns.format(course.endDate, 'HH.mm')}</span>
-                </TimeArea>
-                <CourseArea>
-                    <strong>{course.name}</strong>
-                    <span>{course.location}</span>
-                    <div>
-                        {errorDetail.type !== 'reserved' && (
-                            <PriceTag>
-                                {Number(course.price)
-                                    .toFixed(2)
-                                    .toString()
-                                    .replace('.', ',') + ' €'}
-                            </PriceTag>
-                        )}
+            <CardWrapper
+                {...rest}
+                //blur={blurAndShowMessage}
+                errorcolorcode={errorDetail.colorCode || ''}
+                // onMouseEnter={() => this.setState({ showMessage: true })}
+                // onMouseLeave={() => this.setState({ showMessage: false })}
+                // onTouchEnd={() => {
+                //     this.setState({ showMessage: true });
+                //     window.clearTimeout(this.longMessageTick);
+                //     this.longMessageTick = window.setTimeout(
+                //         () => this.setState({ showMessage: false }),
+                //         3000
+                //     );
+                // }}
+            >
+                <ErrorMessage pose={blurAndShowMessage ? 'shown' : 'hidden'}>
+                    {errorDetail.longMessage || ''}
+                </ErrorMessage>
+                <div>
+                    <TimeArea>
+                        <span>{dateFns.format(course.startDate, 'HH.mm')}</span>
+                        <span>{dateFns.format(course.endDate, 'HH.mm')}</span>
+                    </TimeArea>
+                    <CourseArea>
+                        <strong>{course.name}</strong>
+                        <span>{course.location}</span>
+                        <div>
+                            {errorDetail.type !== 'reserved' && (
+                                <PriceTag>
+                                    {Number(course.price)
+                                        .toFixed(2)
+                                        .toString()
+                                        .replace('.', ',') + ' €'}
+                                </PriceTag>
+                            )}
 
-                        <BookingButton
-                            key="2"
-                            onClick={onButtonClick}
-                            bold
-                            alternative
-                        >
-                            {buttonLabel}
-                        </BookingButton>
-                    </div>
-                    {disabled ? (
-                        <ErrorMessageTag key="3" color={errorDetail.colorCode}>
-                            {errorDetail.shortMessage}
-                        </ErrorMessageTag>
-                    ) : null}
-                </CourseArea>
-            </div>
+                            <BookingButton
+                                key="2"
+                                onClick={onButtonClick}
+                                bold
+                                alternative
+                            >
+                                {buttonLabel}
+                            </BookingButton>
+                        </div>
+                        {disabled ? (
+                            <ErrorMessageTag
+                                key="3"
+                                color={errorDetail.colorCode}
+                            >
+                                {errorDetail.shortMessage}
+                            </ErrorMessageTag>
+                        ) : null}
+                    </CourseArea>
+                </div>
+            </CardWrapper>
         );
     }
     componentWillUnmount() {
